@@ -16,7 +16,7 @@ body,
   list-style: none;
   padding: 0;
   margin: 0;
-  background: #3f4c3a;
+  background: #909f88;
   display: inline-block;
   height: 100vh;
   position: absolute;
@@ -40,7 +40,7 @@ body,
   animation-duration: 0.34s;
 }
 .nav li div {
-  margin-left: 60px;
+  margin-left: 5px;
   text-align: center;
   width: 160px;
 }
