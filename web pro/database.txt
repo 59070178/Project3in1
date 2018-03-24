@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------------------------------------------------------------
 Create table account
 (
-account_id int(10),
+account_id int(10) NOT NULL AUTO_INCREMENT ,
 username varchar(50) not null,
 password varchar(50) not null,
 firstname varchar(50),

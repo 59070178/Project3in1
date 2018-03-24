@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Register</h1><br>
+        
+        <form action="registerServlet" method="POST">
+     
+        ชื่อจริง : <input type="text" name="fname" />  นามสกุล : <input type="text" name="lname"  /><br><br>
+        ชื่อเข้าใช้งาน : <input type="text" name="id"/><br><br>
+        รหัสผ่าน : <input type="text" name="password" /><br><br>
+        ยืนยันรหัสผ่าน : <input type="text" name="confirm_password"  /><br><br>
+        เพศ : <select name="gender">
+            <option>ชาย</option>
+            <option>หญิง</option>    
+            </select> 
+
+        เบอร์โทร : <input type="text" name="phone" /><br><br>
+        ที่อยู่ บ้านเลขที่ <input type="text" name="ban" /> ซอย <input type="text" name="soi"value="" /> แขวง <input type="text" name="district" />
+        <br><br>  เขต : <input type="text" name="area"  /> จังหวัด : <input type="text" name="country"  />
+        รหัสไปรษณีย์ <input type="text" name="code" /><br><br>
+        <input type="submit" value="ยืนยัน" />
+             
+                  
+                  
+                 </form>      
+   
+      
+        
+    </body>
+</html>
