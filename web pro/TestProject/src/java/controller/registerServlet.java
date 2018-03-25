@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,12 +48,19 @@ public class registerServlet extends HttpServlet {
             String soi = request.getParameter("soi");
             String district = request.getParameter("district");
             String area = request.getParameter("area");
-            String country = request.getParameter("country");
+            String county = request.getParameter("country");
             String code = request.getParameter("code");
+            String type = "customer"; 
             
              Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO account VALUES('" + id + "','" + password + "','" + fname + "'," +  lname + ")";
-            int numRow = stmt.executeUpdate(sql);
+            String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('" + id + "','" + password + "','" + fname + "','" +  lname +"','" +phone + "','"  + type +"')" ;
+            String sql_customer  = "INSERT INTO customer (gender,ban,soi,district, area,county) VALUES('" + gender + "','" + ban + "','" + soi + "','" +  district + "','" + area+  "','" +  county +"')";
+            int numRow_account = stmt.executeUpdate(sql_account);
+            int numRow_customer = stmt.executeUpdate(sql_customer);
+    
+            RequestDispatcher obj = request.getRequestDispatcher("login.html");
+  
+                obj.forward(request,response);
             
         } catch (SQLException ex) {
             Logger.getLogger(registerServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -41,8 +41,8 @@ public class Init implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent sce) {
         try {
             conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Init.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+           e.printStackTrace();
         }
     }
 
@@ -50,4 +50,6 @@ public class Init implements ServletContextListener {
         Context c = new InitialContext();
         return (DataSource) c.lookup("java:comp/env/test");
     }
+
+    
 }

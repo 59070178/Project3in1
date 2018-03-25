@@ -76,7 +76,7 @@ public class LoginSerlvet extends HttpServlet {
                         if (rs2.getString("account_id").equals(account_id)) {
                             session.setAttribute("username", username);
                             session.setAttribute("gender", rs2.getString("gender"));
-                            String address = rs2.getString("ban") + " " + rs2.getString("soi") + " " + rs2.getString("District") + " "
+                            String address = rs2.getString("ban") + " " + rs2.getString("soi") + " " + rs2.getString("district") + " "
                                     + rs2.getString("area") + " " + rs2.getString("county");
                             session.setAttribute("address", address);
                         }
