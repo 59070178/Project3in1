@@ -12,17 +12,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.register;
 
 /**
  *
  * @author Suttida Sat
  */
+
 @WebServlet(name = "registerServlet", urlPatterns = {"/registerServlet"})
 public class registerServlet extends HttpServlet {
 
@@ -35,37 +36,42 @@ public class registerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+         request.setCharacterEncoding("UTF-8");
           
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String id = request.getParameter("id");
             String password = request.getParameter("password");
-            String confirm_password = request.getParameter("confirm_password");
-            String gender = request.getParameter("gender");
-            
+            String confirm_password = request.getParameter("confirm_password");  
             String phone = request.getParameter("phone");
+            
+            String gender = request.getParameter("gender");
             String ban = request.getParameter("ban");
             String soi = request.getParameter("soi");
             String district = request.getParameter("district");
             String area = request.getParameter("area");
             String county = request.getParameter("country");
             String code = request.getParameter("code");
-            String type = "customer"; 
-            
-             Statement stmt = conn.createStatement();
-            String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('" + id + "','" + password + "','" + fname + "','" +  lname +"','" +phone + "','"  + type +"')" ;
-            String sql_customer  = "INSERT INTO customer (gender,ban,soi,district, area,county) VALUES('" + gender + "','" + ban + "','" + soi + "','" +  district + "','" + area+  "','" +  county +"')";
-            int numRow_account = stmt.executeUpdate(sql_account);
-            int numRow_customer = stmt.executeUpdate(sql_customer);
+              String type = "customer"; 
+              
+               Statement stmt = conn.createStatement();
+            String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('"+id+"','"+password+"','"+fname+"','"+lname+"','"+phone+"','"+type+"')" ;
+            stmt.executeUpdate(sql_account);     
+            String sql_customer  = "INSERT INTO customer (gender,ban,soi,district, area,county,code) VALUES('"+gender+"','"+ban+"','"+soi+"','"+district+"','"+area+"','"+county+"','" +code+"')";
+            stmt.executeUpdate(sql_customer);
+            ///insert data to account
+//               register reg = new register();
+//
+//               reg.addAccount(fname, lname, id, password, phone,type);
+//               reg.addCustomer(gender, ban, soi, district, area, county, code);
+           
     
-            RequestDispatcher obj = request.getRequestDispatcher("login.html");
-  
-                obj.forward(request,response);
+            response.sendRedirect("login.html");
             
         } catch (SQLException ex) {
             Logger.getLogger(registerServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        }    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
