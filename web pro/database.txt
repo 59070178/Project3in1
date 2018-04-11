@@ -39,19 +39,19 @@ create table monthly_expense
 (
 invoice_id int (10) AUTO_INCREMENT ,
 total int(10) not null,
-slip ..............,
+slip varchar(200),
 month varchar(10) ,
 date_pay date,
-account_id int(10),
+i_id int(10),
 primary key (invoice_id ),
-foreign key (account_id ) references account(account_id ) 
+foreign key (i_id ) references indenture(i_id ) 
 );
 create table detail
 (
 price float(8,2),
 invoice_id int (10) ,
 type_id int (10) ,
-primary key (invoice_id),
+primary key (invoice_id,type_id ),
 foreign key (invoice_id) references monthly_expense(invoice_id) , 
 foreign key (type_id ) references type_expense(type_id )
 );
@@ -66,10 +66,17 @@ create table payment
 (
 payment_id int (10) AUTO_INCREMENT ,
 price_deposit float(8,2)  not null,
-Advance_payment float(8,2)  not null,
 i_id int(10),
+slip vachar(200),
+type_contract_id int(10),
 primary key (payment_id),
 foreign key (i_id) references indenture(i_id)
+);
+create table payment_detail
+(
+type_contract_id int(10) AUTO_INCREMENT,
+name_type varchar(10) uniqe,
+primary key (type_id ),
 );
 create table condition
 (
