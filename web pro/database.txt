@@ -1,5 +1,5 @@
 >>>how to use: coppy this and paste when you need create table with Execute command...
----------------------------------------------------------------------------------------------------------------------------------
+
 Create table account
 (
 account_id int(10) AUTO_INCREMENT ,
@@ -11,17 +11,7 @@ phone char(10) not null,
 account_type enum('boss','employee','customer'),
 primary key (account_id)   , CONSTRAINT UC_username UNIQUE (username)
 );
-------------------------------------------------------------------------------------------------------------
-create table indenture
-(
-i_id int(10),
-end_date date not null,
-start_date date not null,
-account_id int(10),
-primary key (i_id),
-foreign key (account_id) references account(account_id) 
-);
-------------------------------------------------------------------------------------------------------------
+
 create table customer
 (
 account_id int (10) AUTO_INCREMENT ,
@@ -35,6 +25,18 @@ code char(5) not null,
 primary key (account_id),
 foreign key (account_id) references account(account_id)
 );
+------------------------------------------------------------------------------------------------------------
+
+create table indenture
+(
+i_id int(10),
+end_date date not null,
+start_date date not null,
+account_id int(10),
+primary key (i_id),
+foreign key (account_id) references account(account_id) 
+);
+
 create table monthly_expense
 (
 invoice_id int (10) AUTO_INCREMENT ,
@@ -46,6 +48,14 @@ i_id int(10),
 primary key (invoice_id ),
 foreign key (i_id ) references indenture(i_id ) 
 );
+
+create table type_expense
+(
+type_id int (10) AUTO_INCREMENT ,
+name_type varchar(50) not null UNIQUE ,
+criterion text  not null ,
+primary key (type_id)
+);
 create table detail
 (
 price float(8,2),
@@ -55,38 +65,37 @@ primary key (invoice_id,type_id ),
 foreign key (invoice_id) references monthly_expense(invoice_id) , 
 foreign key (type_id ) references type_expense(type_id )
 );
-create table type_expense
+create table payment_detail
 (
-type_id int (10) AUTO_INCREMENT ,
-name_type varchar(50) not null uniqe,
-criterion text  not null ,
-primary key (type_id)
+type_contract_id int(10) AUTO_INCREMENT,
+name_type varchar(10) unique,
+primary key (type_contract_id)
 );
 create table payment
 (
 payment_id int (10) AUTO_INCREMENT ,
 price_deposit float(8,2)  not null,
 i_id int(10),
-slip vachar(200),
+slip varchar(200),
+bank varchar(50),
 type_contract_id int(10),
+tranfer_date DATETIME ,
+tranfer_time varchar(20);
 primary key (payment_id),
-foreign key (i_id) references indenture(i_id)
+foreign key (i_id) references indenture(i_id),
+foreign key (type_contract_id ) references payment_detail(type_contract_id )
 );
-create table payment_detail
-(
-type_contract_id int(10) AUTO_INCREMENT,
-name_type varchar(10) uniqe,
-primary key (type_id ),
-);
-create table condition
+
+create table announce
 (
 con_id int(10) AUTO_INCREMENT ,
-con_name varchar(50)  not null uniqe,
+con_name varchar(50)  not null unique,
 content   text not null,
 i_id int(10),
 primary key (con_id ),
 foreign key (i_id) references indenture(i_id)
 );
+
 create table area
 (
 area_id int(10) ,
