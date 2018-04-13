@@ -6,37 +6,61 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>Register Page</title>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/regis.css">
     </head>
-    <body>
-        <h1>Register</h1><br>
-        
-        <form action="registerServlet" method="POST">
-     
-        ชื่อจริง : <input type="text" name="fname" />  นามสกุล : <input type="text" name="lname"  /><br><br>
-        ชื่อเข้าใช้งาน : <input type="text" name="id"/><br><br>
-        รหัสผ่าน : <input type="text" name="password" /><br><br>
-        ยืนยันรหัสผ่าน : <input type="text" name="confirm_password"  /><br><br>
-        เพศ : <select name="gender">
-            <option value="male">ชาย</option>
-            <option value="female">หญิง</option>    
-            </select> 
 
-        เบอร์โทร : <input type="text" name="phone" /><br><br>
-        ที่อยู่ บ้านเลขที่ <input type="text" name="ban" /> ซอย <input type="text" name="soi"value="" /> แขวง <input type="text" name="district" />
-        <br><br>  เขต : <input type="text" name="area"  /> จังหวัด : <input type="text" name="country"  />
-        รหัสไปรษณีย์ <input type="text" name="code" /><br><br>
-        <input type="submit" value="ยืนยัน" />
-             
-                  
-                  
-                 </form>      
-   
-      
-        
+    <body style="background-image: url(pic/mall2.jpg)">
+
+        <div>
+            <h1 class="topic"> ลงทะเบียน !</h1><br>
+            <form action="registerServlet" method="POST">
+                <label for="fname">ชื่อจริง </label>&nbsp;&nbsp;	
+                <input type="text" class="fname" name="firstname" >
+                &nbsp;&nbsp;&nbsp;
+                <label for="lname">นามสกุล </label> &nbsp;&nbsp;
+                <input type="text" class="lname" name="lastname" >
+
+                <br> <label for="username">ชื่อผู้ใช้ </label>&nbsp;&nbsp;
+                <input type="text" class="uname" name="username">
+
+                <br><label for="password">รหัสผ่าน </label>&nbsp;&nbsp;
+                <input type="password" class="pw" name="password" >
+                &nbsp;&nbsp;&nbsp;
+                <label for="confirm_password">ยืนยันรหัสผ่าน </label>&nbsp;&nbsp;
+                <input type="password" class="confirm" name="confirm_pw" >
+
+                <br><label for="u_gender">เพศ </label>&nbsp;&nbsp;
+                <select class="gender" name="user_gender">
+                    <option value="male">ชาย</option>
+                    <option value="female">หญิง</option>
+                </select>
+                <br> <label for="tel">เบอร์โทรศัพท์ </label>&nbsp;&nbsp;
+                <input type="text" class="telnum" name="telnumber" >
+
+                <br> <label for="h_num">เลขที่บ้าน </label>&nbsp;&nbsp;
+                <input type="text" class="housenum" name="house_number" >
+                &nbsp;&nbsp;&nbsp;               
+                <label for="h_soi">ซอย </label>&nbsp;&nbsp;
+                <input type="text" class="soi" name="house_soi" >
+
+                <br> <label for="h_district">แขวง </label>&nbsp;&nbsp;
+                <input type="text" class="district" name="house_district">
+                &nbsp;&nbsp;&nbsp;              
+                <label for="h_area">เขต </label>&nbsp;&nbsp;
+                <input type="text" class="area" name="house_area">
+
+                <br> <label for="h_country">จังหวัด </label>&nbsp;&nbsp;
+                <input type="text" class="country" name="house_country">
+                &nbsp;&nbsp;&nbsp;           
+                <label for="h_zipcode">รหัสไปรษณีย์ </label>&nbsp;&nbsp;
+                <input type="text" class="zipcode" name="house_zipcode">
+
+                <br><br><br><br><br>
+                <center><input type="submit" value="ยืนยัน"></center>
+            </form>
+        </div>
     </body>
 </html>
