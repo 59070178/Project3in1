@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedList;
 
 
 /**
@@ -16,7 +15,7 @@ public class Login  implements java.io.Serializable{
     private String name ;
     private String psw ;
     private String account_type ;
-    boolean result = false ;
+    private int id;
 
     Connection conn;
     public Login() {
@@ -34,6 +33,7 @@ public class Login  implements java.io.Serializable{
             ResultSet rs = stmt.executeQuery(sql);
             
             st = rs.next();
+        
         } catch (SQLException ex) {
         }
         return st;
@@ -64,16 +64,31 @@ public class Login  implements java.io.Serializable{
         this.account_type = account_type;
     }
 
-    public boolean isResult() {
-        return result;
+    public int getId(String name, String psw) {
+        
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT account_id FROM account WHERE username ='"+name+"'" +"AND password = '"+psw+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                id = rs.getInt("account_id");
+            }
+        
+        } catch (SQLException ex) {
+        }
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
       public Login(Connection conn){
         this.conn = conn;
     }
-    public void setResult(boolean result) {
-        this.result = result;
-    }
+
     
      
     

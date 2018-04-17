@@ -19,16 +19,18 @@ public class Account {
     private String phone;
     private String gender;
     private String account_type;
+    private int account_id; 
 
     Connection conn;
     public Account() {
     }
 
-    public void addAccount(String username, String password,String firstname,String lastname,String phone,String account_type){
+    public void addAccount(String username, String password,String firstname,String lastname,String phone,String account_type,String gender){
         try {
             Statement stmt = conn.createStatement();
             String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('"+username+"','"+password+"','"+firstname+"','"+lastname+"','"+phone+"','"+account_type+"')" ;
             stmt.executeUpdate(sql_account);  
+            
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -90,6 +92,28 @@ public class Account {
         this.account_type = account_type;
     }
     
-    
+    public Account(Connection conn){
+        this.conn = conn;
+    }
+
+    public int getAccount_id(String username, String password) {
+        try {
+            Statement stmt = conn.createStatement();
+            String sql_accountID = "SELECT  account_id FROM account WHERE username = '"+username+"'" + "AND password = '"+password+"'" ;
+            ResultSet rs = stmt.executeQuery(sql_accountID);
+            
+            while(rs.next()){
+                account_id = rs.getInt("account_id");
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return account_id;
+    }
+
+    public void setAccount_id(int account_id) {
+        this.account_id = account_id;
+    }
     
 }

@@ -5,11 +5,6 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -68,6 +63,8 @@ public class loginServlet extends HttpServlet {
             }
             
             boolean chk = user.checkLogin(username, psw);
+            id_user = user.getId(username, psw);
+            session.setAttribute("id_user", id_user);
             if(chk)
         {
             RequestDispatcher rs = request.getRequestDispatcher("view_monthExpanse.html");

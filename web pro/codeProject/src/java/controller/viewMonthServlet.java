@@ -49,7 +49,7 @@ response.setCharacterEncoding("UTF-8");
             float price_area = 0;
             String month = "april";
 
-             int user_id = (int) session.getAttribute("user");
+             int user_id = (int) session.getAttribute("id_user");
              
              Statement stmt = conn.createStatement();
              String sql = "SELECT total , price , type_id from monthly_expense join detail using(invoice_id) join indenture using(i_id) WHERE account_id = '"+user_id+"'"+
@@ -71,10 +71,10 @@ response.setCharacterEncoding("UTF-8");
              
              session.setAttribute("price_area", price_area);
              
-             out.println(session.getAttribute("water"));
-             out.println(session.getAttribute("fire"));
-             out.println(session.getAttribute("price_area"));
-             out.println(session.getAttribute("total"));
+//             out.println(session.getAttribute("water"));
+//             out.println(session.getAttribute("fire"));
+//             out.println(session.getAttribute("price_area"));
+//             out.println(session.getAttribute("total"));
              
              RequestDispatcher dp = request.getRequestDispatcher("showMonth.jsp");
              dp.forward(request, response);

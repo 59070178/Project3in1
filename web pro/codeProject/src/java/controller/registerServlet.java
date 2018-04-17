@@ -14,11 +14,16 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
+import model.Address;
+import model.Login;
 
 
 /**
@@ -40,6 +45,7 @@ public class registerServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             request.setCharacterEncoding("UTF-8");
+            HttpSession session = request.getSession(true);
           
             String fname = request.getParameter("firstname");
             String lname = request.getParameter("lastname");
@@ -59,37 +65,55 @@ public class registerServlet extends HttpServlet {
               
               int account_id = 0;
               
-              if(password.equals(confirm_password)){
+              if(!password.equals(confirm_password)){
                   out.println("Wrong Password");
                   RequestDispatcher dp = request.getRequestDispatcher("register.html");
                     dp.include(request, response);
-              }else{
-              
-               Statement stmt = conn.createStatement();
-            String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('"+id+"','"+password+"','"+fname+"','"+lname+"','"+phone+"','"+type+"')" ;
-            stmt.executeUpdate(sql_account);     
-            
-            String sql = "SELECT account_id FROM account WHERE username ='"+id+"'";
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()){
-                account_id = rs.getInt("account_id");
-                  }
-               
-            String sql_customer  = "INSERT INTO customer (account_id,gender,ban,soi,district, area,county,code) VALUES('"+account_id+"',  '"+gender+"','"+ban+"','"+soi+"','"+district+"','"+area+"','"+county+"','" +code+"')";
-            stmt.executeUpdate(sql_customer);
-            ///   insert data to account
-//               register reg = new register();
-//
-//               reg.addAccount(id, password,fname, lname, phone,type);
-//               reg.addCustomer(gender, ban, soi, district, area, county, code);
-           
-    
-RequestDispatcher dp = request.getRequestDispatcher("home.html");
-                    dp.forward(request, response);        
               }
-        } catch (SQLException ex) {
-            Logger.getLogger(registerServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }    }
+              
+              else{
+                  
+                        Account account = (Account)session.getAttribute("account");
+                        Address address = (Address)session.getAttribute("address");
+
+                        if (account == null || address == null){
+                            ServletContext ctx = getServletContext();
+                            Connection conn = (Connection)ctx.getAttribute("connection");
+                            account = new Account(conn);
+                            session.setAttribute("account", account);
+                            address = new Address(conn);
+                            session.setAttribute("address", address);
+                        }
+                        
+                        account.addAccount(id, password,fname, lname, phone,type,gender);
+                        ///get account_id from quary account
+                        account_id = account.getAccount_id(id, password);
+                        address.addAddress(ban, soi, district, area, county, code, account_id,gender);
+                        
+                  RequestDispatcher dp = request.getRequestDispatcher("home.html");
+                    dp.forward(request, response); 
+              }
+//else{
+//              
+//               Statement stmt = conn.createStatement();
+//            String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('"+id+"','"+password+"','"+fname+"','"+lname+"','"+phone+"','"+type+"')" ;
+//            stmt.executeUpdate(sql_account);     
+//            
+//            String sql = "SELECT account_id FROM account WHERE username ='"+id+"'";
+//            ResultSet rs = stmt.executeQuery(sql);
+//            while (rs.next()){
+//                account_id = rs.getInt("account_id");
+//                  }
+//               
+//            String sql_customer  = "INSERT INTO customer (account_id,gender,ban,soi,district, area,county,code) VALUES('"+account_id+"',  '"+gender+"','"+ban+"','"+soi+"','"+district+"','"+area+"','"+county+"','" +code+"')";
+//            stmt.executeUpdate(sql_customer);
+
+
+           
+           
+              
+        }   
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
