@@ -33,6 +33,7 @@ i_id int(10),
 end_date date not null,
 start_date date not null,
 account_id int(10),
+
 primary key (i_id),
 foreign key (account_id) references account(account_id) 
 );
