@@ -54,21 +54,14 @@ public class loginServlet extends HttpServlet {
 //                   
 //            }
            
-            Login user = (Login)session.getAttribute("user");
-            if (user == null){
-                ServletContext ctx = getServletContext();
-                Connection conn = (Connection)ctx.getAttribute("connection");
-                user = new Login(conn);
-                session.setAttribute("user", user);
-            }
-            
+             Login user = new Login();
+             user.setConn(conn);
             boolean chk = user.checkLogin(username, psw);
             id_user = user.getId(username, psw);
             session.setAttribute("id_user", id_user);
             if(chk)
         {
-            RequestDispatcher rs = request.getRequestDispatcher("view_monthExpanse.html");
-            rs.forward(request, response);
+            response.sendRedirect("view_monthExpanse.html");
         }else{
                 out.println("Username or Password incorrect");
            RequestDispatcher rs = request.getRequestDispatcher("login.html");

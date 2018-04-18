@@ -5,7 +5,6 @@
  */
 package controller;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.dateTime;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -15,12 +14,15 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Login;
+import model.MonthExpense;
 
 /**
  *
@@ -119,6 +121,9 @@ public class addExpanseServlet extends HttpServlet {
             
             RequestDispatcher obj = request.getRequestDispatcher("select_customer.jsp");
             obj.forward(request, response);
+            
+            MonthExpense add = new MonthExpense() ;
+            add.setConn(conn);
             
         } catch (SQLException ex) {
             Logger.getLogger(addExpanseServlet.class.getName()).log(Level.SEVERE, null, ex);

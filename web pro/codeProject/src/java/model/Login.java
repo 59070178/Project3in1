@@ -89,6 +89,16 @@ public class Login  implements java.io.Serializable{
         this.conn = conn;
     }
 
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
+      
+      
+
     
      
     

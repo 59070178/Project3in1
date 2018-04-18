@@ -8,11 +8,6 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -67,23 +62,18 @@ public class registerServlet extends HttpServlet {
               
               if(!password.equals(confirm_password)){
                   out.println("Wrong Password");
+//                  response.sendRedirect("register.html");
                   RequestDispatcher dp = request.getRequestDispatcher("register.html");
                     dp.include(request, response);
               }
               
               else{
                   
-                        Account account = (Account)session.getAttribute("account");
-                        Address address = (Address)session.getAttribute("address");
+                        Account account = new Account();
+                        Address address = new Address();
 
-                        if (account == null || address == null){
-                            ServletContext ctx = getServletContext();
-                            Connection conn = (Connection)ctx.getAttribute("connection");
-                            account = new Account(conn);
-                            session.setAttribute("account", account);
-                            address = new Address(conn);
-                            session.setAttribute("address", address);
-                        }
+                        account.setConn(conn);
+                        address.setConn(conn);
                         
                         account.addAccount(id, password,fname, lname, phone,type,gender);
                         ///get account_id from quary account

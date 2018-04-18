@@ -115,5 +115,15 @@ public class Account {
     public void setAccount_id(int account_id) {
         this.account_id = account_id;
     }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
+    
+    
     
 }

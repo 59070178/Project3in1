@@ -15,7 +15,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Select Customer</title>
+        <title>Select Customer
+        </title>
     </head>
     <body>
 
@@ -28,7 +29,8 @@
         where a. account_type = "customer" 
         </sql:query> 
  
-  <h1>Select Customer</h1><br>
+  <h1>Select Customer
+  เลือกชื่อลูกค้าที่ต้องการดู</h1><br>
   
         <form action="selectCustomerServlet" method="POST">
  
