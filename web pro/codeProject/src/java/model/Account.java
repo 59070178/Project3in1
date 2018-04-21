@@ -11,31 +11,33 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Account {
-    
+
     private String username;
-    private String  password;
-    private String  firstname;
+    private String password;
+    private String firstname;
     private String lastname;
+    private String fullname;
     private String phone;
     private String gender;
     private String account_type;
-    private int account_id; 
+    private int account_id;
 
     Connection conn;
+
     public Account() {
     }
 
-    public void addAccount(String username, String password,String firstname,String lastname,String phone,String account_type,String gender){
+    public void addAccount(String username, String password, String firstname, String lastname, String phone, String account_type, String gender) {
         try {
             Statement stmt = conn.createStatement();
-            String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('"+username+"','"+password+"','"+firstname+"','"+lastname+"','"+phone+"','"+account_type+"')" ;
-            stmt.executeUpdate(sql_account);  
-            
+            String sql_account = "INSERT INTO account (username, password, firstname, lastname, phone, account_type) VALUES('" + username + "','" + password + "','" + firstname + "','" + lastname + "','" + phone + "','" + account_type + "')";
+            stmt.executeUpdate(sql_account);
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
+
     public String getUsername() {
         return username;
     }
@@ -68,6 +70,14 @@ public class Account {
         this.lastname = lastname;
     }
 
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String f, String l) {
+        this.fullname = f + "    " + l;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -91,18 +101,18 @@ public class Account {
     public void setAccount_type(String account_type) {
         this.account_type = account_type;
     }
-    
-    public Account(Connection conn){
+
+    public Account(Connection conn) {
         this.conn = conn;
     }
 
     public int getAccount_id(String username, String password) {
         try {
             Statement stmt = conn.createStatement();
-            String sql_accountID = "SELECT  account_id FROM account WHERE username = '"+username+"'" + "AND password = '"+password+"'" ;
+            String sql_accountID = "SELECT  account_id FROM account WHERE username = '" + username + "'" + "AND password = '" + password + "'";
             ResultSet rs = stmt.executeQuery(sql_accountID);
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 account_id = rs.getInt("account_id");
             }
 
@@ -123,7 +133,5 @@ public class Account {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
-    
-    
-    
+
 }

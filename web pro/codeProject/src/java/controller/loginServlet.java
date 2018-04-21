@@ -1,10 +1,13 @@
 package controller;
 
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -22,25 +25,25 @@ import model.Login;
 @WebServlet(urlPatterns = {"/loginServlet"})
 public class loginServlet extends HttpServlet {
 
-   private Connection conn;
-    
-    public void init(){
+    private Connection conn;
+
+    public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /// encode character can read thai 
             request.setCharacterEncoding("UTF-8");
-           
-      
+
             HttpSession session = request.getSession(true);
-            
+
             String username = request.getParameter("name");
             String psw = request.getParameter("pass");
-            int id_user = 0; 
-            
+            int id_user = 0;
+
 //            Statement stmt = conn.createStatement();
 //            String sql = "SELECT account_id , username , password FROM account WHERE username ='"+username+"'";
 //            ResultSet rs = stmt.executeQuery(sql);
@@ -53,24 +56,38 @@ public class loginServlet extends HttpServlet {
 //                  }
 //                   
 //            }
-           
-             Login user = new Login();
-             user.setConn(conn);
+            Login user = new Login();
+            user.setConn(conn);
             boolean chk = user.checkLogin(username, psw);
             id_user = user.getId(username, psw);
             session.setAttribute("id_user", id_user);
-            if(chk)
-        {
-            response.sendRedirect("view_monthExpanse.html");
-        }else{
-                out.println("Username or Password incorrect");
-           RequestDispatcher rs = request.getRequestDispatcher("login.html");
-           rs.include(request, response);
-            }
+
+            if (chk) {
+
+                Statement stmt = conn.createStatement();
+                String sql = "SELECT * FROM account WHERE username = '" + username + "'";
+                ResultSet rs = stmt.executeQuery(sql);
                 
-           
-        
-    }  
+                //if account_type is customer
+                if (rs.getString("account_type").equals("customer")) {
+                    RequestDispatcher dp = request.getRequestDispatcher("VeiwInfoCusSerlvet");
+                    dp.forward(request, response);
+                } else { //else if account_type is boss or employees
+                    RequestDispatcher dp = request.getRequestDispatcher("ViewInfoEmpAndBossServlet");
+                    dp.forward(request, response);
+                }
+
+//            response.sendRedirect("veiwInfoCus.jsp");
+
+            } else {
+                out.println("Username or Password incorrect");
+                RequestDispatcher rs = request.getRequestDispatcher("login.html");
+                rs.include(request, response);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -86,7 +103,7 @@ public class loginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
     }
 
     /**
