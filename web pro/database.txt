@@ -93,7 +93,6 @@ create table announce
 (
 con_id int(10) AUTO_INCREMENT ,
 content   text not null,
-i_id int(10) not null,
 type_contract_id int(10) not null,
 primary key (con_id),
 foreign key (type_contract_id) references payment_detail(type_contract_id)
