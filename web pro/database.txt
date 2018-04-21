@@ -14,7 +14,7 @@ primary key (account_id)   , CONSTRAINT UC_username UNIQUE (username)
 
 create table customer
 (
-account_id int (10) AUTO_INCREMENT ,
+account_id int (10) ,
 gender enum('male','female'),
 ban varchar(50) not null,
 soi varchar(50),
@@ -29,7 +29,7 @@ foreign key (account_id) references account(account_id)
 
 create table indenture
 (
-i_id int(10),
+i_id int(10) AUTO_INCREMENT,
 end_date date not null,
 start_date date not null,
 account_id int(10),
@@ -92,11 +92,11 @@ foreign key (type_contract_id ) references payment_detail(type_contract_id )
 create table announce
 (
 con_id int(10) AUTO_INCREMENT ,
-con_name varchar(50)  not null unique,
 content   text not null,
-i_id int(10),
-primary key (con_id ),
-foreign key (i_id) references indenture(i_id)
+i_id int(10) not null,
+type_contract_id int(10) not null,
+primary key (con_id),
+foreign key (type_contract_id) references payment_detail(type_contract_id)
 );
 
 create table area
