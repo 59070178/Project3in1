@@ -61,7 +61,7 @@ public class loginServlet extends HttpServlet {
             session.setAttribute("id_user", id_user);
             if(chk)
         {
-            response.sendRedirect("view_monthExpanse.html");
+            response.sendRedirect("veiwInfoCus.jsp");
         }else{
                 out.println("Username or Password incorrect");
            RequestDispatcher rs = request.getRequestDispatcher("login.html");
