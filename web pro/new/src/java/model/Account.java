@@ -16,6 +16,7 @@ public class Account {
     private String  password;
     private String  firstname;
     private String lastname;
+    private String fullname;
     private String phone;
     private String gender;
     private String account_type;
@@ -68,6 +69,15 @@ public class Account {
         this.lastname = lastname;
     }
 
+    
+     public String getFullname() {
+    return fullname;
+    }
+
+    public void setFullname(String f, String l) {
+        this.fullname = f + "    " + l;
+    }
+    
     public String getPhone() {
         return phone;
     }
