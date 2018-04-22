@@ -27,8 +27,8 @@ import model.Address;
  *
  * @author asus
  */
-@WebServlet(name = "VeiwInfoCusSerlvet", urlPatterns = {"/VeiwInfoCusSerlvet"})
-public class VeiwInfoCusSerlvet extends HttpServlet {
+@WebServlet(name = "VeiwInfoCusServlet", urlPatterns = {"/VeiwInfoCusServlet"})
+public class VeiwInfoCusServlet extends HttpServlet {
 
     Connection conn;
 
@@ -86,7 +86,7 @@ public class VeiwInfoCusSerlvet extends HttpServlet {
             dp.forward(request, response);
 
         } catch (SQLException ex) {
-            Logger.getLogger(VeiwInfoCusSerlvet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VeiwInfoCusServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

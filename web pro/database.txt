@@ -47,9 +47,9 @@ slip varchar(200),
 bank varchar(50),
 month varchar(10) ,
 date_time_pay datetime,
-account_id int(10),
+i_id int(10),
 primary key (invoice_id ),
-foreign key (account_id) references indenture(account_id) 
+foreign key (i_id) references indenture(i_id) 
 );
 
 create table type_expense

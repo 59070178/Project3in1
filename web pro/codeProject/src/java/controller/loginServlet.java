@@ -70,7 +70,7 @@ public class loginServlet extends HttpServlet {
                 
                 //if account_type is customer
                 if (rs.getString("account_type").equals("customer")) {
-                    RequestDispatcher dp = request.getRequestDispatcher("VeiwInfoCusSerlvet");
+                    RequestDispatcher dp = request.getRequestDispatcher("VeiwInfoCusServlet");
                     dp.forward(request, response);
                 } else { //else if account_type is boss or employees
                     RequestDispatcher dp = request.getRequestDispatcher("ViewInfoEmpAndBossServlet");
