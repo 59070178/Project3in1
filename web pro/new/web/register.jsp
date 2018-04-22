@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>register</title>
+        <title>SIGN UP</title>
     </head>
     <body>
         <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -35,8 +35,8 @@ enctype="multipart/form-data: charset=utf-8">
                 <html:text property="firstname" />
                 
                 &nbsp;&nbsp;&nbsp;
-                <label for="lname">LAST NAME </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;<html:text property="lastname" />
+                <label for="lname">LAST NAME </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;<html:text property="lastname" />
 
                 <br> <label for="username">USERNAME </label>&nbsp;&nbsp;&nbsp;&nbsp;
                 <html:text property="username" />
@@ -45,7 +45,7 @@ enctype="multipart/form-data: charset=utf-8">
                 <html:password property="password"  />
                 
                 &nbsp;&nbsp;&nbsp;
-                <label for="confirm_password">CONFIRM PASSWORD </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="confirm_password">CONFIRM PASSWORD </label>&nbsp;&nbsp;&nbsp;&nbsp;
                   <html:password property="confirm_pw" />
 
                   <br><label for="u_gender">GENDER </label>&nbsp;&nbsp;
@@ -62,14 +62,14 @@ enctype="multipart/form-data: charset=utf-8">
                 <html:text property="ban" />
                 &nbsp;&nbsp;&nbsp;       
                 
-                <label for="h_soi">ALLEY </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="h_soi">ALLEY </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <html:text property="soi"/>
 
                 <br> <label for="h_district">DISTRICT </label>&nbsp;&nbsp;
                 <html:text property="district"/>
                 &nbsp;&nbsp;&nbsp;              
                 
-                <label for="h_area">CITY </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="h_area">CITY </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <html:text property="area" />
 
                 <br> <label for="h_county">PROVINCE </label>&nbsp;&nbsp;
@@ -77,7 +77,7 @@ enctype="multipart/form-data: charset=utf-8">
                 &nbsp;&nbsp;&nbsp;           
                 
                 
-                <label for="h_zipcode">ZIP CODE </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="h_zipcode">ZIP CODE </label>&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:text property="code" />
                 
                 <br><br><br><br><br>
