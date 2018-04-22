@@ -157,6 +157,16 @@ public class Account {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
+
+    public void setAccount_type(int id_user) throws SQLException {
+         Statement stmt = conn.createStatement();
+            String sql_type= "SELECT  account_type  FROM account WHERE account_id  = '"+id_user+"'" ;
+            ResultSet rs = stmt.executeQuery(sql_type);
+            
+            while(rs.next()){
+                this.account_type = rs.getString("account_type");
+            }
+    }
     
     
     

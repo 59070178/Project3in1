@@ -1,6 +1,16 @@
+<%-- 
+    Document   : home2
+    Created on : Apr 23, 2018, 12:51:19 AM
+    Author     : Suttida Sat
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
     <title> HOME PAGE </title>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -28,8 +38,9 @@
                     <a href="home.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  หน้าแรก</a>
                     <a href="" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  การจองพื้นที่</a>
                     <a href="" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  การเช่าพื้นที่</a>
-                    <a href="" class="w3-bar-item w3-button"><i class="fa fa-credit-card"></i>  การชำระเงิน</a>
-                    <a href="viewPay_monthly.jsp" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> ข้อมูลส่วนตัว</a>
+                    
+ 
+                     <a href="profile_cus.jsp" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> ข้อมูลส่วนตัว</a>
                 </div>
             </div>
         </div>
@@ -155,3 +166,4 @@
         </footer>
     </body>
 </html>
+

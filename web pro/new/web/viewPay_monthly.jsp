@@ -58,6 +58,8 @@
 
                 </tr>
                 <tr height="60px">
+                    
+                    
                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
                     <td></td>

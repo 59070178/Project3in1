@@ -54,6 +54,9 @@ public class loginServlet extends HttpServlet {
             
             account.setAccount_id(username, psw);
             id_user = account.getAccount_id();
+            
+            account.setAccount_type(id_user);
+            String account_type = account.getAccount_type();
 
 //            account.setFirstname(id_user);
 //            String fname = account.getFirstname();
@@ -63,12 +66,15 @@ public class loginServlet extends HttpServlet {
 //            
             session.setAttribute("id_user", id_user);
             session.setAttribute("username", username);
+            session.setAttribute("account_type", account_type);
 //             session.setAttribute("fname", fname);
 //             session.setAttribute("lname", lname);
             
             if(chk)
         {
-            response.sendRedirect("home2.html");
+            request.setAttribute("account_type", account_type);
+            response.sendRedirect("home2.jsp");
+            
         }else{
                 out.println("<h1 align = 'center' color = 'red'>"+"*** Username or Password incorrect");
            RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
