@@ -27,61 +27,61 @@
         <html:form action="register" styleId="form"
 enctype="multipart/form-data: charset=utf-8">
         <div>
-            <h1 class="topic"> ลงทะเบียน !</h1><br>
+            <h1 class="topic"> SIGN UP !</h1><br>
             <form action="registerServlet" method="POST">
                 
                 
-                <label for="fname">ชื่อจริง </label>&nbsp;&nbsp;	
+                <label for="fname">FIRST NAME </label>&nbsp;&nbsp;	
                 <html:text property="firstname" />
                 
                 &nbsp;&nbsp;&nbsp;
-                <label for="lname">นามสกุล </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="lname">LAST NAME </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;&nbsp;&nbsp;<html:text property="lastname" />
 
-                <br> <label for="username">ชื่อผู้ใช้ </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <br> <label for="username">USERNAME </label>&nbsp;&nbsp;&nbsp;&nbsp;
                 <html:text property="username" />
 
-                <br><label for="password">รหัสผ่าน </label>&nbsp;&nbsp;
+                <br><label for="password">PASSWORD </label>&nbsp;&nbsp;
                 <html:password property="password"  />
                 
                 &nbsp;&nbsp;&nbsp;
-                <label for="confirm_password">ยืนยันรหัสผ่าน </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="confirm_password">CONFIRM PASSWORD </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <html:password property="confirm_pw" />
 
-                  <br><label for="u_gender">เพศ </label>&nbsp;&nbsp;
+                  <br><label for="u_gender">GENDER </label>&nbsp;&nbsp;
                    <html:select property="gender" >
-                <html:option value="male">ชาย</html:option>
-                <html:option value="female">หญิง</html:option>
+                <html:option value="male">MALE</html:option>
+                <html:option value="female">FEMALE</html:option>
             </html:select>
 
                     
-                <br> <label for="tel">เบอร์โทรศัพท์ </label>&nbsp;&nbsp;
+                <br> <label for="tel">PHONE NUMBER </label>&nbsp;&nbsp;
                  <html:text property="phone" />
                  
-                <br> <label for="h_num">เลขที่บ้าน </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br> <label for="h_num">NO. </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <html:text property="ban" />
                 &nbsp;&nbsp;&nbsp;       
                 
-                <label for="h_soi">ซอย </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="h_soi">ALLEY </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <html:text property="soi"/>
 
-                <br> <label for="h_district">แขวง </label>&nbsp;&nbsp;
+                <br> <label for="h_district">DISTRICT </label>&nbsp;&nbsp;
                 <html:text property="district"/>
                 &nbsp;&nbsp;&nbsp;              
                 
-                <label for="h_area">เขต </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="h_area">CITY </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <html:text property="area" />
 
-                <br> <label for="h_county">จังหวัด </label>&nbsp;&nbsp;
+                <br> <label for="h_county">PROVINCE </label>&nbsp;&nbsp;
                 <html:text property="country"  />
                 &nbsp;&nbsp;&nbsp;           
                 
                 
-                <label for="h_zipcode">รหัสไปรษณีย์ </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="h_zipcode">ZIP CODE </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:text property="code" />
                 
                 <br><br><br><br><br>
-                <center><html:submit value="ยืนยัน" /></center>
+                <center><html:submit value="SUBMIT" /></center>
                 <h2> <html:errors /></h2>
             </html:form>
         </div>

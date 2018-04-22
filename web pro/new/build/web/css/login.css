@@ -6,7 +6,7 @@
 [ FONT ]*/
 
 @font-face {
-  font-family: DilleniaUPC;
+  font-family: 'Prompt', sans-serif;
 }
 
 
@@ -23,13 +23,13 @@
 
 body, html {
 	height: 100%;
-	font-family: DilleniaUPC, sans-serif;
+        font-family: 'Prompt', sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: DilleniaUPC;
-	font-size: 20px;
+	font-family: 'Prompt', sans-serif;
+	font-size: 18px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -54,8 +54,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: DilleniaUPC;
-	font-size: 14px;
+	font-family: 'Prompt', sans-serif;
+	font-size: 18px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -129,15 +129,15 @@ iframe {
 /*==================================================================
 [ Text ]*/
 .txt1 {
-  font-family: DilleniaUPC;
-  font-size: 60px;
+ font-family: 'Prompt', sans-serif;
+  font-size: 45px;
   line-height: 1.4;
   color: #555555;
 }
 
 .txt2 {
-  font-family: DilleniaUPC;
-  font-size: 60px;
+  font-family: 'Prompt', sans-serif;
+  font-size: 45px;
   line-height: 1.4;
   color: #999999;
 }
@@ -237,8 +237,8 @@ iframe {
 .login100-form-title {
   width: 100%;
   display: block;
-  font-family: DilleniaUPC;
-  font-size: 50px;
+ font-family: 'Prompt', sans-serif;
+  font-size: 40px;
   color: #333333;
   line-height: 1.2;
   text-align: center;
@@ -266,8 +266,8 @@ iframe {
 }
 
 .label-input100 {
-  font-family: DilleniaUPC;
-  font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+  font-size: 18px;
   color: #999999;
   line-height: 1.2;
 
@@ -289,7 +289,7 @@ iframe {
   display: block;
   width: 100%;
   background: transparent;
-  font-family: DilleniaUPC;
+ font-family: 'Prompt', sans-serif;
   font-size: 18px;
   color: #555555;
   line-height: 1.2;
@@ -360,7 +360,7 @@ input.input100 {
 
 .input100:focus + .focus-input100 + .label-input100 {
   top: 14px;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .has-val {
@@ -400,8 +400,8 @@ input.input100 {
   border-radius: 10px;
   background: #e4b8af;
 
-  font-family: DilleniaUPC;
-  font-size: 30px;
+ font-family: 'Prompt', sans-serif;
+  font-size: 20px;
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
