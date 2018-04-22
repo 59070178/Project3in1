@@ -43,7 +43,7 @@ create table monthly_expense
 (
 invoice_id int (10) AUTO_INCREMENT ,
 total int(10) not null,
-slip varchar(200),
+slip varchar(200), ****
 bank varchar(50),
 month varchar(10) ,
 date_time_pay datetime,
@@ -82,7 +82,7 @@ payment_id int (10) AUTO_INCREMENT ,
 price_book float(8,2) ,
 price_rent float(8,2) ,
 type_contract_id int(10),
-slip varchar(200),
+slip varchar(200),  *****
 bank varchar(50),
 tranfer_date_time DATETIME ,
 primary key (payment_id),
