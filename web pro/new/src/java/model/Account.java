@@ -41,8 +41,21 @@ public class Account {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(int id_user) throws SQLException {
+             Statement stmt = conn.createStatement();
+            String sql_fname = "SELECT  username  FROM account WHERE account_id  = '"+id_user+"'" ;
+            ResultSet rs = stmt.executeQuery(sql_fname);
+            
+            while(rs.next()){
+                this.username = rs.getString("username");
+            }
+
+    }
+     public void setUsername(String username) {
+            
+                this.username = username ;
+            
+
     }
 
     public String getPassword() {
@@ -57,16 +70,29 @@ public class Account {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstname(int id_user) throws SQLException {
+        
+         Statement stmt = conn.createStatement();
+            String sql_fname = "SELECT  firstname FROM account WHERE account_id  = '"+id_user+"'" ;
+            ResultSet rs = stmt.executeQuery(sql_fname);
+            
+            while(rs.next()){
+                this.firstname = rs.getString("firstname");
+            }
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastname(int id_user) throws SQLException {
+        Statement stmt = conn.createStatement();
+            String sql_fname = "SELECT  lastname  FROM account WHERE account_id  = '"+id_user+"'" ;
+            ResultSet rs = stmt.executeQuery(sql_fname);
+            
+            while(rs.next()){
+                this.lastname = rs.getString("lastname");
+            }
     }
 
     
@@ -106,26 +132,24 @@ public class Account {
         this.conn = conn;
     }
 
-    public int getAccount_id(String username, String password) {
-        try {
-            Statement stmt = conn.createStatement();
+    public int getAccount_id() {
+
+        return account_id;
+    }
+
+    public void setAccount_id(String username, String password) throws SQLException {
+        Statement stmt = conn.createStatement();
             String sql_accountID = "SELECT  account_id FROM account WHERE username = '"+username+"'" + "AND password = '"+password+"'" ;
             ResultSet rs = stmt.executeQuery(sql_accountID);
             
             while(rs.next()){
-                account_id = rs.getInt("account_id");
+                this.account_id = rs.getInt("account_id");
             }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return account_id;
     }
 
     public void setAccount_id(int account_id) {
         this.account_id = account_id;
     }
-
     public Connection getConn() {
         return conn;
     }

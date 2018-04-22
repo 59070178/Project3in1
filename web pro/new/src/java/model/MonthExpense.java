@@ -30,24 +30,40 @@ public class MonthExpense {
         return water;
     }
 
-    public void setWater(float water) {
-        this.water = water;
+    public void setWater(float invoice) throws SQLException {
+        
+            Statement stmt = conn.createStatement();
+            String sql_water = "SELECT price  FROM detail WHERE invoice_id   ='"+invoice+"'" + "AND type_id = 2";
+            ResultSet rs = stmt.executeQuery(sql_water);
+            while(rs.next()){
+                this.water = rs.getFloat("price");
+            }
     }
 
     public float getFire() {
         return fire;
     }
 
-    public void setFire(float fire) {
-        this.fire = fire;
+    public void setFire(float invoice) throws SQLException {
+            Statement stmt = conn.createStatement();
+            String sql_fire = "SELECT price  FROM detail WHERE invoice_id   ='"+invoice+"'" + "AND type_id = 3";
+            ResultSet rs = stmt.executeQuery(sql_fire);
+            while(rs.next()){
+                this.fire = rs.getFloat("price");
+            }
     }
 
     public float getPrice_area() {
         return price_area;
     }
 
-    public void setPrice_area(float price_area) {
-        this.price_area = price_area;
+    public void setPrice_area(float invoice) throws SQLException {
+            Statement stmt = conn.createStatement();
+            String sql_area = "SELECT price  FROM detail WHERE invoice_id   ='"+invoice+"'" + "AND type_id = 1";
+            ResultSet rs = stmt.executeQuery(sql_area);
+            while(rs.next()){
+                this.price_area = rs.getFloat("price");
+    }
     }
 
     public int getInvoice_id() {
@@ -68,7 +84,7 @@ public class MonthExpense {
 
 
     public float getTotal() {
-        return total;
+        return price_area+water+fire;
     }
 
     public void setTotal(float total) {

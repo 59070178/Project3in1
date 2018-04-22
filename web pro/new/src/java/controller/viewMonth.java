@@ -53,7 +53,23 @@ public void init(){
           int invoice = month.getInvoice_id();
           
           /// เอาค่าน้ำค่าไฟมาจาก detail
+          month.setWater(invoice);
           float water = month.getWater();
+          
+          month.setFire(invoice);
+          float fire = month.getFire();
+          
+          month.setPrice_area(invoice);
+          float price_area = month.getPrice_area();
+          
+          float total = month.getTotal();
+          
+          session.setAttribute("fire", fire);
+          session.setAttribute("water", water);
+          session.setAttribute("total_month", total);
+          session.setAttribute("price_area", price_area);
+          
+          response.sendRedirect("viewPay_monthly.jsp");
           
           
         } catch (SQLException ex) {

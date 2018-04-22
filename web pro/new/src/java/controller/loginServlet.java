@@ -5,6 +5,9 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Account;
 import model.Login;
 
 /**
@@ -43,9 +47,24 @@ public class loginServlet extends HttpServlet {
              Login user = new Login();
              user.setConn(conn);
             boolean chk = user.checkLogin(username, psw);
-            id_user = user.getId(username, psw);
             
+            ///get firstname lastname
+            Account account = new Account();
+            account.setConn(conn);
+            
+            account.setAccount_id(username, psw);
+            id_user = account.getAccount_id();
+
+//            account.setFirstname(id_user);
+//            String fname = account.getFirstname();
+//            
+//            account.setLastname(id_user);
+//            String lname = account.getLastname();
+//            
             session.setAttribute("id_user", id_user);
+            session.setAttribute("username", username);
+//             session.setAttribute("fname", fname);
+//             session.setAttribute("lname", lname);
             
             if(chk)
         {
@@ -59,7 +78,9 @@ public class loginServlet extends HttpServlet {
                 
            
         
-    }  
+    }  catch (SQLException ex) {  
+           Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+       }  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
