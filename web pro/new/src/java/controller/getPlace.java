@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -17,65 +18,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Contract;
-import model.MonthExpense;
+import model.Place;
 
 /**
  *
  * @author Suttida Sat
  */
-@WebServlet(name = "viewMonth", urlPatterns = {"/viewMonth"})
-public class viewMonth extends HttpServlet {
+@WebServlet(name = "getPlace", urlPatterns = {"/getPlace"})
+public class getPlace extends HttpServlet {
 
-private Connection conn;
-
-public void init(){
-    conn = (Connection) getServletContext().getAttribute("connection");
-}
+    private Connection conn;
+    
+    public void init(){
+        conn = (Connection) getServletContext().getAttribute("connection");
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-          HttpSession session = request.getSession(true);
-         int id_user =  (int) session.getAttribute("id_user");
-          
-              // get i_id from indenture
-          Contract contract = new Contract();
-          contract.setConn(conn);
-
-          int i_id = contract.getContractID(id_user);
-          session.setAttribute("i_id", i_id);
-          
-          // เอาเลขใบแจ้งหนี้มาจาก monthly_expense
-          MonthExpense month = new MonthExpense();
-          month.setConn(conn);
-          month.setInvoice_id(i_id);
-          int invoice = month.getInvoice_id();
-          
-          /// เอาค่าน้ำค่าไฟมาจาก detail
-          month.setWater(invoice);
-          float water = month.getWater();
-          
-          month.setFire(invoice);
-          float fire = month.getFire();
-          
-          month.setPrice_area(invoice);
-          float price_area = month.getPrice_area();
-          
-          float total = month.getTotal();
-          
-          session.setAttribute("fire", fire);
-          session.setAttribute("water", water);
-          session.setAttribute("total_month", total);
-          session.setAttribute("price_area", price_area);
-          
-          response.sendRedirect("viewPay_monthly.jsp");
-          
-          
+            
+             HttpSession session = request.getSession(true);
+             
+             int i_id = (int) session.getAttribute("i_id");
+             HashMap<Integer, String> map_place = new HashMap();
+             Place place = new Place();
+             place.setConn(conn);
+             place.setPlace(i_id);
+             map_place = place.getPlace();
+             
+             session.setAttribute("place", map_place);
+             
         } catch (SQLException ex) {
-        Logger.getLogger(viewMonth.class.getName()).log(Level.SEVERE, null, ex);
-    }
+            Logger.getLogger(getPlace.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
