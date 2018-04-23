@@ -40,7 +40,7 @@
                     <a href="" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  การเช่าพื้นที่</a>
                     
  
-                     <a href="profile_cus.jsp" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> ข้อมูลส่วนตัว</a>
+                     <a href="sentProfile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> ข้อมูลส่วนตัว</a>
                 </div>
             </div>
         </div>
