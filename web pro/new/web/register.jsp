@@ -24,11 +24,9 @@
 
     <body style="background-image: url(pic/mall2.jpg)">
         
-        <html:form action="register" styleId="form"
-enctype="multipart/form-data: charset=utf-8">
+        <html:form action="register" styleId="form">
         <div>
             <h1 class="topic"> SIGN UP !</h1><br>
-            <form action="registerServlet" method="POST">
                 
                 
                 <label for="fname">FIRST NAME </label>&nbsp;&nbsp;	

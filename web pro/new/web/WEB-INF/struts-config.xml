@@ -21,7 +21,7 @@
 
     <action-mappings>
         <action input="/register.jsp" name="RegisActionForm" path="/register" scope="session" type="com.myapp.struts.RegisAction">
-            <forward name="success" path="/home.html"/>
+            <forward name="success" path="/successRegister.html"/>
         </action>
         <!-- <action path="/register" type="com.myapp.struts.regisAction"/> -->
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>

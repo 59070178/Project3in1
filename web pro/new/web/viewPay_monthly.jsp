@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,6 +50,16 @@
 
             
         <!-- table of customer info. -->
+        
+         <sql:query var="myPlace" dataSource="test" >
+            select area_id ,area_type 
+            from area
+            join inden_area
+            using (area_id)
+            join indenture
+            using (i_id)
+            where i_id = "<%= session.getAttribute("i_id") %>"
+        </sql:query> 
         <div class="content1 w3-container">
             <table class="cusinfo">
                 <tr>
@@ -57,14 +69,16 @@
                     <th> ZONE </th>
 
                 </tr>
+                <c:forEach var="place" items="${myPlace.rows}">
                 <tr height="60px">
-                    
+                   
                     
                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("account_type"));%></td>
-                    <td></td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
+                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_id}</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_type }</td>
                 </tr>
+                </c:forEach> 
             </table>
 
 

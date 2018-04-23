@@ -42,7 +42,7 @@ public class sentProfile extends HttpServlet {
                 response.sendRedirect("profile_cus.jsp");
              if(type.equals("boss"))
                 response.sendRedirect("profile_boss.jsp");
-             else
+             if(type.equals("employee"))
                  response.sendRedirect("profile_emp.jsp");
         }
         
