@@ -39,18 +39,21 @@ public void init(){
             /* TODO output your page here. You may use following sample code. */
           HttpSession session = request.getSession(true);
          int id_user =  (int) session.getAttribute("id_user");
+         
+         String select_month = request.getParameter("month");
+//         if(select_month == null){
+//             select_month = "FEB";
+//         }
           
               // get i_id from indenture
-          Contract contract = new Contract();
-          contract.setConn(conn);
 
-          int i_id = contract.getContractID(id_user);
-          session.setAttribute("i_id", i_id);
+          int i_id = (int) session.getAttribute("i_id");
           
           // เอาเลขใบแจ้งหนี้มาจาก monthly_expense
           MonthExpense month = new MonthExpense();
           month.setConn(conn);
-          month.setInvoice_id(i_id);
+          month.setInvoice_id(i_id,select_month);
+     
           int invoice = month.getInvoice_id();
           
           /// เอาค่าน้ำค่าไฟมาจาก detail
@@ -71,6 +74,7 @@ public void init(){
           session.setAttribute("price_area", price_area);
           
           response.sendRedirect("viewPay_monthly.jsp");
+//out.print(select_month);
           
           
         } catch (SQLException ex) {

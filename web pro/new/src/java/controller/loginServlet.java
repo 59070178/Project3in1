@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Contract;
 import model.Login;
 
 /**
@@ -57,6 +58,12 @@ public class loginServlet extends HttpServlet {
             
             account.setAccount_type(id_user);
             String account_type = account.getAccount_type();
+            
+            Contract contract = new Contract();
+          contract.setConn(conn);
+
+          int i_id = contract.getContractID(id_user);
+          session.setAttribute("i_id", i_id);
 
 //            account.setFirstname(id_user);
 //            String fname = account.getFirstname();
