@@ -1,3 +1,11 @@
+<%-- 
+    Document   : donthave
+    Created on : Apr 24, 2018, 11:46:48 PM
+    Author     : Suttida Sat
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,26 +45,9 @@
 
                 </form>
             </div>
-        </div>
+        </div><br><br><br><br><br><br><br>
 
-        <!-- table of customer info. -->
-        <div class="content1 w3-container">
-            <table class="cusinfo">
-                <tr>
-                    <th> ID </th>
-                    <th> USERNAME </th>
-                    <th> AREA NO. </th>
-                    <th> ZONE </th>
-
-                </tr>
-                <tr height="60px">
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-
+        <h1>           <center> Don't  Have</center></h1>
 
             <!--side menu -->
             <nav class="side-menu">
@@ -71,22 +62,7 @@
 
 
 
-            <!-- table of payment -->
-
-            <table class="paytable">
-                <tr>
-                    <th> EXPENSES </th>
-                    <th> AMOUNT </th>
-
-                </tr>
-                <tr>
-                    <td>Prepaid Rent</td>
-                    <td></td>
-
-                </tr>
-            </table>
-        </div>
-
+         
 
     </body>
 </html>

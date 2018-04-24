@@ -1,3 +1,12 @@
+<%-- 
+    Document   : viewPay_monthly
+    Created on : Apr 22, 2018, 4:26:22 PM
+    Author     : Suttida Sat
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +16,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/viewPay.css">
+        <link rel="stylesheet" type="text/css" href="css/viewPay_monthly.css">
     </head>
     <body>
         <div class="header">
@@ -28,35 +37,17 @@
             <div class="btn-group">
                 <form action="select.jsp" method="POST">
                     <button class="select_bn bn1">Monthly Expense</button>
+                    
                 </form>
                 <form action="viewPay_reservation.html" method="POST">
                     <button class="select_bn bn2">Reservation Fee</button>
                 </form>
                 <form action="viewPay_rent.html" method="POST">
                     <button class="select_bn bn3">Prepaid Rent</button>
-
                 </form>
+               
             </div>
-        </div>
-
-        <!-- table of customer info. -->
-        <div class="content1 w3-container">
-            <table class="cusinfo">
-                <tr>
-                    <th> ID </th>
-                    <th> USERNAME </th>
-                    <th> AREA NO. </th>
-                    <th> ZONE </th>
-
-                </tr>
-                <tr height="60px">
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-
+        </div><br><br><br><br><br><br><br>
 
             <!--side menu -->
             <nav class="side-menu">
@@ -65,28 +56,34 @@
                     <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                    <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
+                    <li><a href="viewMonth">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
                 </ul>
             </nav>
 
+              <!-- Select month for view -->
+              <sql:query var="myMonth" dataSource="test" >
+            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"
+        </sql:query> 
+            
+              <c:choose>
+        <c:when test="${myMonth.rowCount == 0}">
+           <!--/  /* No results */ -->
+           <jsp:forward page="donthave.jsp"></jsp:forward>
+        </c:when>
+        <c:otherwise>
+             <!--/* do what ever you want with the results */ -->
+             <form action="viewMonth" method="POST">
+            
+            <center>< Select Month : <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
+                    <option value="${month.month}" >  ${month.month}   </option>
+                </c:forEach> </select> <input type="submit" value="Select" />
+        </form></center>
+        </c:otherwise>
+    </c:choose>
+      
+       
 
-
-            <!-- table of payment -->
-
-            <table class="paytable">
-                <tr>
-                    <th> EXPENSES </th>
-                    <th> AMOUNT </th>
-
-                </tr>
-                <tr>
-                    <td>Prepaid Rent</td>
-                    <td></td>
-
-                </tr>
-            </table>
-        </div>
-
+              </div>
 
     </body>
 </html>
