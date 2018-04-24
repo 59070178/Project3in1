@@ -1,10 +1,10 @@
-package controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -21,8 +21,8 @@ import model.Announce;
  *
  * @author asus
  */
-@WebServlet(urlPatterns = {"/addAnnounceServlet"})
-public class addAnnounceServlet extends HttpServlet {
+@WebServlet(name = "FirstViewAnnounceServlet", urlPatterns = {"/FirstViewAnnounceServlet"})
+public class FirstViewAnnounceServlet extends HttpServlet {
 
     private Connection conn;
 
@@ -44,22 +44,21 @@ public class addAnnounceServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String btn = request.getParameter("btn");
-            if (btn.equals("cancel")) {
-                RequestDispatcher rd = request.getRequestDispatcher("FirstViewAnnounceServlet");
-                rd.forward(request, response);
-
-            }
-
-            HttpSession session = request.getSession();
-            int edit_con_type = (int) session.getAttribute("edit_con_type");
-
-            String txt = request.getParameter("txt");
-
+           String name_type = "Book";
+           
+           HttpSession session = request.getSession();
+           
             Announce announce = new Announce();
             announce.setConn(conn);
-            announce.updateAnnounce(edit_con_type, txt);
-            out.print("sucess!");
+            announce.setInformation(name_type);
+            session.setAttribute("annouce_con_id", announce.getCon_id());
+            session.setAttribute("announce_details", announce);
+            
+
+
+            
+            RequestDispatcher dp = request.getRequestDispatcher("viewAnnounceDetails.jsp");
+            dp.forward(request, response);
         }
     }
 

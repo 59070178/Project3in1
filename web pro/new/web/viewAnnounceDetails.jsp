@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewAnnounceDetails
     Created on : Apr 21, 2018, 11:08:26 PM
-    Author     : asus
+    Author     : jugjig
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -59,15 +59,24 @@
                     <li><a href="#">กรอกค่าใช้จ่ายรายเดือน</a></li>
                     <li><a href="CusList.jsp">ประวิติลูกค้า</a></li>
                     <li><a href="#">...</a></li>
-                    <li class="active"><a href="viewAnnounce.jsp">จัดการเงื่อนไขของสัญญา</a></li>  
+                    <li class="active"><a href="FirstViewAnnounceServlet">จัดการเงื่อนไขของสัญญา</a></li>  
                 </ul>
             </div>
             <!-- Here end the navbar -->
 
+            
+            <form action="ViewAnnounceServlet" method="POST">
+                
+                <input type="submit" value="Book" name="view_details" /><input type="submit" value="Rent" name="view_details" />
+
+            </form>
+            
+            
+            
             <div class="col-sm-6">
                 <div class="font-heading">
                     <%-- Using Scriptlet--%>
-                    <% model.Announce announce = (model.Announce) request.getAttribute("announce_details");%>
+                    <% model.Announce announce = (model.Announce) session.getAttribute("announce_details");%>
                     <p><%= announce.getInformation()%><p>
                 </div>
 
