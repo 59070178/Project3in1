@@ -1,9 +1,9 @@
-body,h1,h2,h3,h4,h5,h6 {font-family: 'Roboto', Arial, Verdana, sans-serif;}
+body,h1,h2,h3,h4,h5,h6 {font-family: 'Prompt', sans-serif;}
 body, html {
     height: 100%;
     line-height: 2;
 }
-/* Full height image header */
+/* Full height images header */
 
 .w3-bar .w3-button {
     padding: 18px;    
@@ -87,7 +87,7 @@ body, html {
 body{
 margin:7px;
 border:2px solid #fff;
-font-family: 'Open Sans', sans-serif;
+font-family: 'Prompt', sans-serif;
 float:left;
 width:100%;
   height:100%;
