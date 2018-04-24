@@ -60,7 +60,7 @@ public void init(){
           month.setFire(invoice);
           float fire = month.getFire();
           
-          month.setPrice_area(invoice);
+          month.setPrice_area(i_id);
           float price_area = month.getPrice_area();
           
           float total = month.getTotal();

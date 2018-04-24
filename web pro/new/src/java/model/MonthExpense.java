@@ -57,12 +57,14 @@ public class MonthExpense {
         return price_area;
     }
 
-    public void setPrice_area(float invoice) throws SQLException {
+    public void setPrice_area(float i_id) throws SQLException {
             Statement stmt = conn.createStatement();
-            String sql_area = "SELECT price  FROM detail WHERE invoice_id   ='"+invoice+"'" + "AND type_id = 1";
+            String sql_area = "SELECT price FROM inden_area WHERE i_id = '"+i_id+"'";
             ResultSet rs = stmt.executeQuery(sql_area);
+            int price = 0;
             while(rs.next()){
-                this.price_area = rs.getFloat("price");
+                price += rs.getFloat("price");
+                this.price_area = price;
     }
     }
 
@@ -73,7 +75,8 @@ public class MonthExpense {
     public void setInvoice_id(int i_id) throws SQLException {
         
         Statement stmt = conn.createStatement();
-            String sql = "SELECT invoice_id  FROM monthly_expense WHERE i_id  ='"+i_id+"'" ;
+        String month = "FEB";
+            String sql = "SELECT invoice_id  FROM monthly_expense WHERE i_id  ='"+i_id+"'"+"AND month ='"+month+"'" ;
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 this.invoice_id = rs.getInt("invoice_id");
