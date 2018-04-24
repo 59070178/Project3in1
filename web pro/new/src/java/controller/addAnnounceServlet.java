@@ -46,7 +46,7 @@ public class addAnnounceServlet extends HttpServlet {
 
             String btn = request.getParameter("btn");
             if (btn.equals("cancel")) {
-                RequestDispatcher rd = request.getRequestDispatcher("viewAnnounce.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("FirstViewAnnounceServlet");
                 rd.forward(request, response);
 
             }

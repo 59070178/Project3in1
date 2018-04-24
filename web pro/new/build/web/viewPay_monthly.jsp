@@ -27,7 +27,7 @@
                     <!-- Right-sided navbar links -->
                     <div class="w3-right w3-hide-small">
                         <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                        <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
+                        <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
                     </div>
                 </div>
             </div>
@@ -35,22 +35,52 @@
 
             <h1 class="topic">PAYMENT</h1>
             <div class="btn-group">
+                <form action="select.jsp" method="POST">
+                    <button class="select_bn bn1">Monthly Expense</button>
+                    
+                </form>
                 <form action="viewPay_reservation.html" method="POST">
-                    <button class="select_bn bn1">Reservation Fee</button>
+                    <button class="select_bn bn2">Reservation Fee</button>
                 </form>
                 <form action="viewPay_rent.html" method="POST">
-                    <button class="select_bn bn2">Prepaid Rent</button>
+                    <button class="select_bn bn3">Prepaid Rent</button>
                 </form>
-                <form action="viewMonth" method="POST">
-                    <button class="select_bn bn3">Monthly Expense</button>
-
-                </form>
+               
             </div>
         </div>
 
             
         <!-- table of customer info. -->
-        
+         <sql:query var="myMonth" dataSource="test" >
+            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"
+        </sql:query> 
+            
+            
+            <!-- Select month for view -->
+        <form action="viewMonth" method="POST">
+            
+            Select Month : <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
+                    <option value="${month.month}" >  ${month.month}   </option>
+                </c:forEach> </select> <input type="submit" value="Select" />
+         </form>
+                
+            <!--<form action="viewMonth" method="POST">
+                    <select name="month">
+                    <option value="JAN">January</option>
+                    <option value="FEB">February </option>
+                    <option value="MAR">March</option>
+                    <option value="APR">April</option>
+                    <option value="MAY">May</option>
+                    <option value="JUN">June </option>
+                    <option value="JUL">July </option>
+                    <option value="AUG">August </option>
+                    <option value="SEP">September </option>
+                    <option value="OCT">October </option>
+                    <option value="NOV">November </option>
+                    <option value="DEC">December </option>
+                </select>
+                    <input type="submit" value="OK" />
+                </form> -->
          <sql:query var="myPlace" dataSource="test" >
             select area_id ,area_type 
             from area
@@ -85,17 +115,18 @@
             <!--side menu -->
             <nav class="side-menu">
                 <ul>
-                    <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                    <li><a href="profile_cus.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                    <li><a href="#">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
+                    <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
                 </ul>
             </nav>
 
 
 
             <!-- table of payment -->
+            
 
             <table class="paytable">
                 <tr>

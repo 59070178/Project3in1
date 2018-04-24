@@ -32,8 +32,8 @@
                             <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
-                            <li><a href="viewMonth">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
+                            <li><a href="">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
+                            <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
                         </ul>
                     </nav>
 
@@ -46,13 +46,24 @@
             <center><h1> PROFILE</h1></center><br>
             <form action="registerServlet" method="POST">
                 <div class="sign">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" /><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name <input type="text" name="lname" value="" readonly="readonly" disabled="disabled" /><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName <input type="text" name="username" value="" readonly="readonly" disabled="disabled" /><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gender <input type="text" name="tell" value="" readonly="readonly" disabled="disabled"/><br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Number <input type="text" name="tell" value="" readonly="readonly" disabled="disabled"/><br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address <input type="text" target="address" name="address" value="" readonly="readonly" disabled="disabled"/><br>
-                    
+                    First Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" /><br>
+                    Last Name <input type="text" name="lname" value="" readonly="readonly" disabled="disabled" /><br>
+                    UserName <input type="text" name="username" value="" readonly="readonly" disabled="disabled" /><br>
+                    Password <input type="text" name="password" value="" readonly="readonly" disabled="disabled" /><br>
+                    Gender <select name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select><br>
+                    Phone Number <input type="text" name="tell" value="" /><br>
+                    Area ID <input type="text" name="area_no" value="" /><br>
+                    Zone <input type="text" name="zone" value="" /><br>
+                    No. <input type="text" name="no." value="" /><br>
+                    Alley <input type="text" name="alley" value="" /><br>
+                    Province <input type="text" name="province" value="" /><br>
+                    City <input type="text" name="city" value="" /><br>
+                    District <input type="text" name="district" value="" /><br>
+                    Zip Code <input type="text" name="zipcode" value="" /><br>        
+                    <br><br><center><input type="submit" value="Confirm" /></center>
                 </div>
             </form>
         </div>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : editAnnounce
     Created on : Apr 22, 2018, 8:39:56 AM
-    Author     : asus
+    Author     : jugjig
 --%>
 
 <%@page import="java.sql.ResultSet"%>
@@ -60,7 +60,7 @@
                     <li><a href="#">กรอกค่าใช้จ่ายรายเดือน</a></li>
                     <li><a href="#">...</a></li>
                     <li><a href="#">...</a></li>
-                    <li class="active"><a href="viewAnnounce.jsp">จัดการเงื่อนไขของสัญญา</a></li>  
+                    <li class="active"><a href="FirstViewAnnounceServlet">จัดการเงื่อนไขของสัญญา</a></li>  
                 </ul>
             </div>
             <!-- Here end the navbar -->

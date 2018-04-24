@@ -21,6 +21,7 @@ public class MonthExpense {
    private  float price_area;
    private float total;
    private  int invoice_id;
+   private String month;
 
     private Connection conn;
     public MonthExpense() {
@@ -72,10 +73,9 @@ public class MonthExpense {
         return invoice_id;
     }
 
-    public void setInvoice_id(int i_id) throws SQLException {
+    public void setInvoice_id(int i_id,String month) throws SQLException {
         
         Statement stmt = conn.createStatement();
-        String month = "FEB";
             String sql = "SELECT invoice_id  FROM monthly_expense WHERE i_id  ='"+i_id+"'"+"AND month ='"+month+"'" ;
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -100,6 +100,14 @@ public class MonthExpense {
 
     public void setConn(Connection conn) {
         this.conn = conn;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
     
 

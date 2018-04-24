@@ -20,6 +20,36 @@ public class Announce {
     
     private String announceType;
     private String information;
+    
+    
+    private String name_type;
+    private int con_id;
+    private String content;
+
+    public String getName_type() {
+        return name_type;
+    }
+
+    public void setName_type(String name_type) {
+        this.name_type = name_type;
+    }
+
+    public int getCon_id() {
+        return con_id;
+    }
+
+    private void setCon_id(int con_id) {
+        this.con_id = con_id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    
    
     Connection conn;
 
@@ -38,22 +68,23 @@ public class Announce {
         return information;
     }
 
-    public void setInformation(int announce_con_id) {
+    public void setInformation(String name_type) {
         try {
             Statement stmt = conn.createStatement();
-            String sql = "SELECT  content FROM announce where con_id =" + announce_con_id;
+            String sql = "SELECT  * FROM announce where con_id = "
+                    + "(Select max(con_id) From announce join payment_detail using (type_contract_id) where name_type = '" + name_type+"')";
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
+            
             this.information = rs.getString("content");
+            setCon_id(rs.getInt("con_id"));
         } catch (SQLException ex) {
             Logger.getLogger(Announce.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
     
-    public void showAnnounce(){
-      
-    }
+
     
     public void updateAnnounce(int edit_con_type, String txt){
         try {
