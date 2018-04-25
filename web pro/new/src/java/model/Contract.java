@@ -21,20 +21,25 @@ public class Contract {
     private Date startDate;
     private Date endDate;
     private String type;
-    
-    private  Connection conn;
-    
+
+    private Connection conn;
+
     public Contract() {
     }
 
     public int getContractID(int id_user) throws SQLException {
         Statement stmt = conn.createStatement();
-            String sql = "SELECT i_id  FROM indenture WHERE account_id ='"+id_user+"'";
-            ResultSet rs = stmt.executeQuery(sql);
-            
-            while(rs.next()){
-                contractID = rs.getInt("i_id");
-            }
+        String sql = "SELECT i_id  FROM indenture WHERE account_id ='" + id_user + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()) {
+            contractID = rs.getInt("i_id");
+        }
+        return contractID;
+    }
+
+    //add by jugjig
+    public int getContractID() {
         return contractID;
     }
 
@@ -43,7 +48,7 @@ public class Contract {
     }
 
     public Date getStartDate() {
-        
+
         return startDate;
     }
 
@@ -66,8 +71,8 @@ public class Contract {
     public void setType(String type) {
         this.type = type;
     }
-    
-    public Contract(Connection conn){
+
+    public Contract(Connection conn) {
         this.conn = conn;
     }
 
@@ -78,5 +83,5 @@ public class Contract {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
-    
+
 }

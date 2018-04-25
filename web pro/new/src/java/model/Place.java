@@ -20,7 +20,7 @@ public class Place {
 
     private Connection conn;
     
-    private int placeID;
+    private String placeID;
     private String type;
     private Boolean status;
     private float price;
@@ -37,10 +37,10 @@ public class Place {
         this.conn = conn;
     }
 
-    public int getPlaceID() {
+    public String getPlaceID() {
         return placeID;
     }
-    public int getPlaceID(int i_id) {
+    public String getPlaceID(int i_id) {
        
         return placeID;
     }
@@ -49,7 +49,13 @@ public class Place {
 
             this.placeID = placeID;
     }
-
+    
+    
+    // add by jugjig check setPlaceID(int i_id)  
+     public void setPlaceID(String placeID) {
+        this.placeID = placeID;
+    }
+     
     public String getType() {
         return type;
     }

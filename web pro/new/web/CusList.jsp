@@ -47,9 +47,9 @@
 
         </style>
     </head>
-<body>
+    <body>
         <div class="flex-container">
-            <h1>ข้อมูลลูกค้า</h1>
+            <h1>รายชื่อลูกค้า</h1>
         </div><br>
         <div class="row">
             <!-- Here starts the navbar -->
@@ -57,40 +57,44 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="infoEmp">ข้อมูลส่วนตัว</a></li>
                     <li><a href="#">กรอกค่าใช้จ่ายรายเดือน</a></li>
-                    <li class="active"><a href="CusList.jsp">ประวิติลูกค้า</a></li>
+                    <li class="active"><a href="cusList.jsp">ประวิติลูกค้า</a></li>
                     <li><a href="#">...</a></li>
                     <li><a href="ViewAnnounce.jsp">จัดการเงื่อนไขของสัญญา</a></li>  
                 </ul>
             </div>
             <!-- Here end the navbar -->
 
-            <sql:query var="myCustomer" dataSource="Test" >
-                select * from customer join account using(account_id);
+            <sql:query var="myCustomer" dataSource="test" >
+                select * from customer join account using(account_id) join indenture using (account_id);
             </sql:query> 
 
             <div  class="col-md-3">
-                <form action="ViewAnnounceServlet" method="POST">
+                <form action="CusListDetailsServlet" method="POST">
 
-                    <table border="1" align="center"> 
-                        <thead>
+                <table border="1" align="center"> 
+                    <thead>
+                        <tr>
+                            <th>Customer_ID</th>
+                            <th>Name</th>
+<!--                            <th>View</th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="each_customer" items="${myCustomer.rows}">
                             <tr>
-                                <th>Customer_ID</th>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="each_customer" items="${myCustomer.rows}">
-                                <tr>
-                                    <td><input type="submit" value="${each_customer.account_id}" name="view_details"/></td>
-                                    
-                                    <td> 
-                                        ${each_customer.firstname} ${each_customer.lastname} 
-                                    </td>
-                                    
-                                </tr> 
-                            </c:forEach> 
-                        </tbody>
-                    </table>
+                               
+                                <td><input type="radio"  name="account_id" value="${each_customer.account_id}"/></td>
+                      
+                        <td> 
+                            ${each_customer.firstname} ${each_customer.lastname} 
+                        </td>
+
+                        </tr> 
+                    </c:forEach> 
+                    <td></td>
+                        <td><input type="submit" value="view_details" name="view_details"/></td>
+                    </tbody>
+                </table>
                 </form>  
             </div> 
 
