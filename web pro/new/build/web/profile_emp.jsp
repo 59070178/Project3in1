@@ -48,13 +48,22 @@
             </center><br>
             <form action="registerServlet" method="POST">
                 <div class="sign">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" /><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name <input type="text" name="lname" value="" readonly="readonly" disabled="disabled" /><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName <input type="text" name="username" value="" readonly="readonly" disabled="disabled" /><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gender <input type="text" name="tell" value="" readonly="readonly" disabled="disabled"/><br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Number <input type="text" name="tell" value="" readonly="readonly" disabled="disabled"/><br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address <input type="text" target="address" name="address" value="" readonly="readonly" disabled="disabled"/><br>
-                    
+                    First Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" /><br>
+                    Last Name <input type="text" name="lname" value="" readonly="readonly" disabled="disabled" /><br>
+                    UserName <input type="text" name="username" value="" readonly="readonly" disabled="disabled" /><br>
+                    Password <input type="text" name="password" value="" readonly="readonly" disabled="disabled" /><br>
+                    Gender <select name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select><br>
+                    Phone Number <input type="text" name="tell" value="" /><br>
+                    No. <input type="text" name="no." value="" /><br>
+                    Alley <input type="text" name="alley" value="" /><br>
+                    Province <input type="text" name="province" value="" /><br>
+                    City <input type="text" name="city" value="" /><br>
+                    District <input type="text" name="district" value="" /><br>
+                    Zip Code <input type="text" name="zipcode" value="" /><br>        
+                    <br><br><center><input type="submit" value="Confirm" /></center>
                 </div>
             </form>
         </div>

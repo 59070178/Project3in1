@@ -44,17 +44,18 @@ public class ViewAnnounceServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            
-            String announce_con_id_S = request.getParameter("view_details");
-            int announce_con_id = Integer.parseInt(announce_con_id_S);
+            HttpSession session = request.getSession();
+            String name_type = request.getParameter("view_details");
+
             
             Announce announce = new Announce();
             announce.setConn(conn);
-            announce.setInformation(announce_con_id);
-            request.setAttribute("announce_details", announce);
+            announce.setInformation(name_type);
+            session.setAttribute("annouce_con_id", announce.getCon_id());
+            session.setAttribute("announce_details", announce);
             
-            HttpSession session = request.getSession();
-            session.setAttribute("annouce_con_id", announce_con_id);
+
+
             
             RequestDispatcher dp = request.getRequestDispatcher("viewAnnounceDetails.jsp");
             dp.forward(request, response);

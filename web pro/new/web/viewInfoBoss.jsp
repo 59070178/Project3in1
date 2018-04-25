@@ -60,7 +60,7 @@
                     <li><a href="#">กรอกค่าใช้จ่ายรายเดือน</a></li>
                     <li><a href="CusList.jsp">ประวิติลูกค้า</a></li>
                     <li><a href="#">...</a></li>
-                    <li><a href="viewAnnounce.jsp">จัดการเงื่อนไขของสัญญา</a></li>  
+                    <li><a href="FirstViewAnnounceServlet">จัดการเงื่อนไขของสัญญา</a></li>  
                 </ul>
             </div>
             <!-- Here end the navbar -->

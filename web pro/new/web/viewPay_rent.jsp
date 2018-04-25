@@ -27,7 +27,7 @@
                     <!-- Right-sided navbar links -->
                     <div class="w3-right w3-hide-small">
                         <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                        <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
+                        <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,19 @@
                 <form action="viewPay_reservation.html" method="POST">
                     <button class="select_bn bn2">Reservation Fee</button>
                 </form>
+<<<<<<< HEAD:web pro/new/web/viewPay_rent.jsp
                 <form action="viewPay_rent.jsp" method="POST">
+=======
+                <form action="viewPay_rent.html" method="POST">
+<<<<<<< HEAD
+                    <button class="select_bn bn2">Prepaid Rent</button>
+                </form>
+                <form action="viewPay_monthly.jsp" method="POST">
+                    <button class="select_bn bn3">Monthly Expense</button>
+=======
+>>>>>>> master:web pro/new/build/web/viewPay_rent.html
                     <button class="select_bn bn3">Prepaid Rent</button>
+>>>>>>> master
 
                 </form>
             </div>
