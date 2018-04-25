@@ -31,8 +31,10 @@
                     </div>
                 </div>
             </div>
+        
+            
             <!-- select type of payment -->
-
+            
             <h1 class="topic">PAYMENT</h1>
             <div class="btn-group">
                 <form action="select.jsp" method="POST">
@@ -110,7 +112,7 @@
                 </tr>
                 </c:forEach> 
             </table>
-
+        </div>
 
             <!--side menu -->
             <nav class="side-menu">
@@ -127,7 +129,7 @@
 
             <!-- table of payment -->
             
-
+            <div>
             <table class="paytable">
                 <tr>
                     <th> EXPENSES </th>
