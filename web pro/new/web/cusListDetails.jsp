@@ -47,16 +47,17 @@
 
 
         <div class="flex-container">
-            <h1>ข้อมูลลูกค้า</h1> <br>
+            <h1>ข้อมูลส่วนตัวของลูกค้า</h1> <br>
 
         </div><br>
 
         <div class="row">
             <!-- Here starts the navbar -->
+             <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="infoEmp">ข้อมูลส่วนตัว</a></li>
+                <li><a href="infoEmp">ข้อมูลส่วนตัว</a></li>
                 <li><a href="#">กรอกค่าใช้จ่ายรายเดือน</a></li>
-                <li><a href="CusList.jsp">ประวิติลูกค้า</a></li>
+                <li class="active"><a href="CusList.jsp">ประวิติลูกค้า</a></li>
                 <li><a href="#">...</a></li>
                 <li><a href="FirstViewAnnounceServlet">จัดการเงื่อนไขของสัญญา</a></li>  
             </ul>
