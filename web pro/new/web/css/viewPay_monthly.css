@@ -6,6 +6,7 @@ body, html {
     background-color: white;
     font-family: 'Prompt', sans-serif;
     margin-bottom: 300px;
+    padding-bottom: 60%;
 }
 .side-menu {
     width:16em;
@@ -163,13 +164,13 @@ td {
 }
 table.cusinfo{
     position: absolute;
-    top: 345px;
-    left: 300px;
+    top: 55%;
+    left: 24%;
 }
 table.paytable{
     position: absolute;
-    top: 500px;
-    left: 300px;
+    top: 100%;
+    left: 24%;
 }
 
 
