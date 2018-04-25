@@ -27,7 +27,7 @@
                     <!-- Right-sided navbar links -->
                     <div class="w3-right w3-hide-small">
                         <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                        <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
+                        <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
                     </div>
                 </div>
             </div>
