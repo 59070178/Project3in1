@@ -27,7 +27,7 @@
                     <!-- Right-sided navbar links -->
                     <div class="w3-right w3-hide-small">
                         <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                        <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
+                        <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
                     </div>
                 </div>
             </div>
@@ -45,6 +45,7 @@
                 <form action="viewPay_rent.jsp" method="POST">
 =======
                 <form action="viewPay_rent.html" method="POST">
+<<<<<<< HEAD:web pro/new/web/viewPay_rent.jsp
 <<<<<<< HEAD
                     <button class="select_bn bn2">Prepaid Rent</button>
                 </form>
@@ -52,8 +53,9 @@
                     <button class="select_bn bn3">Monthly Expense</button>
 =======
 >>>>>>> master:web pro/new/build/web/viewPay_rent.html
+=======
+>>>>>>> master:web pro/new/build/web/viewPay_rent.html
                     <button class="select_bn bn3">Prepaid Rent</button>
->>>>>>> master
 
                 </form>
             </div>
@@ -91,8 +93,7 @@
                 </tr>
                 </c:forEach> 
             </table>
-
-
+        </div>
             <!--side menu -->
             <nav class="side-menu">
                 <ul>
@@ -107,7 +108,7 @@
 
 
             <!-- table of payment -->
-
+            <div>
             <table class="paytable">
                 <tr>
                     <th> EXPENSES </th>
