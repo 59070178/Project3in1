@@ -23,13 +23,13 @@
                 <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                 <!-- Right-sided navbar links -->
                 <div class="w3-right w3-hide-small">
-                    <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
-                    <a href="home.html" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  Logout</a>
+                    <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
+                    <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  Logout</a>
 
                     <!--side menu -->
                     <nav class="side-menu">
                         <ul>
-                            <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="profile_cus.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
                             <li><a href="">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
