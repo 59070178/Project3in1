@@ -1,3 +1,13 @@
+<%-- 
+    Document   : viewPay_book
+    Created on : Apr 27, 2018, 1:01:08 AM
+    Author     : Suttida Sat
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,10 +24,10 @@
             <!-- Navbar (sit on top) -->
             <div class="w3-top">
                 <div class="w3-bar w3-white w3-card" id="myNavbar">
-                    <a href="home2.html" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
+                    <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                     <!-- Right-sided navbar links -->
                     <div class="w3-right w3-hide-small">
-                        <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
+                        <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
                         <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
                     </div>
                 </div>
@@ -29,10 +39,10 @@
                 <form action="select.jsp" method="POST">
                     <button class="select_bn bn1">Monthly Expense</button>
                 </form>
-                <form action="viewPay_reservation.html" method="POST">
+                <form action="viewBookCost" method="POST">
                     <button class="select_bn bn2">Reservation Fee</button>
                 </form>
-                <form action="viewPay_rent.html" method="POST">
+                <form action="viewRentCost" method="POST">
                     <button class="select_bn bn3">Prepaid Rent</button>
 
                 </form>
@@ -40,6 +50,29 @@
         </div>
 
         <!-- table of customer info. -->
+        <sql:query var="myMonth" dataSource="test" >
+            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"
+        </sql:query> 
+            
+            
+            <!-- Select month for view -->
+        <form action="viewMonth" method="POST">
+            
+            Select Month : <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
+                    <option value="${month.month}" >  ${month.month}   </option>
+                </c:forEach> </select> <input type="submit" value="Select" />
+         </form>
+                
+            
+         <sql:query var="myPlace" dataSource="test" >
+            select area_id ,area_type 
+            from area
+            join inden_area
+            using (area_id)
+            join indenture
+            using (i_id)
+            where i_id = "<%= session.getAttribute("i_id") %>"
+        </sql:query> 
         <div class="content1 w3-container">
             <table class="cusinfo">
                 <tr>
@@ -49,18 +82,23 @@
                     <th> ZONE </th>
 
                 </tr>
+                <c:forEach var="place" items="${myPlace.rows}">
                 <tr height="60px">
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
+                   
+                    
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
-                    <td></td>
-                    <td></td>
+                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_id}</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_type }</td>
                 </tr>
+                </c:forEach> 
             </table>
         </div>
+
             <!--side menu -->
             <nav class="side-menu">
                 <ul>
-                    <li><a href="profile_cus.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                    <li><a href="profile_cus">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
                     <li><a href="#">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
@@ -68,7 +106,25 @@
                 </ul>
             </nav>
 
+<!-- เช็คก่อนว่ามีสัญญาเช่าไหม-->
 
+
+ <sql:query var="myRent" dataSource="test" >
+     select price_rent  
+from payment
+join indenture
+using(payment_id)
+where i_id = <%= session.getAttribute("i_id") %> and slip is null
+and type_contract_id = 1
+           
+        </sql:query> 
+            
+            <c:choose>
+        <c:when test="${myRent.rowCount == 0}">
+           <!--/  /* No results */ -->
+           <jsp:forward page="donthave.jsp"></jsp:forward>
+        </c:when>
+        <c:otherwise>
 
             <!-- table of payment -->
             <div>
@@ -79,12 +135,12 @@
 
                 </tr>
                 <tr>
-                    <td>Prepaid Rent</td>
+                    <td>Reservation Fee</td>
                     <td></td>
 
                 </tr>
             </table>
-        </div>
+        </div></c:otherwise></c:choose>
 
 
     </body>

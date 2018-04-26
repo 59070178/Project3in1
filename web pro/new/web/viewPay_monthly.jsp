@@ -41,10 +41,10 @@
                     <button class="select_bn bn1">Monthly Expense</button>
                     
                 </form>
-                <form action="viewPay_reservation.html" method="POST">
+                <form action="viewBookCost" method="POST">
                     <button class="select_bn bn2">Reservation Fee</button>
                 </form>
-                <form action="viewPay_rent.html" method="POST">
+                <form action="viewRentCost" method="POST">
                     <button class="select_bn bn3">Prepaid Rent</button>
                 </form>
                
@@ -66,23 +66,7 @@
                 </c:forEach> </select> <input type="submit" value="Select" />
          </form>
                 
-            <!--<form action="viewMonth" method="POST">
-                    <select name="month">
-                    <option value="JAN">January</option>
-                    <option value="FEB">February </option>
-                    <option value="MAR">March</option>
-                    <option value="APR">April</option>
-                    <option value="MAY">May</option>
-                    <option value="JUN">June </option>
-                    <option value="JUL">July </option>
-                    <option value="AUG">August </option>
-                    <option value="SEP">September </option>
-                    <option value="OCT">October </option>
-                    <option value="NOV">November </option>
-                    <option value="DEC">December </option>
-                </select>
-                    <input type="submit" value="OK" />
-                </form> -->
+            
          <sql:query var="myPlace" dataSource="test" >
             select area_id ,area_type 
             from area

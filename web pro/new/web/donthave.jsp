@@ -22,10 +22,10 @@
             <!-- Navbar (sit on top) -->
             <div class="w3-top">
                 <div class="w3-bar w3-white w3-card" id="myNavbar">
-                    <a href="home2.html" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
+                    <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                     <!-- Right-sided navbar links -->
                     <div class="w3-right w3-hide-small">
-                        <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
+                        <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
                         <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
                     </div>
                 </div>
@@ -37,10 +37,10 @@
                 <form action="select.jsp" method="POST">
                     <button class="select_bn bn1">Monthly Expense</button>
                 </form>
-                <form action="viewPay_reservation.html" method="POST">
+                <form action="viewBookCost" method="POST">
                     <button class="select_bn bn2">Reservation Fee</button>
                 </form>
-                <form action="viewPay_rent.html" method="POST">
+                <form action="viewRentCost" method="POST">
                     <button class="select_bn bn3">Prepaid Rent</button>
 
                 </form>
