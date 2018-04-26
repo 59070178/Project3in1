@@ -12,9 +12,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>CusList</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <title>view Announce</title>
+        <title>view CusList</title>
         <style>
 
             .flex-container {
@@ -91,7 +91,7 @@
 
                         </tr> 
                     </c:forEach> 
-                    <td></td>
+                    <td><input type="submit" value="Payment history" name="view_details"/></td>
                         <td><input type="submit" value="view_details" name="view_details"/></td>
                     </tbody>
                 </table>
