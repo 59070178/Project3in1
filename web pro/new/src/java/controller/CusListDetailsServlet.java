@@ -54,8 +54,17 @@ public class CusListDetailsServlet extends HttpServlet {
             String cus_account_id = request.getParameter("account_id");
             int view_account_id = Integer.parseInt(cus_account_id);
 
+            String btn = request.getParameter("view_details");
+            // check user click
+            if (btn.equals("Payment history")) {
+                 
+                request.setAttribute("view_account_id", view_account_id);
+               
+                RequestDispatcher dp = request.getRequestDispatcher("paymentHistory.jsp");
+                dp.forward(request, response);
+            }
+
 //            out.print(view_account_id);
-            
             Statement stmt = conn.createStatement();
 
             // start sql1 account & address
@@ -79,44 +88,53 @@ public class CusListDetailsServlet extends HttpServlet {
             address.setCode(rs1.getString("code"));
             request.setAttribute("cus_address_info", address);
             //end sql 1
-            
+
             //stat sql2 find indenture
             String sql2 = "SELECT * From customer join indenture using (account_id)  where account_id =" + view_account_id;
             ResultSet rs2 = stmt.executeQuery(sql2);
             rs2.next();
 
             int i_id = rs2.getInt("i_id");
-            
+
             Contract contract = new Contract();
             contract.setContractID(rs2.getInt("i_id"));
             contract.setStartDate(rs2.getDate("start_date"));
             contract.setEndDate(rs2.getDate("end_date"));
             // end sql2 
-            
+
             //start sql3 find place at this indenture
             String sql3 = "SELECT * From indenture join inden_area using (i_id)"
                     + "join area using (area_id) where i_id = " + i_id;
             ResultSet rs3 = stmt.executeQuery(sql3);
             rs3.next();
 
+            String all_area_id = "";
+            String all_area_type = "";
+            all_area_id += rs3.getString("area_id");
+            all_area_type += rs3.getString("area_type");
+
+            while (rs3.next()) {
+                all_area_id += ", "+rs3.getString("area_id");
+                all_area_type += ", " + rs3.getString("area_type");
+            }
+
             Place place = new Place();
-            place.setPlaceID(rs3.getString("area_id"));
-            place.setType(rs3.getString("area_type"));
+            place.setPlaceID(all_area_id);
+            place.setType(all_area_type);
             request.setAttribute("cus_place_info", place);
             // end sql3
-            
+
             // start sql4 find type of contract at current time
             String sql4 = "SELECT * From indenture join payment using (payment_id) "
                     + "join payment_detail using (type_contract_id) where i_id = "
-                    + "(select max(i_id) from indenture where account_id = " + view_account_id +")"; 
+                    + "(select max(i_id) from indenture where account_id = " + view_account_id + ")";
             ResultSet rs4 = stmt.executeQuery(sql4);
             rs4.next();
-            
+
             contract.setType(rs4.getString("name_type"));
             request.setAttribute("cus_contract_info", contract);
             // end sql4
-            
-           
+
             RequestDispatcher dp = request.getRequestDispatcher("cusListDetails.jsp");
             dp.forward(request, response);
 
