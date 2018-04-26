@@ -29,10 +29,10 @@
                     <!--side menu -->
                     <nav class="side-menu">
                         <ul>
-                            <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="profile_cus.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
-                            <li><a href="">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
+                            <li><a href="confirmPayment.html">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
                             <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
                         </ul>
                     </nav>
