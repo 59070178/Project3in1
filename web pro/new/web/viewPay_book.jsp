@@ -1,10 +1,12 @@
 <%-- 
-    Document   : donthave
-    Created on : Apr 24, 2018, 11:46:48 PM
+    Document   : viewPay_book
+    Created on : Apr 27, 2018, 1:01:08 AM
     Author     : Suttida Sat
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
@@ -45,9 +47,46 @@
 
                 </form>
             </div>
-        </div><br><br><br><br><br><br><br>
+        </div>
 
-        <h1>           <center> Don't  Have</center></h1>
+        <!-- table of customer info. -->
+        <sql:query var="myMonth" dataSource="test" >
+            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"
+        </sql:query> 
+            
+      
+                
+            
+         <sql:query var="myPlace" dataSource="test" >
+            select area_id ,area_type 
+            from area
+            join inden_area
+            using (area_id)
+            join indenture
+            using (i_id)
+            where i_id = "<%= session.getAttribute("i_id") %>"
+        </sql:query> 
+        <div class="content1 w3-container">
+            <table class="cusinfo">
+                <tr>
+                    <th> ID </th>
+                    <th> USERNAME </th>
+                    <th> AREA NO. </th>
+                    <th> ZONE </th>
+
+                </tr>
+                <c:forEach var="place" items="${myPlace.rows}">
+                <tr height="60px">
+                   
+                    
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
+                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_id}</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_type }</td>
+                </tr>
+                </c:forEach> 
+            </table>
+        </div>
 
             <!--side menu -->
             <nav class="side-menu">
@@ -60,9 +99,42 @@
                         </ul>
             </nav>
 
+<!-- เช็คก่อนว่ามีสัญญาเช่าไหม-->
 
 
-         
+ <sql:query var="myRent" dataSource="test" >
+     select price_rent  
+from payment
+join indenture
+using(payment_id)
+where i_id = <%= session.getAttribute("i_id") %> and slip is null
+and type_contract_id = 1
+           
+        </sql:query> 
+            
+            <c:choose>
+        <c:when test="${myRent.rowCount == 0}">
+           <!--/  /* No results */ -->
+           <jsp:forward page="donthave.jsp"></jsp:forward>
+        </c:when>
+        <c:otherwise>
+
+            <!-- table of payment -->
+            <div>
+            <table class="paytable">
+                <tr>
+                    <th> EXPENSES </th>
+                    <th> AMOUNT </th>
+
+                </tr>
+                <tr>
+                    <td>Reservation Fee</td>
+                    <td><%out.println(session.getAttribute("price_book"));%> </td>
+
+                </tr>
+            </table>
+        </div></c:otherwise></c:choose>
+
 
     </body>
 </html>
