@@ -19,7 +19,7 @@
             <title><bean:message key="title.message"/> </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/regis.css">
+        <link rel="stylesheet" type="text/css" href="css/regis_1.css">
     </head>
 
     <body style="background-image: url(pic/mall2.jpg)">
