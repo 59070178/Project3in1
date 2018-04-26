@@ -8,6 +8,9 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +50,9 @@ public void init(){
               
                session.setAttribute("price_book", price_book);
                response.sendRedirect("viewPay_book.jsp");
-        }
+        } catch (SQLException ex) {
+        Logger.getLogger(viewBookCost.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -6,15 +6,19 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author Suttida Sat
  */
 public class Booking {
-     private Connection conn;
+    
+    private Connection conn;
     private float price;
-    private int contract_type = 1;
+    private int contract_type = 2;
     private int payment_id;
 
     public Booking() {
@@ -32,8 +36,14 @@ public class Booking {
         return price;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setPrice(int payment_id ) throws SQLException {
+        
+        Statement stmt = conn.createStatement();
+            String sql_price = "SELECT price_book   FROM payment WHERE payment_id  ='"+payment_id+"'" ;
+            ResultSet rs = stmt.executeQuery(sql_price);
+            while(rs.next()){
+                this.price =rs.getFloat("price_book");
+            }
     }
 
     public int getContract_type() {
@@ -48,9 +58,17 @@ public class Booking {
         return payment_id;
     }
 
-    public void setPayment_id(int payment_id) {
-        this.payment_id = payment_id;
+    public void setPayment_id(int i_id) throws SQLException {
+        
+        Statement stmt = conn.createStatement();
+            String sql_pID = "SELECT payment_id   FROM indenture WHERE i_id   ='"+i_id+"'";
+            ResultSet rs = stmt.executeQuery(sql_pID);
+            while(rs.next()){
+                this.payment_id =rs.getInt("payment_id");
+            }
     }
+    
+    
     
     
 }

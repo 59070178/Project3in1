@@ -54,14 +54,7 @@
             select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"
         </sql:query> 
             
-            
-            <!-- Select month for view -->
-        <form action="viewMonth" method="POST">
-            
-            Select Month : <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
-                    <option value="${month.month}" >  ${month.month}   </option>
-                </c:forEach> </select> <input type="submit" value="Select" />
-         </form>
+      
                 
             
          <sql:query var="myPlace" dataSource="test" >
@@ -98,12 +91,12 @@
             <!--side menu -->
             <nav class="side-menu">
                 <ul>
-                    <li><a href="profile_cus">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
-                    <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
-                    <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
-                    <li><a href="#">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                    <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
-                </ul>
+                            <li><a href="profile_cus.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
+                            <li><a href="confirmPayment.html">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
+                            <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
+                        </ul>
             </nav>
 
 <!-- เช็คก่อนว่ามีสัญญาเช่าไหม-->
@@ -136,7 +129,7 @@ and type_contract_id = 1
                 </tr>
                 <tr>
                     <td>Reservation Fee</td>
-                    <td></td>
+                    <td><%out.println(session.getAttribute("price_book"));%> </td>
 
                 </tr>
             </table>
