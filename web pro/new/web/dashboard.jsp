@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,9 +46,71 @@
     </div>
 </div>  
 
-<!-- Graph Pictures -->
-<img class="annual" src="pic/annual_rev.PNG"  width="500" height="300">
-<img class="zone" src="pic/zone.PNG"  width="500" height="300">
+<!-- Graph Pictures1 -->
+
+
+<br><br><br><br>
+<p class="topic">Summarize Shop Type</p> <br><br><br><br>
+<sql:query var="myArea" dataSource="test" >
+    select area_type , count(area_id) 'Number'
+    from area
+    join inden_area
+    using (area_id )
+    join indenture
+    using (i_id)
+    join payment
+    using (payment_id )
+    where type_contract_id = 2
+    group by area_type;
+
+</sql:query> 
+
+<table border="1" align="center"> 
+    <thead>
+        <tr>
+            <th>Area_type</th>
+            <th>Number</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <c:forEach var="each_area" items="${myArea.rows}">
+            <tr>
+
+                <td>${each_area.area_type}</td>
+
+                <td> 
+                    ${each_area.Number} 
+                </td>
+
+            </tr> 
+        </c:forEach> 
+
+        <sql:query var="myArea" dataSource="test" >
+            select count(area_id) 'Number'
+            from area
+            where status = 0;
+
+
+        </sql:query> 
+
+        <c:forEach var="each_area" items="${myArea.rows}">
+            <tr>
+
+                <td>Empty</td>
+
+                <td> 
+                    ${each_area.Number} 
+                </td>
+
+            </tr> 
+        </c:forEach> 
+
+    </tbody>
+</table>
+
+
+<!-- Graph Pictures2 -->
 
 </body>
 </html>
