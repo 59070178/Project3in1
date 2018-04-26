@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+           <form action="dashboard_annual.jsp">
+        <input type="submit" value="area" name="btn" /> <input type="submit" value="Annual Dashboard" name="btn"/><br>
+        <select id="year" name="year"></select>
+        <script>
+            var start = 2018;
+            var end = new Date().getFullYear();
+            var options = "";
+            for (var year = start; year <= end; year++) {
+                options += "<option>" + year + "</option>";
+            }
+            document.getElementById("year").innerHTML = options;
+        </script>
+        <input type="submit" value="select" />
+
+</form>
+    </body>
+</html>
