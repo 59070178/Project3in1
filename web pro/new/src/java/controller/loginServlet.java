@@ -83,8 +83,8 @@ public class loginServlet extends HttpServlet {
             response.sendRedirect("home2.jsp");
             
         }else{
-      
-           RequestDispatcher rs = request.getRequestDispatcher("loginFail.html");
+                out.println("<h1 align = 'center' color = 'red'>"+"*** Username or Password incorrect");
+           RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
            rs.include(request, response);
 
             }
