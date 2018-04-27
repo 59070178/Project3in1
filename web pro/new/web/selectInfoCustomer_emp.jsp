@@ -1,3 +1,12 @@
+<%-- 
+    Document   : selectInfoCustomer_emp
+    Created on : Apr 27, 2018, 7:00:45 PM
+    Author     : asus
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 <!DOCTYPE html>
 <html>
     <title> CUSTOMER INFORMATION PAGE </title>
@@ -20,9 +29,9 @@
                     <!--side menu -->
                     <nav class="side-menu">
                         <ul>
-                            <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">CUSTOMER INFO.<span><i class="fa fa-id-card-o" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">PAYMENT RECORD<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
+                            <li><a href="ViewInfoEmpAndBossServlet">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="selectInfoCustomer_emp.jsp">CUSTOMER INFO.<span><i class="fa fa-id-card-o" style="font-size:30px"></i></span></a></li>
+                            <li><a href="selectInfoCustomer_emp2.jsp">PAYMENT RECORD<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">FILL OUT THE COST<span><i class="fa fa-edit" style="font-size:30px"></i></span></a></li>
                         </ul></nav>
                 </div>

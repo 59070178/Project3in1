@@ -1,4 +1,17 @@
+<%-- 
+    Document   : viewPaymentRecord_boss
+    Created on : Apr 27, 2018, 6:38:11 PM
+    Author     : asus
+--%>
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!DOCTYPE html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <html>
     <title> PAYMENT RECORD PAGE </title>
     <meta charset="UTF-8">
@@ -20,7 +33,7 @@
                     <!--side menu -->
                     <nav class="side-menu">
                         <ul>
-                            <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px" ></i></span></a></li>
                             <li><a href="#">DASHBOARD<span><i class="fa fa-pie-chart" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">CUSTOMER INFO.<span><i class="fa fa-id-card-o" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">PAYMENT RECORD<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
@@ -32,8 +45,22 @@
 
         &nbsp;<br><br><br><h1><center>PAYMENT RECORD</center></h1><br> 
 
+
+        <%
+            int view_account_id = (Integer) request.getAttribute("view_account_id");
+
+            Connection conn;
+            conn = (Connection) getServletContext().getAttribute("connection");
+
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * From customer join indenture using (account_id) join monthly_expense using (i_id) where account_id =" + view_account_id;
+            ResultSet rs = stmt.executeQuery(sql);
+
+        %>
+
         <!-- table part -->
-        <br><center><table border="1">
+
+    <br><center><table border="1">
             <thead>
                 <tr>
                     <th>CUSTOMER ID.</th>
@@ -42,6 +69,7 @@
                 </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD:web pro/new/web/viewPaymentRecord_boss.html
                 <tr>
                     <td>4</td>
                     <td>3000</td>
@@ -52,4 +80,38 @@
 
         <!-- BUTTON PART -->
         <br>
+=======
+                <%                   while (rs.next()) {
+                        out.print("<tr>");
+                        out.print("<td>");
+                        out.print(rs.getString("month"));
+                        out.print("</td>");
+
+                        out.print("<td>");
+                        out.print(rs.getString("total"));
+                        out.print("</td>");
+
+                        out.print("<td>");
+
+                        String status = "";
+                        if (rs.getString("slip") != null) {
+                            status = "Complete";
+                        } else {
+                            status = "Incomplete";
+                        }
+
+                        out.print(status);
+                        out.print("</td>");
+                        out.print("</tr>");
+                    }
+                %>
+            </tbody>
+        </table></center>
+       
+      <!-- back button -->
+        <br><center>
+            
+            <a href="selectInfoCustomer_boss2.jsp"> <input type="submit" target="back" value="BACK"></a></center>
+</body>
+>>>>>>> master:web pro/new/web/viewPaymentRecord_boss.jsp
 </html>

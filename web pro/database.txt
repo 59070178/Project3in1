@@ -100,10 +100,11 @@ foreign key (type_contract_id) references payment_detail(type_contract_id)
 
 create table area
 (
-area_id int(10) ,
-area_type enum('clothes','food','appliance','it')  not null,
+area_id varchar(10) ,
+area_name varchar(50) not null,
+area_type enum('clothes','food','appliance','electronics')  not null,
 price float(8,2) not null,
-status boolean,
+status enum('disabled', 'enable');
 primary key (area_id)
 );
 
