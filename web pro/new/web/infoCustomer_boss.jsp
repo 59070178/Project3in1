@@ -101,7 +101,7 @@
         <!-- back button -->
         <br><center>
             
-            <a href="selectInfoCustomer_boss.jsp"><input type="submit" target="back" value="BACK"></center></a>
+            <a href="selectInfoCustomer_boss.jsp"><input type="submit" target="back" value="BACK"></a></center>
                 
     </body>
 </html>
