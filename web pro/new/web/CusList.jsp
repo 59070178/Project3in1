@@ -91,6 +91,7 @@
 
                         </tr> 
                     </c:forEach> 
+                        
                     <td><input type="submit" value="Payment history" name="view_details"/></td>
                         <td><input type="submit" value="view_details" name="view_details"/></td>
                     </tbody>

@@ -57,12 +57,12 @@
             select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"
         </sql:query> 
             
-            
+            <br><br><br><br><br> <br>
             <!-- Select month for view -->
         <form action="viewMonth" method="POST">
             
-            Select Month : <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
-                    <option value="${month.month}" >  ${month.month}   </option>
+           <center>  Select Month : <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
+                      <option value="${month.month}" >  ${month.month}   </option></center>
                 </c:forEach> </select> <input type="submit" value="Select" />
          </form>
                 
