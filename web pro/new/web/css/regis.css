@@ -22,7 +22,6 @@ option{
 }
 
 input[type=text],[type=password], select {
-    width: 30%;
     padding: 20px 30px;
     margin: 12px 0;
     display: inline-block;
@@ -37,7 +36,6 @@ input[type=text],[type=password], select {
 }
 
 input[type=submit] {
-    width: 10%;
     background-color: #e49d8f;
     color: white;
     padding: 20px 20px;
@@ -67,7 +65,7 @@ div {
     background-color: #f1f1f1;
     padding: 0px;
     margin: 12%;
-    width: 1000px;
+    width: 75%;
     height: 885px
 }
 input.fname{
