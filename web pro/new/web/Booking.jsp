@@ -17,6 +17,18 @@
         <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/booking.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function() {
+  var limit = 2;
+  
+  $('input.single-checkbox').on('change', function(evt) {
+    if ($(this).siblings(':checked').length >= limit) {
+      this.checked = false;
+    }
+  });
+});
+        </script>
     </head>
     <body>
         <!--         Navbar (sit on top) -->
@@ -39,7 +51,6 @@
                         </ul>
                     </nav>
 
-
                 </div>
             </div>
         </div>
@@ -61,7 +72,7 @@
                     <c:forEach var="each_area" items="${myArea.rows}">
 
 
-                        <input type="checkbox" name="${each_area.area_id}" ${each_area.status}/>${each_area.area_id}
+                        <input class="single-checkbox" type="checkbox" name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
 
@@ -76,7 +87,7 @@
                     <c:forEach var="each_area" items="${myArea.rows}">
                        
                                 
-                                <input  class="single-checkbox" type="checkbox" name="${each_area.area_id}" ${each_area.status}/>${each_area.area_id}
+                                <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
                     <br><br><br>
@@ -93,7 +104,7 @@
                     <c:forEach var="each_area" items="${myArea.rows}">
                        
                                 
-                                <input  class="single-checkbox" type="checkbox" name="${each_area.area_id}" ${each_area.status}/>${each_area.area_id}
+                                <input  class="single-checkbox" type="checkbox" name="area_id"  value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
 
@@ -106,7 +117,7 @@
                     <c:forEach var="each_area" items="${myArea.rows}">
                        
                                 
-                                <input  class="single-checkbox" type="checkbox" name="${each_area.area_id}" ${each_area.status}/>${each_area.area_id}
+                                <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
                     <br>
