@@ -50,7 +50,7 @@
         <br><center><table border="1">
             <thead>
                 <tr>
-                    <th target="cus_id">Select</th>
+                    <th>Select</th>
                     <th>NAME.</th>
                 </tr>
             </thead>
