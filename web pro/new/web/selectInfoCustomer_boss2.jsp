@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
-    <title> CUSTOMER INFORMATION PAGE </title>
+    <title> CUSTOMER Payment Record PAGE </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -40,13 +40,13 @@
             </div>
         </div>
 
-        &nbsp;<br><br><br><h1><center>CUSTOMER INFORMATION.</center></h1><br> 
+        &nbsp;<br><br><br><h1><center>CUSTOMER Payment Record</center></h1><br> 
 
         <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
                 select * from customer join account using(account_id) join indenture using (account_id);
             </sql:query> 
-             <form action="CusListDetailsServlet" method="POST">   
+             <form action="CusHistoryPaymentDetails" method="POST">   
         <br><center><table border="1">
             <thead>
                 <tr>
