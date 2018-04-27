@@ -54,17 +54,9 @@ public class CusListDetailsServlet extends HttpServlet {
             String cus_account_id = request.getParameter("account_id");
             int view_account_id = Integer.parseInt(cus_account_id);
 
-            String btn = request.getParameter("view_details");
-            // check user click
-            if (btn.equals("Payment history")) {
-                 
-                request.setAttribute("view_account_id", view_account_id);
-               
-                RequestDispatcher dp = request.getRequestDispatcher("paymentHistory.jsp");
-                dp.forward(request, response);
-            }
 
-//            out.print(view_account_id);
+            // check user click
+        
             Statement stmt = conn.createStatement();
 
             // start sql1 account & address
@@ -108,18 +100,18 @@ public class CusListDetailsServlet extends HttpServlet {
             ResultSet rs3 = stmt.executeQuery(sql3);
             rs3.next();
 
-            String all_area_id = "";
+            String all_area_name = "";
             String all_area_type = "";
-            all_area_id += rs3.getString("area_id");
+            all_area_name += rs3.getString("area_name");
             all_area_type += rs3.getString("area_type");
 
             while (rs3.next()) {
-                all_area_id += ", "+rs3.getString("area_id");
+                all_area_name += ", "+rs3.getString("area_name");
                 all_area_type += ", " + rs3.getString("area_type");
             }
 
             Place place = new Place();
-            place.setPlaceID(all_area_id);
+            place.setPlaceID(all_area_name);
             place.setType(all_area_type);
             request.setAttribute("cus_place_info", place);
             // end sql3
@@ -135,7 +127,9 @@ public class CusListDetailsServlet extends HttpServlet {
             request.setAttribute("cus_contract_info", contract);
             // end sql4
 
-            RequestDispatcher dp = request.getRequestDispatcher("cusListDetails.jsp");
+            //infoCustomer_boss.jsp
+//            response.sendRedirect("infoCustomer_boss.jsp");
+            RequestDispatcher dp = request.getRequestDispatcher("infoCustomer_boss.jsp");
             dp.forward(request, response);
 
         } catch (SQLException ex) {

@@ -21,15 +21,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "sentProfile", urlPatterns = {"/sentProfile"})
 public class sentProfile extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -39,11 +31,11 @@ public class sentProfile extends HttpServlet {
             String type = (String) session.getAttribute("account_type");
             
             if(type.equals("customer"))
-                response.sendRedirect("profile_cus.jsp");
+                response.sendRedirect("VeiwInfoCusServlet");
              if(type.equals("boss"))
-                response.sendRedirect("profile_boss.jsp");
+                response.sendRedirect("ViewInfoEmpAndBossServlet");
              if(type.equals("employee"))
-                 response.sendRedirect("profile_emp.jsp");
+                 response.sendRedirect("ViewInfoEmpAndBossServlet");
         }
         
         

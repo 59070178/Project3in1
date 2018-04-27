@@ -68,10 +68,10 @@ public class ViewInfoEmpAndBossServlet extends HttpServlet {
 
             //if account type is boss
             if (rs1.getString("account_type").equals("boss")) {
-                RequestDispatcher dp = request.getRequestDispatcher("viewInfoBoss.jsp");
+                RequestDispatcher dp = request.getRequestDispatcher("profile_boss.jsp");
                 dp.forward(request, response);
             } else {
-                RequestDispatcher dp = request.getRequestDispatcher("viewInfoEmp.jsp");
+                RequestDispatcher dp = request.getRequestDispatcher("profile_emp.jsp");
                 dp.forward(request, response);
             }
 

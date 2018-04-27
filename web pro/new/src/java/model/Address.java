@@ -48,7 +48,7 @@ public class Address {
     }
 
     public void setSoi(String soi) {
-        soi = checkNullValue(soi);
+        //soi = checkNullValue(soi);
         this.soi = soi;
     }
 

@@ -74,15 +74,22 @@ public class VeiwInfoCusServlet extends HttpServlet {
 
             Address address = new Address();
             address.setBan(rs2.getString("ban"));
-            address.setSoi(rs2.getString("soi"));
             address.setDistrict(rs2.getString("district"));
             address.setArea(rs2.getString("area"));
             address.setCounty(rs2.getString("county"));
             address.setCode(rs2.getString("code"));
+            
+            if(rs2.getString("soi") == null){
+                address.setSoi(" ");
+            }else
+                address.setSoi(rs2.getString("soi"));
+            
+            
 
             request.setAttribute("address_info", address);
 
-            RequestDispatcher dp = request.getRequestDispatcher("viewInfoCus.jsp");
+//            response.sendRedirect("profile_cus.jsp");
+            RequestDispatcher dp = request.getRequestDispatcher("profile_cus.jsp");
             dp.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(VeiwInfoCusServlet.class.getName()).log(Level.SEVERE, null, ex);

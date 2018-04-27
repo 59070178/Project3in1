@@ -35,7 +35,7 @@
                 <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                 <!-- Right-sided navbar links -->
                 <div class="w3-right w3-hide-small">
-                    <a href="home.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
+                    <a href="home.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
                     <a href="" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  BOOKING</a>
                     <a href="" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
                     <a href="sentProfile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> PROFILE</a>
