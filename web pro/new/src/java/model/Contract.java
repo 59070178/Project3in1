@@ -83,5 +83,6 @@ public class Contract {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
+   
 
 }

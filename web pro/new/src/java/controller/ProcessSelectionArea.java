@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.AreaCart;
+import model.DateExample;
 
 /**
  *
@@ -53,17 +54,22 @@ public class ProcessSelectionArea extends HttpServlet {
             String[] area_id = request.getParameterValues("area_id");
 
             HttpSession session = request.getSession();
-            AreaCart areaCart = (AreaCart) session.getAttribute("areaCart");
+            AreaCart areaCart = (AreaCart) request.getAttribute("areaCart");
                       
             if (areaCart == null) {
                 Connection conn = (Connection) getServletContext().getAttribute("connection");
                 areaCart = new AreaCart(conn);
-                session.setAttribute("areaCart", areaCart);
+                request.setAttribute("areaCart", areaCart);
             }
 
             for (int i = 0; i < area_id.length; i++) {
                 areaCart.addItem(area_id[i]);
             }
+            
+            DateExample dt = new DateExample();
+            request.setAttribute("dt", dt);
+            
+            
 
             RequestDispatcher pg = request.getRequestDispatcher("agreement_book.jsp");
             pg.forward(request, response);

@@ -28,7 +28,7 @@
 
             <%-- Using Scriptlet--%>
             <% model.Account account = (model.Account) session.getAttribute("account_info");%>
-
+            <% model.DateExample dt = (model.DateExample) request.getAttribute("dt");%>
             <%-- Using userBean--%>
             <jsp:useBean class="model.AreaCart" scope="session" id="areaCart" /> 
 
@@ -48,8 +48,8 @@
                         Cost <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<c:forEach var="place" items="${areaCart.places}">${place.price}     </c:forEach>"/>/><br>
 
 
-                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" /><br>
-                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" /></center>
+                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= dt.getDue_date()%>"/><br>
+                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= dt.getNext_date()%>"/></center>
                     <center><textarea name="announce" rows="5" cols="60" readonly="readonly">
                         </textarea></center>
 
