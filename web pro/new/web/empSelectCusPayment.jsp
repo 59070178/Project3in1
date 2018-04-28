@@ -1,12 +1,13 @@
 <%-- 
-    Document   : selectInfoCustomer_emp
-    Created on : Apr 27, 2018, 7:00:45 PM
+    Document   : empSelectCusPayment
+    Created on : Apr 27, 2018, 9:08:42 PM
     Author     : asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
 <%@include  file="emp_header.html" %>
 <!DOCTYPE html>
 <html>
@@ -20,29 +21,17 @@
 
     <body>
 
-        &nbsp;<br><br><br><h1><center>CUSTOMER INFORMATION.</center></h1><br> 
+        &nbsp;<br><br><br><h1><center>CUSTOMER Payment Record</center></h1><br> 
 
         <!-- table part -->
-        <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
-            select * from customer 
-            join account using(account_id) 
-            join indenture using (account_id) 
-            where payment_id in (
-            select max(payment_id)
-            from payment
-            join indenture
-            using (payment_id)
-            join customer
-            using (account_id)
-            group by (account_id)
-            );
+            select * from customer join account using(account_id) join indenture using (account_id);
         </sql:query> 
-        <form action="CusListDetailsServlet" method="POST">   
+        <form action="CusHistoryPaymentDetails" method="POST">   
             <br><center><table border="1">
                     <thead>
                         <tr>
-                            <th>Select</th>
+                            <th target="cus_id">Select</th>
                             <th>NAME.</th>
                         </tr>
                     </thead>
@@ -59,6 +48,6 @@
 
             <!-- BUTTON PART -->
             <br>
-            <center><input type="submit" value="VIEW INFO." /></center></form>
+            <center><input type="submit" value="VIEW RECORD" /></center></form>
     </body>
 </html>

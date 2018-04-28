@@ -1,11 +1,11 @@
 <%-- 
-    Document   : infoCustomer_boss
-    Created on : Apr 27, 2018, 3:13:10 PM
-    Author     : Suttida Sat
+    Document   : infoCustomer_emp
+    Created on : Apr 28, 2018, 7:27:39 AM
+    Author     : asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include  file="boss_header.html" %>
+<%@include  file="emp_header.html" %>
 <!DOCTYPE html>
 <html>
     <title> CUSTOMER INFORMATION PAGE </title>
@@ -78,10 +78,11 @@
 
     </center>
 
+
     <!-- back button -->
     <br><center>
 
-        <a href="selectInfoCustomer_boss.jsp"><input type="submit" target="back" value="BACK"></a></center>
+        <a href="selectInfoCustomer_emp.jsp"><input type="submit" target="back" value="BACK"></a></center>
 
 </body>
 </html>
