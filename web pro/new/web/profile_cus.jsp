@@ -24,8 +24,8 @@
             <center><h1> PROFILE</h1></center><br>
             
             <%-- Using Scriptlet--%>
-            <% model.Account account = (model.Account) request.getAttribute("account_info");%>
-            <% model.Address address = (model.Address) request.getAttribute("address_info");%>
+            <% model.Account account = (model.Account) session.getAttribute("account_info");%>
+            <% model.Address address = (model.Address) session.getAttribute("address_info");%>
             
                 <div class="sign">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" placeholder="<%= account.getFullname()%>" /><br>

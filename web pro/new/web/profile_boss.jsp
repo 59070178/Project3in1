@@ -28,7 +28,7 @@
 
 
             <%-- Using Scriptlet--%>
-            <% model.Account account = (model.Account) request.getAttribute("account_info");%>
+            <% model.Account account = (model.Account) session.getAttribute("account_info");%>
             <div class="sign">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" placeholder= "<%= account.getFullname()%>"/> <br>
 
