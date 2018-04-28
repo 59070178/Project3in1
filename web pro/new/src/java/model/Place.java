@@ -20,9 +20,10 @@ public class Place {
 
     private Connection conn;
     
-    private String placeID;
+    private int placeID;
+    private String place_name;
     private String type;
-    private Boolean status;
+    private String status;
     private float price;
     private HashMap<Integer,String> place;
     
@@ -37,23 +38,28 @@ public class Place {
         this.conn = conn;
     }
 
-    public String getPlaceID() {
+    public int getPlaceID() {
         return placeID;
     }
-    public String getPlaceID(int i_id) {
-       
-        return placeID;
-    }
+//    public int getPlaceID(int i_id) {
+//       
+//        return placeID;
+//    }
 
-    public void setPlaceID(int i_id) {
 
-            this.placeID = placeID;
-    }
     
     
     // add by jugjig check setPlaceID(int i_id)  
-     public void setPlaceID(String placeID) {
+     public void setPlaceID(int placeID) {
         this.placeID = placeID;
+    }
+
+    public String getPlace_name() {
+        return place_name;
+    }
+
+    public void setPlace_name(String place_name) {
+        this.place_name = place_name;
     }
      
     public String getType() {
@@ -64,11 +70,11 @@ public class Place {
         this.type = type;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

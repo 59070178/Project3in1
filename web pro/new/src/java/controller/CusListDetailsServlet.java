@@ -110,7 +110,7 @@ public class CusListDetailsServlet extends HttpServlet {
             }
 
             Place place = new Place();
-            place.setPlaceID(all_area_name);
+            place.setPlace_name(all_area_name);
             place.setType(all_area_type);
             request.setAttribute("cus_place_info", place);
             // end sql3

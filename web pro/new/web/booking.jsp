@@ -57,7 +57,7 @@
         <div>
             <br><br>
             <center><h1><b>BOOKING</b></h1></center><br>
-            <form action="registerServlet" method="POST">
+            <form action="ProcessSelectionArea" method="POST">
                 <div class="booking">
                     <center><h2><b>1st Floor</b></h2></center>
                     <img src="pic/floor1.jpg" alt="1f" height="800" width="600" class="center"><br>
