@@ -103,7 +103,9 @@ public class Account {
     public void setFullname(String f, String l) {
         this.fullname = f + "    " + l;
     }
-    
+    public void setFullname() {
+        this.fullname = firstname + "    " + lastname;
+    }
     public String getPhone() {
         return phone;
     }

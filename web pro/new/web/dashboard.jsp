@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
+<%@include  file="boss_header.html" %>
 <html>
     <head>
         <title>DASHBOARDS PAGE</title>
@@ -18,32 +19,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/dashboard.css">
     <body>
-        <!-- Navbar (sit on top) -->
-        <div class="header">
-            <!-- Navbar (sit on top) -->
-            <div class="w3-top">
-                <div class="w3-bar w3-white w3-card" id="myNavbar">
-                    <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
-                    <!-- Right-sided navbar links -->
-                    <div class="w3-right w3-hide-small">
-                        <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                        <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
-                    </div>
-                </div>
-            </div>
-            <h1 class="topic">DASHBOARD</h1>
 
-            <!--side menu -->
-            <nav class="side-menu">
-               <ul>
-                            <li><a href="profile_boss.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
-                            <li><a href="dashboard.jsp">DASHBOARD<span><i class="fa fa-pie-chart" style="font-size:30px"></i></span></a></li>
-                            <li><a href="selectInfoCustomer_boss.jsp">CUSTOMER INFO.<span><i class="fa fa-id-card-o" style="font-size:30px"></i></span></a></li>
-                            <li><a href="selectInfoCustomer_boss2.jsp">PAYMENT RECORD<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">EDIT TERM<span><i class="fa fa-edit" style="font-size:30px"></i></span></a></li>
-                        </ul>
-            </nav>
-        </div>
         
         
 <br><br><br>
