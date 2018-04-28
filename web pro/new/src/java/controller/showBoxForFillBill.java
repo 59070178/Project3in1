@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Contract;
 import model.MonthExpense;
+import model.forDate;
 
 /**
  *
@@ -39,17 +40,18 @@ public class showBoxForFillBill extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
-            
-           
+
             int account_id = Integer.parseInt(request.getParameter("account_id"));
             HttpSession session = request.getSession(true);
             session.setAttribute("select_cus_for_bill", account_id);
             
-            String month ="March";
+            forDate date = new forDate();
+            date.setMonth();
+            int int_m = date.getMonth();
+            date.setStr_monthForbill(int_m);
+            String month = date.getStr_monthForbill();
             
-            /// ชื่อ นามกุลลูกค้าไปแสดงหน้ากรอกรายเดือนด้วย
+            /// ชื่อ นามสกุลลูกค้าไปแสดงหน้ากรอกรายเดือนด้วย
             Account account = new Account();
             account.setConn(conn);
             account.setAccount_id(account_id);
@@ -74,6 +76,7 @@ public class showBoxForFillBill extends HttpServlet {
             chk.setWater(invoice_id);
             request.setAttribute("Bill", chk);
             
+//            out.print(month);
             RequestDispatcher dp = request.getRequestDispatcher("FilltheBill_emp.jsp");
                 dp.forward(request, response);
         } catch (SQLException ex) {

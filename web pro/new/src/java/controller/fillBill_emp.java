@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import model.AddBill;
 import model.Contract;
 import model.MonthExpense;
+import model.forDate;
 
 /**
  *
@@ -45,7 +46,12 @@ public class fillBill_emp extends HttpServlet {
             int account_id = (int) session.getAttribute("select_cus_for_bill");
             float water = Float.parseFloat(request.getParameter("w1"));
              float fire = Float.parseFloat(request.getParameter("e1"));
-             String month = "March";
+            
+              forDate date = new forDate();
+            date.setMonth();
+            int int_m = date.getMonth();
+            date.setStr_monthForbill(int_m);
+            String month = date.getStr_monthForbill();
              
              //เอาเลขสัญญาลูกค้ามาก่อน
             Contract cont = new Contract();

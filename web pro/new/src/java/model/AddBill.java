@@ -136,10 +136,10 @@ public class AddBill {
 }
     public void updateBillMonth() throws SQLException {
         Statement stmt = conn.createStatement();
-        String sql_water = "UPDATE detail SET price = '"+water+"' WHERE type_id = 1 AND invoice_id = '"+invoice_id+"'";
+        String sql_water = "UPDATE detail SET price = '"+water+"' WHERE type_id = 2 AND invoice_id = '"+invoice_id+"'";
         stmt.executeUpdate(sql_water);
         
-        String sql_fire = "UPDATE detail SET price = '"+fire+"' WHERE type_id = 2 AND invoice_id = '"+invoice_id+"'";
+        String sql_fire = "UPDATE detail SET price = '"+fire+"' WHERE type_id = 3 AND invoice_id = '"+invoice_id+"'";
         stmt.executeUpdate(sql_fire);
     }
 }
