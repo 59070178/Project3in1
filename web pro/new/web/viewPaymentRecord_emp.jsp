@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewPaymentRecord_boss
-    Created on : Apr 27, 2018, 6:38:11 PM
+    Document   : viewPaymentRecord_emp
+    Created on : Apr 27, 2018, 9:50:14 PM
     Author     : asus
 --%>
 
@@ -8,10 +8,10 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include  file="boss_header.html" %>
 <!DOCTYPE html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@include  file="emp_header.html" %>
 <html>
     <title> PAYMENT RECORD PAGE </title>
     <meta charset="UTF-8">
@@ -23,9 +23,7 @@
     <body>
 
         &nbsp;<br><br><br><h1><center>PAYMENT RECORD</center></h1><br> 
-
-
-        <%
+ <%
             int view_account_id = (Integer) request.getAttribute("view_account_id");
 
             Connection conn;
@@ -78,6 +76,6 @@
     <!-- back button -->
     <br><center>
 
-        <a href="bossSelectCusPayment.jsp"> <input type="submit" target="back" value="BACK"></a></center>
+        <a href="empSelectCusPayment.jsp"> <input type="submit" target="back" value="BACK"></a></center>
 </body>
 </html>

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include  file="cus_header.html" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,30 +18,7 @@
         <link rel="stylesheet" type="text/css" href="css/profile.css">
     </head>
     <body>
-        <!-- Navbar (sit on top) -->
-        <div class="w3-top">
-            <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
-                <!-- Right-sided navbar links -->
-                <div class="w3-right w3-hide-small">
-                    <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
-                    <a href="home.html" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  Logout</a>
 
-                    <!--side menu -->
-                    <nav class="side-menu">
-                        <ul>
-                            <li><a href="VeiwInfoCusServlet">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
-                            <li><a href="confirmPayment.html">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                            <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
-                        </ul>
-                    </nav>
-
-
-                </div>
-            </div>
-        </div>
         <div>
             <br><br>
             <center><h1> PROFILE</h1></center><br>
