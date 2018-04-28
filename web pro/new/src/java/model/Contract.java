@@ -29,7 +29,7 @@ public class Contract {
 
     public int getContractID(int id_user) throws SQLException {
         Statement stmt = conn.createStatement();
-        String sql = "SELECT i_id  FROM indenture WHERE account_id ='" + id_user + "'";
+        String sql = "SELECT max(m_i_id) 'i_id' FROM (select i_id 'm_i_id'   from indenture WHERE account_id ='" + id_user + "'" + ")m_i_id";
         ResultSet rs = stmt.executeQuery(sql);
 
         while (rs.next()) {
