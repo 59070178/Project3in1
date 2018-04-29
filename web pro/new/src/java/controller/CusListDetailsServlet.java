@@ -93,25 +93,17 @@ public class CusListDetailsServlet extends HttpServlet {
             contract.setEndDate(rs2.getDate("end_date"));
             // end sql2 
 
-            //start sql3 find place at this indenture
+          //start sql3 find place at this indenture
             String sql3 = "SELECT * From indenture join inden_area using (i_id)"
                     + "join area using (area_id) where i_id = " + i_id;
             ResultSet rs3 = stmt.executeQuery(sql3);
             rs3.next();
 
-            String all_area_name = "";
-            String all_area_type = "";
-            all_area_name += rs3.getString("area_name");
-            all_area_type += rs3.getString("area_type");
-
-            while (rs3.next()) {
-                all_area_name += ", " + rs3.getString("area_name");
-                all_area_type += ", " + rs3.getString("area_type");
-            }
 
             Place place = new Place();
-            place.setPlace_name(all_area_name);
-            place.setType(all_area_type);
+            place.setPlaceID(rs3.getInt("area_id"));
+            place.setPlace_name(rs3.getString("area_name"));
+            place.setType(rs3.getString("area_type"));
             request.setAttribute("cus_place_info", place);
             // end sql3
 
