@@ -56,24 +56,33 @@ public class chk_agm_rent extends HttpServlet {
              
             
             if(i_id == 0){
-                response.sendRedirect("booking.jsp");
-            }else{
+                response.sendRedirect("rent.jsp");
+            }
+            
+            
+            else{
                  Agreement agm = new Agreement();
-            agm.setConn(conn);
+                agm.setConn(conn);
             
-            agm.setPayment_id_Rent(i_id);
-             agm.setEnd_date(i_id);
-             agm.setStatus_payment_rent();
-             if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_Rent() == 0)  {
-                response.sendRedirect("booking.jsp");
+                agm.setPayment_id_Rent(i_id);
+                agm.setEnd_date(i_id);
+                agm.setStatus_payment_rent();
+                if (agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_Rent() == 0) {
+
+                    agm.setPayment_id_book(i_id);
+                    agm.setEnd_date(i_id);
+                    if (agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0) {
+                        response.sendRedirect("rent.jsp");
+                    } else
+
+                    response.sendRedirect("view_agm_book");
+                } else {
+                    RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent");
+                    dp.forward(request, response);
+                }
             }
-             else{
-                RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent");
-                dp.forward(request, response);
-            }
-            }
-            
-            
+
+
             
         } catch (SQLException ex) {
            Logger.getLogger(chk_agm_rent.class.getName()).log(Level.SEVERE, null, ex);
