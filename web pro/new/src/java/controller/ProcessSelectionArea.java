@@ -72,13 +72,12 @@ public class ProcessSelectionArea extends HttpServlet {
             Date start_date = Date.valueOf(dt.getDue_date());
             Date end_date = Date.valueOf(dt.getNext_date());
   
-            Account acc = new Account();
-            acc.setConn(conn);
+            Account account = (Account) session.getAttribute("account_info");
             
             Contract contract = new Contract();
             contract.setStartDate(start_date);
             contract.setEndDate(end_date);
-            contract.setAccount_id(acc.getAccount_id());
+            contract.setAccount_id(account.getAccount_id());
             session.setAttribute("contract", contract);
             
             Payment payment = new Payment();

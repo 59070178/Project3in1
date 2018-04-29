@@ -20,10 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-<<<<<<< HEAD
-import model.Account;
-=======
->>>>>>> master
 import model.Contract;
 import model.IndenArea;
 import model.Payment;
@@ -49,15 +45,15 @@ public class BookingConfirmServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            Payment payment =  (Payment) session.getAttribute("payment");
+            Payment payment = (Payment) session.getAttribute("payment");
             payment.setConn(conn);
-           payment.addPayment();
+            payment.addPayment();
 //        
-           Place place =  (Place) session.getAttribute("place");
-           place.setConn(conn);
+            Place place = (Place) session.getAttribute("place");
+            place.setConn(conn);
             place.updateStatusPlace();
-            
-            Contract contract =  (Contract) session.getAttribute("contract");
+
+            Contract contract = (Contract) session.getAttribute("contract");
             contract.setConn(conn);
             contract.setPayment_id(payment.getPaymentID());
             contract.addContract();
