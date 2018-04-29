@@ -57,7 +57,7 @@ public class ViewAnnounceServlet extends HttpServlet {
 
 
             
-            RequestDispatcher dp = request.getRequestDispatcher("viewTerm_book_rent.jsp");
+            RequestDispatcher dp = request.getRequestDispatcher("viewAnnounceDetails.jsp");
             dp.forward(request, response);
             
         }

@@ -44,7 +44,7 @@ public class view_agm_book extends HttpServlet {
             int id_user = (int) session.getAttribute("id_user");
             
             //chk date
-              forDate chk = new forDate();
+            forDate chk = new forDate();
             chk.setDay();
             chk.setMonth();
             chk.setStr_monthForComp();

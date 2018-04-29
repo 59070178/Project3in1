@@ -19,7 +19,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Address;
 import model.Contract;
@@ -55,7 +54,9 @@ public class CusListDetailsServlet extends HttpServlet {
             String cus_account_id = request.getParameter("account_id");
             int view_account_id = Integer.parseInt(cus_account_id);
 
+
             // check user click
+        
             Statement stmt = conn.createStatement();
 
             // start sql1 account & address
@@ -105,12 +106,12 @@ public class CusListDetailsServlet extends HttpServlet {
             all_area_type += rs3.getString("area_type");
 
             while (rs3.next()) {
-                all_area_name += ", " + rs3.getString("area_name");
+                all_area_name += ", "+rs3.getString("area_name");
                 all_area_type += ", " + rs3.getString("area_type");
             }
 
             Place place = new Place();
-            place.setPlace_name(all_area_name);
+            place.setPlaceID(all_area_name);
             place.setType(all_area_type);
             request.setAttribute("cus_place_info", place);
             // end sql3
@@ -126,18 +127,10 @@ public class CusListDetailsServlet extends HttpServlet {
             request.setAttribute("cus_contract_info", contract);
             // end sql4
 
-            HttpSession session = request.getSession();
-            String account_type = (String) session.getAttribute("account_type");
-            
-            if (account_type.equals("employee")) {
-//                        out.print(rs.getString("account_type"));
-
-                RequestDispatcher dp = request.getRequestDispatcher("infoCustomer_emp.jsp");
-                dp.forward(request, response);
-            } else { //else if account_type is boss
-                RequestDispatcher dp = request.getRequestDispatcher("infoCustomer_boss.jsp");
-                dp.forward(request, response);
-            }
+            //infoCustomer_boss.jsp
+//            response.sendRedirect("infoCustomer_boss.jsp");
+            RequestDispatcher dp = request.getRequestDispatcher("infoCustomer_boss.jsp");
+            dp.forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(CusListDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -41,7 +41,8 @@ public class getPlace extends HttpServlet {
              
              int i_id = (int) session.getAttribute("i_id");
              HashMap<Integer, String> map_place = new HashMap();
-             Place place = new Place(conn);
+             Place place = new Place();
+             place.setConn(conn);
              place.setPlace(i_id);
              map_place = place.getPlace();
              

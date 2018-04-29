@@ -37,7 +37,11 @@
                 <div class="w3-right w3-hide-small">
                     <a href="home.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+=======
+>>>>>>> master
                     <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
 =======
 >>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
@@ -45,6 +49,10 @@
 
                     <a href="chk_agm_rent" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
 
+=======
+                    <a href="" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  BOOKING</a>
+                    <a href="" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
+>>>>>>> parent of 6b1e5be... Merge branch 'master' of https://github.com/59070178/Project3in1
                     <a href="sentProfile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> PROFILE</a>
                 </div>
             </div>
