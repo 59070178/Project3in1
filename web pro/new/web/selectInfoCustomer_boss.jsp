@@ -1,12 +1,12 @@
 <%-- 
     Document   : selectInfoCustomer_boss
-    Created on : Apr 27, 2018, 2:36:32 PM
-    Author     : Suttida Sat
+    Created on : Apr 27, 2018, 7:00:45 PM
+    Author     : asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 <%@include  file="boss_header.html" %>
 <!DOCTYPE html>
 <html>
@@ -20,33 +20,11 @@
 
     <body>
 
-
         &nbsp;<br><br><br><h1><center>CUSTOMER INFORMATION.</center></h1><br> 
 
         <!-- table part -->
+        <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
-<<<<<<< HEAD
-                select * from customer join account using(account_id) join indenture using (account_id);
-            </sql:query> 
-             <form action="CusListDetailsServlet" method="POST">   
-        <br><center><table border="1">
-            <thead>
-                <tr>
-                    <th>Select</th>
-                    <th>NAME.</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <c:forEach var="each_customer" items="${myCustomer.rows}">
-                <tr>
-                    <td><input type="radio"  name="account_id" value="${each_customer.account_id}"/></td>
-                    <td> ${each_customer.firstname} ${each_customer.lastname} </td>
-                </tr>
-                </c:forEach>
-            </tbody>
-            </table></center>
-=======
             select * from customer 
             join account using(account_id) 
             join indenture using (account_id) 
@@ -78,7 +56,6 @@
                         </c:forEach>
                     </tbody>
                 </table></center>
->>>>>>> master
 
             <!-- BUTTON PART -->
             <br>
