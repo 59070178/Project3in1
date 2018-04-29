@@ -20,17 +20,17 @@
         <link rel="stylesheet" type="text/css" href="css/agree.css">
     </head>
     <body>
-        <div>
+  <div>
             <br>
             <center><h1> RENTAL AGREEMENT </h1></center><br>
 
             <%-- Using Scriptlet--%>
+
             <% model.Account account = (model.Account) session.getAttribute("account_info");%>
             <% model.Place place = (model.Place) session.getAttribute("rentPlace");%>
             <% model.Contract contract = (model.Contract) session.getAttribute("rentContract");%>
             <% model.Payment payment = (model.Payment) session.getAttribute("rentPayment");%>
             <% model.Announce announce = (model.Announce) session.getAttribute("rentAnnounce_details");%>
-
 
             <form action="BookingRentConfirmServlet" method="POST">
                 <div class="sign">
@@ -55,6 +55,7 @@
                     <br><center><input type="submit" value="Confirm" /></center>
                 </div>
             </form>
-        </div>
+        </div> 
+
     </body>
 </html>

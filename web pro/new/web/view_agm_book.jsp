@@ -57,8 +57,9 @@
                  out.print("Sorry, you haven't paid yet.");
                     
                 }else{
-                    RequestDispatcher dp = request.getRequestDispatcher("ProcessRentAfterBook");
-                    dp.forward(request, response);
+                    response.sendRedirect("ProcessRentAfterBook");
+//                    RequestDispatcher dp = request.getRequestDispatcher("ProcessRentAfterBook");
+//                    dp.forward(request, response);
                 }
  
             }

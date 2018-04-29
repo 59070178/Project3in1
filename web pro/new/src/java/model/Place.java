@@ -54,8 +54,6 @@ public class Place {
         this.conn = conn;
     }
 
-
-
     public int getPlaceID() {
         return placeID;
     }
@@ -138,13 +136,10 @@ public class Place {
 
         if (rs1.getString("status").equals("enable")) {
             cur_status = "disabled";
-        } else {
-            cur_status = "enable";
+            String sql_book_payment = "UPDATE area SET status= '" + cur_status + "' WHERE area_id = " + placeID;
+            stmt.executeUpdate(sql_book_payment);
         }
 
-
-        String sql_book_payment = "UPDATE area SET status= '" + cur_status + "' WHERE area_id = " + placeID;
-        stmt.executeUpdate(sql_book_payment);
     }
 
     public Connection getConn() {

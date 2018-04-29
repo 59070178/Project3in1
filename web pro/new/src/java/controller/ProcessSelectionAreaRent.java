@@ -100,6 +100,7 @@ public class ProcessSelectionAreaRent extends HttpServlet {
             announce.setInformation("Rent");
             session.setAttribute("rentAnnounce_details", announce);
 
+            session.setAttribute("type_contract_name", "Rent");
             RequestDispatcher pg = request.getRequestDispatcher("agreement_rent.jsp");
             pg.forward(request, response);
 
