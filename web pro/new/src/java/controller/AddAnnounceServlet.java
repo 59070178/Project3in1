@@ -21,8 +21,8 @@ import model.Announce;
  *
  * @author asus
  */
-@WebServlet(urlPatterns = {"/addAnnounceServlet"})
-public class addAnnounceServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AddAnnounceServlet"})
+public class AddAnnounceServlet extends HttpServlet {
 
     private Connection conn;
 
@@ -59,7 +59,7 @@ public class addAnnounceServlet extends HttpServlet {
             Announce announce = new Announce();
             announce.setConn(conn);
             announce.updateAnnounce(edit_con_type, txt);
-            out.print("sucess!");
+            response.sendRedirect("successEditAnnounce.html");
         }
     }
 
