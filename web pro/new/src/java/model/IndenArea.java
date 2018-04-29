@@ -18,11 +18,11 @@ public class IndenArea {
     private int area_id;
     private int contrct_id;
     private float price;
-    
+    private Connection conn;
     public IndenArea() {
     }
 
-    private Connection conn;
+    
 
     public void addIndenArea() throws SQLException {
 

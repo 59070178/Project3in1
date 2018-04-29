@@ -184,7 +184,7 @@ public class Payment {
     public void addPayment() throws SQLException {
        
         Statement stmt = conn.createStatement();
-        String sql_book_payment = "INSERT INTO payment (price_book, price_rent, type_contract_id) VALUES( " + priceBook + ", 0," +type_contract_id+")";
+        String sql_book_payment = "INSERT INTO payment (price_book, price_rent, type_contract_id) VALUES( '"+ priceBook +"', 0,1)";
         stmt.executeUpdate(sql_book_payment);
 
         String sql_find_payment_id = "SELECT  *  FROM payment WHERE payment_id  = (\n"
@@ -197,9 +197,15 @@ public class Payment {
 
     }
 
-    public Payment(Connection conn) {
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
         this.conn = conn;
     }
+
+
 
 
 

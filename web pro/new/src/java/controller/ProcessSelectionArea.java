@@ -41,15 +41,7 @@ public class ProcessSelectionArea extends HttpServlet {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -66,6 +58,7 @@ public class ProcessSelectionArea extends HttpServlet {
             rs.next();
 
             Place place = new Place();
+            place.setConn(conn);
             place.setPlaceID(area_id);
             place.setPlace_name(rs.getString("area_name"));
             place.setType(rs.getString("area_type"));
@@ -80,7 +73,7 @@ public class ProcessSelectionArea extends HttpServlet {
             Date end_date = Date.valueOf(dt.getNext_date());
   
             Account acc = new Account();
-            
+            acc.setConn(conn);
             
             Contract contract = new Contract();
             contract.setStartDate(start_date);
@@ -88,7 +81,8 @@ public class ProcessSelectionArea extends HttpServlet {
             contract.setAccount_id(acc.getAccount_id());
             session.setAttribute("contract", contract);
             
-            Payment payment = new Payment(conn);
+            Payment payment = new Payment();
+            payment.setConn(conn);
             payment.setPriceBook(rs.getFloat("price"));
             payment.setType_contract_id(1);
             session.setAttribute("payment", payment);

@@ -26,6 +26,7 @@ public class Agreement {
     private String status_payment_rent;
     private Connection conn;
     private String cost;
+    private float total;
     public Agreement() {
     }
 
@@ -169,6 +170,20 @@ public class Agreement {
             while(rs.next()){
                 type += rs.getString("area_type") + "  ";
                 this.place_type = type;
+            }
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(int i_id) throws SQLException {
+        Statement stmt = conn.createStatement();
+            String sql_p_type = "SELECT price  FROM inden_area WHERE i_id = '"+i_id+"'";
+            ResultSet rs = stmt.executeQuery(sql_p_type);
+
+            while(rs.next()){
+                this.total += rs.getFloat("price");
             }
     }
     
