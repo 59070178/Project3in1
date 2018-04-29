@@ -70,7 +70,7 @@ public class view_agm_book extends HttpServlet {
             int i_id = (int) session.getAttribute("i_id");
             
             if(i_id == 0){
-                response.sendRedirect("notHavePayment.jsp");
+                response.sendRedirect("donthave.jsp");
             }else{
             
             Agreement agm = new Agreement();
@@ -87,7 +87,7 @@ public class view_agm_book extends HttpServlet {
             session.setAttribute("Agreement", agm);
 
             if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
-                response.sendRedirect("notHavePayment.jsp");
+                response.sendRedirect("donthave.jsp");
             }
             else{
                 RequestDispatcher dp = request.getRequestDispatcher("view_agm_book.jsp");

@@ -27,7 +27,7 @@
 
         <!-- table of customer info. -->
          <sql:query var="myMonth" dataSource="test" >
-            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"
+            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>" 
         </sql:query> 
 
             <!-- Select month for view -->

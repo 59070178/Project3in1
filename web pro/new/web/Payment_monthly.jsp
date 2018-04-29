@@ -4,6 +4,10 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+<%@include  file="cus_header.html" %>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -24,29 +28,7 @@ and open the template in the editor.
 
     <!-- Here starts the navbar -->
     <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-        <div class="w3-bar w3-white w3-card" id="myNavbar">
-            <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
-            <!-- Right-sided navbar links -->
-            <div class="w3-right w3-hide-small">
-                <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
-                <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  Logout</a>
 
-                <!--side menu -->
-                <nav class="side-menu">
-                    <ul>
-                        <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
-                        <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
-                        <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
-                        <li><a href="#">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                        <li><a href="#">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
-                    </ul>
-                </nav>
-
-
-            </div>
-        </div>
-    </div>
     <center>
         <div class="page">
             <center>
@@ -61,31 +43,21 @@ and open the template in the editor.
                     <button class="select_bn" >Monthly Expense</button>
                 </form>
             </center>
-           <h2 style="float:left;">Select Month :</h2><select name="">
-                <option>January</option>
-                <option>February</option>
-                <option>March</option>
-                <option>April</option>
-                <option>May</option>
-                <option>June</option>
-                <option>July</option>
-                <option>August</option>
-                <option>September</option>
-                <option>October</option>
-                <option>November</option>
-                <option>December</option>
-            </select>
-            <input type="submit" value="select" />
+                   <sql:query var="myMonth" dataSource="test" >
+            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"  and slip is null
+        </sql:query> 
+
+            <!-- Select month for view -->
+
         </div>
     </center>
     <div class="row">
         <form action="PaymentServlet" method="POST">
-            <b>Category</b>
-            <select name="typePayment">
-                <option>Deposit</option>
-                <option>Prepay (Rent)</option>
-                <option>Monthly expense</option>
-            </select>
+            <b>Select Month</b>
+<select name="month"> <c:forEach var="month" items="${myMonth.rows}">
+                      <option value="${month.month}" >  ${month.month}   </option></center>
+                </c:forEach> </select>
+               <br> <input type="submit" value="Select" />
             <br><br>
 
             <b>Bank</b>

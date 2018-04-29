@@ -74,7 +74,7 @@ public class view_agm_rent extends HttpServlet {
             int i_id = (int) session.getAttribute("i_id");
             
             if(i_id == 0){
-                response.sendRedirect("notHavePayment.jsp");
+                response.sendRedirect("donthave.jsp");
             }else{
                 
                 Agreement agm = new Agreement();
@@ -91,7 +91,7 @@ public class view_agm_rent extends HttpServlet {
             agm.setTotal_rent(i_id);
             request.setAttribute("Agreement", agm);
             if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_Rent() == 0)  {
-                response.sendRedirect("notHavePayment.jsp");
+                response.sendRedirect("donthave.jsp");
             }
             else{
                 RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent.jsp");
