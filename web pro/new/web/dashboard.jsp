@@ -36,8 +36,6 @@
             from payment
             join indenture
             using (payment_id)
-            join monthly_expense
-            using (i_id )
             join inden_area
             using (i_id)
             where tranfer_date_time like '<% String year1 = request.getParameter("year");%>%'
