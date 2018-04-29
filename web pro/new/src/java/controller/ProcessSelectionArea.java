@@ -91,10 +91,12 @@ public class ProcessSelectionArea extends HttpServlet {
             announce.setConn(conn);
             announce.setInformation("Book");
             session.setAttribute("announce_details", announce);
-
+            
+            session.setAttribute("type_contract_name", "Book");
             RequestDispatcher pg = request.getRequestDispatcher("agreement_book.jsp");
             pg.forward(request, response);
-
+            
+  
         }catch (SQLException ex) {
             Logger.getLogger(ProcessSelectionArea.class.getName()).log(Level.SEVERE, null, ex);
         }

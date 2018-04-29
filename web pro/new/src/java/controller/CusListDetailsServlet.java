@@ -122,7 +122,6 @@ public class CusListDetailsServlet extends HttpServlet {
             String account_type = (String) session.getAttribute("account_type");
             
             if (account_type.equals("employee")) {
-//                        out.print(rs.getString("account_type"));
 
                 RequestDispatcher dp = request.getRequestDispatcher("infoCustomer_emp.jsp");
                 dp.forward(request, response);

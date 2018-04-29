@@ -39,7 +39,7 @@
         %>
 
         <!-- edit & back button -->
-        <br><form action="addAnnounceServlet" method="POST">
+        <br><form action="AddAnnounceServlet" method="POST">
 
 
             <br><br><br><center>
@@ -55,9 +55,7 @@
                 session.setAttribute("edit_con_type", edit_con_type);
             %>
 
-            <input name="btn" type="submit"  value="CANCEL" style="float:left;">
-
-            <input name="btn" type="submit" value="SAVE"/>
+            <input name="btn" type="submit"  value="CANCEL" style="float:left;"> <input name="btn" type="submit" value="SAVE"/>
         </form>
     </body>
 </html>

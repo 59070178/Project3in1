@@ -44,27 +44,52 @@ public class BookingRentConfirmServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
+            String type_contract_name = (String) session.getAttribute("type_contract_name");
+                
+            if (type_contract_name.equals("Rent")) {
 
-            Payment payment = (Payment) session.getAttribute("rentPayment");
-            payment.setConn(conn);
-            payment.addPayment();
+                Payment payment = (Payment) session.getAttribute("rentPayment");
+                payment.setConn(conn);
+                payment.addPayment();
 //        
-            Place place = (Place) session.getAttribute("rentPlace");
-            place.setConn(conn);
-            place.updateStatusPlace();
+                Place place = (Place) session.getAttribute("rentPlace");
+                place.setConn(conn);
+                place.updateStatusPlace();
 
-            Contract contract = (Contract) session.getAttribute("rentContract");
-            contract.setConn(conn);
-            contract.setPayment_id(payment.getPaymentID());
-            contract.addContract();
+                Contract contract = (Contract) session.getAttribute("rentContract");
+                contract.setConn(conn);
+                contract.setPayment_id(payment.getPaymentID());
+                contract.addContract();
 
-            IndenArea indenArea = new IndenArea(conn);
-            indenArea.setArea_id(place.getPlaceID());
-            indenArea.setPrice(place.getPrice());
-            indenArea.setContrct_id(contract.getContractID());
-            indenArea.addIndenArea();
+                IndenArea indenArea = new IndenArea(conn);
+                indenArea.setArea_id(place.getPlaceID());
+                indenArea.setPrice(place.getPrice());
+                indenArea.setContrct_id(contract.getContractID());
+                indenArea.addIndenArea();
+            } else if (type_contract_name.equals("Book")) {
+                
+                Payment payment = (Payment) session.getAttribute("payment");
+                payment.setConn(conn);
+                payment.addPayment();
+//        
+                Place place = (Place) session.getAttribute("place");
+                place.setConn(conn);
+                place.updateStatusPlace();
+
+                Contract contract = (Contract) session.getAttribute("contract");
+                contract.setConn(conn);
+                contract.setPayment_id(payment.getPaymentID());
+                contract.addContract();
+
+                IndenArea indenArea = new IndenArea(conn);
+                indenArea.setArea_id(place.getPlaceID());
+                indenArea.setPrice(place.getPrice());
+                indenArea.setContrct_id(contract.getContractID());
+                indenArea.addIndenArea();
+            }
+
 //            
-            out.print("success!!!! add database!");
+            response.sendRedirect("successRegister.html");
         } catch (SQLException ex) {
             Logger.getLogger(BookingRentConfirmServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
