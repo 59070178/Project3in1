@@ -33,7 +33,7 @@
                         Place number <input type="text" name="category" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getPlace_number()%>"/><br>
                         Category <input type="text" name="amount" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getPlace_type()%>"/><br>
                         Cost <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getCost()%>"/><br>
-                        Total <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getTotal()%>"/><br>
+                        Total of rent cost<input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getTotal_rent()%>"/><br>
                         Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getStart_date()%>"/><br>
                         Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getEnd_date()%>"/><br>
                         Status Payment <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getStatus_payment_rent()%>"/></center>
