@@ -35,11 +35,9 @@
                 <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                 <!-- Right-sided navbar links -->
                 <div class="w3-right w3-hide-small">
-<<<<<<< HEAD
-                    <a href="home.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-=======
+
                     <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
->>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
+
                     <a href="booking.jsp" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  BOOKING</a>
 
                     <a href="chk_agm_rent" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
