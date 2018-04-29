@@ -16,25 +16,15 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/viewPay.css">
+        <link rel="stylesheet" type="text/css" href="css/donthave.css">
     </head>
-    <body>
+    <body style="background-image: url(pic/background.jpg)">
        
             <!-- select type of payment -->
             <br><br><br><br>
-    <center><h1>PAYMENT</h1></center>
-           
-
- 
-        </div><br><br><br>
-
-        <h1>           <center>You Don't  Have About This information</center></h1>
-
-  
-
-
-
-         
-
+        <center>
+            <h1 style="color: darkred"><i class="fa fa-close" style="font-size:70px;color:crimson;"></i>  NOT FOUND !</h1>
+        <h2>You don't have any information about this agreement.</h2>
+        </center>
     </body>
 </html>
