@@ -1,16 +1,20 @@
 <%-- 
     Document   : selectInfoCustomer_boss
-    Created on : Apr 27, 2018, 7:00:45 PM
-    Author     : asus
+    Created on : Apr 27, 2018, 2:36:32 PM
+    Author     : Suttida Sat
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
 =======
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 >>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
+=======
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
+>>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
 <%@include  file="boss_header.html" %>
 <!DOCTYPE html>
 <html>
@@ -25,14 +29,16 @@
 
     <body>
 
+<<<<<<< HEAD
 =======
 
     <body>
 >>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
+=======
+>>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
 
         &nbsp;<br><br><br><h1><center>CUSTOMER INFORMATION.</center></h1><br> 
 
-        <!-- table part -->
         <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
 <<<<<<< HEAD

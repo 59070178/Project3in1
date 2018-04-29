@@ -66,6 +66,7 @@ public class Agreement {
          Statement stmt = conn.createStatement();
             String sql_slip = "SELECT slip  FROM payment WHERE payment_id = '"+payment_id_book+"'";
             ResultSet rs = stmt.executeQuery(sql_slip);
+<<<<<<< HEAD
 
             if(rs.next()){
                   this.status_payment = "Complete";
@@ -85,6 +86,14 @@ public class Agreement {
 //            }
             
 
+=======
+            if(rs.next()){
+                  this.status_payment = "Complete";
+            }
+            else{
+                this.status_payment = "Uncomplete";
+            }
+>>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
       
     }
 

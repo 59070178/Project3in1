@@ -79,8 +79,11 @@ public class loginServlet extends HttpServlet {
 //             session.setAttribute("lname", lname);
 
             if (chk) {
+<<<<<<< HEAD
                 
  
+=======
+>>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
 
                 if (account_type.equals("customer")) {
                     Statement stmt = conn.createStatement();
