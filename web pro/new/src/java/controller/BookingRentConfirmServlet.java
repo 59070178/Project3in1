@@ -29,8 +29,8 @@ import model.Place;
  *
  * @author asus
  */
-@WebServlet(name = "BookingConfirmServlet", urlPatterns = {"/BookingConfirmServlet"})
-public class BookingConfirmServlet extends HttpServlet {
+@WebServlet(name = "BookingRentConfirmServlet", urlPatterns = {"/BookingRentConfirmServlet"})
+public class BookingRentConfirmServlet extends HttpServlet {
 
     private Connection conn;
 
@@ -45,15 +45,15 @@ public class BookingConfirmServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            Payment payment = (Payment) session.getAttribute("payment");
+            Payment payment = (Payment) session.getAttribute("rentPayment");
             payment.setConn(conn);
             payment.addPayment();
 //        
-            Place place = (Place) session.getAttribute("place");
+            Place place = (Place) session.getAttribute("rentPlace");
             place.setConn(conn);
             place.updateStatusPlace();
 
-            Contract contract = (Contract) session.getAttribute("contract");
+            Contract contract = (Contract) session.getAttribute("rentContract");
             contract.setConn(conn);
             contract.setPayment_id(payment.getPaymentID());
             contract.addContract();
@@ -66,7 +66,7 @@ public class BookingConfirmServlet extends HttpServlet {
 //            
             out.print("success!!!! add database!");
         } catch (SQLException ex) {
-            Logger.getLogger(BookingConfirmServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BookingRentConfirmServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
