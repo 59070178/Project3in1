@@ -19,14 +19,34 @@ import java.util.List;
 public class Place {
 
     private Connection conn;
-    
+
     private int placeID;
     private String place_name;
     private String type;
     private String status;
     private float price;
-    private HashMap<Integer,String> place;
-    
+    private float priceBook = 0;
+    private float priceRent = 0;
+
+    public float getPriceBook() {
+        return priceBook;
+    }
+
+    public void setPriceBook(float priceBook) {
+        float priceBook2 = priceBook * (30 / 100);
+        this.priceBook = priceBook2;
+    }
+
+    public float getPriceRent() {
+        return priceRent;
+    }
+
+    public void setPriceRent(float priceRent) {
+        this.priceRent = priceRent;
+    }
+    private HashMap<Integer, String> place;
+    String cur_status = "";
+
     public Place() {
     }
 
@@ -46,11 +66,8 @@ public class Place {
 //        return placeID;
 //    }
 
-
-    
-    
     // add by jugjig check setPlaceID(int i_id)  
-     public void setPlaceID(int placeID) {
+    public void setPlaceID(int placeID) {
         this.placeID = placeID;
     }
 
@@ -61,7 +78,7 @@ public class Place {
     public void setPlace_name(String place_name) {
         this.place_name = place_name;
     }
-     
+
     public String getType() {
         return type;
     }
@@ -91,23 +108,48 @@ public class Place {
     }
 
     public void setPlace(int i_id) throws SQLException {
-         Statement stmt = conn.createStatement();
-            String sql_place = "SELECT area_id  FROM inden_area WHERE i_id   ='"+i_id+"'";
-            ResultSet rs = stmt.executeQuery(sql_place);
-            
-            List<Integer> place_id = null;
-            while(rs.next()){
-                place_id.add(rs.getInt("area_id "));
+        Statement stmt = conn.createStatement();
+        String sql_place = "SELECT area_id  FROM inden_area WHERE i_id   ='" + i_id + "'";
+        ResultSet rs = stmt.executeQuery(sql_place);
+
+        List<Integer> place_id = null;
+        while (rs.next()) {
+            place_id.add(rs.getInt("area_id "));
+        }
+
+        HashMap newmap = new HashMap();
+        for (int i = 0; i < place_id.size(); i++) {
+            String sql_type = "SELECT area_type FROM inden_area WHERE i_id   ='" + place_id.get(i) + "'";
+            ResultSet rs2 = stmt.executeQuery(sql_type);
+            while (rs2.next()) {
+                this.place = (HashMap<Integer, String>) newmap.put(place_id.get(i), rs2.getString("area_type"));
             }
-            
-            HashMap newmap = new HashMap();
-            for(int i=0 ; i<place_id.size() ; i++){
-                String sql_type = "SELECT area_type FROM inden_area WHERE i_id   ='"+place_id.get(i)+"'";
-                ResultSet rs2 = stmt.executeQuery(sql_type);
-                while(rs2.next())
-                    this.place = (HashMap<Integer, String>) newmap.put(place_id.get(i), rs2.getString("area_type"));
-            }
+        }
     }
-    
-    
+
+    public void addPlace() {
+
+    }
+
+    public void updateStatusPlace() throws SQLException {
+        Cart cart = new Cart();
+        setPlaceID(cart.getArea_id());
+        setStatus(cart.getStatus());
+        
+        Statement stmt = getConn().createStatement();
+        String sql = "SELECT * FROM area WHERE area_id = " + placeID;
+        ResultSet rs1 = stmt.executeQuery(sql);
+        rs1.next();
+
+        if (rs1.getString("status").equals("enable")) {
+            cur_status = "disabled";
+        } else {
+            cur_status = "enable";
+        }
+
+
+        String sql_book_payment = "UPDATE area SET status= " + cur_status + "WHERE area_id = " + placeID;
+        stmt.executeUpdate(sql_book_payment);
+    }
+
 }

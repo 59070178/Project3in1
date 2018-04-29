@@ -8,22 +8,16 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Account;
-import model.Announce;
-import model.Cart;
-import model.DateExample;
+import model.Contract;
+import model.IndenArea;
 import model.Payment;
 import model.Place;
 
@@ -31,15 +25,15 @@ import model.Place;
  *
  * @author asus
  */
-@WebServlet(name = "ProcessSelectionArea", urlPatterns = {"/ProcessSelectionArea"})
-public class ProcessSelectionArea extends HttpServlet {
+@WebServlet(name = "BookingConfirmServlet", urlPatterns = {"/BookingConfirmServlet"})
+public class BookingConfirmServlet extends HttpServlet {
 
-    Connection conn;
+    
+        private Connection conn;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,32 +47,28 @@ public class ProcessSelectionArea extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            HttpSession session = request.getSession();
-            String S_area_id = request.getParameter("area_id");
-            int area_id = Integer.parseInt(S_area_id);
             
-
-            Cart cart = new Cart();
-            cart.setConn(conn);
-            cart.addItem(area_id);
-            session.setAttribute("cartDetails", cart);
-
-            //find announce
-            Announce announce = new Announce();
-            announce.setConn(conn);
-            announce.setInformation("Book");
-            session.setAttribute("announce_details", announce);
-
-
-  
-            RequestDispatcher pg = request.getRequestDispatcher("agreement_book.jsp");
-            pg.forward(request, response);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ProcessSelectionArea.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+            Payment payment = new Payment();
+            payment.setConn(conn);
+            payment.addPayment();
+            
+            Place place = new Place();
+            place.setConn(conn);
+            place.updateStatusPlace();
+            
+            Contract contract = new Contract();
+            contract.setConn(conn);
+            contract.addContract();
+            
+            IndenArea indenArea = new IndenArea();
+            indenArea.setConn(conn);
+            indenArea.addIndenArea();
+            
+            out.print("success!!!! add database!");
+            
+        }   catch (SQLException ex) {
+                Logger.getLogger(BookingConfirmServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
