@@ -26,7 +26,8 @@ public class Agreement {
     private String status_payment_rent;
     private Connection conn;
     private String cost;
-    private float total;
+    private float total_book;
+    private float total_rent;
     public Agreement() {
     }
 
@@ -173,17 +174,33 @@ public class Agreement {
             }
     }
 
-    public float getTotal() {
-        return total;
+
+
+    public float getTotal_book() throws SQLException {
+         return total_book;
     }
 
-    public void setTotal(int i_id) throws SQLException {
+    public void setTotal_book(int i_id) throws SQLException {
+       Statement stmt = conn.createStatement();
+            String sql_p_type = "SELECT price  FROM inden_area WHERE i_id = '"+i_id+"'";
+            ResultSet rs = stmt.executeQuery(sql_p_type);
+
+            while(rs.next()){
+                this.total_book += rs.getFloat("price") * 30/100;
+            }
+    }
+
+    public float getTotal_rent() {
+        return total_rent;
+    }
+
+    public void setTotal_rent(int i_id) throws SQLException {
         Statement stmt = conn.createStatement();
             String sql_p_type = "SELECT price  FROM inden_area WHERE i_id = '"+i_id+"'";
             ResultSet rs = stmt.executeQuery(sql_p_type);
 
             while(rs.next()){
-                this.total += rs.getFloat("price");
+                this.total_rent += rs.getFloat("price")*3;
             }
     }
     

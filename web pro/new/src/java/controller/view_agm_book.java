@@ -83,7 +83,7 @@ public class view_agm_book extends HttpServlet {
              agm.setEnd_date(i_id);
              agm.setStatus_payment();
             agm.setCost(i_id);
-            agm.setTotal(i_id);
+            agm.setTotal_book(i_id);
             request.setAttribute("Agreement", agm);
 
             if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
