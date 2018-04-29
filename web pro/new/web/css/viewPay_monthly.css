@@ -117,7 +117,7 @@ body, html {
 
 .topic{
     position : relative;
-    top: 110px;
+    top: 10%;
     left : 545px;
     font-family: 'Prompt', sans-serif;
 
@@ -164,12 +164,12 @@ td {
 }
 table.cusinfo{
     position: absolute;
-    top: 55%;
+    top: 75%;
     left: 24%;
 }
 table.paytable{
     position: absolute;
-    top: 100%;
+    top: 115%;
     left: 24%;
 }
 

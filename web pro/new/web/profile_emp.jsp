@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include  file="emp_header.html" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,36 +19,14 @@
         <link rel="stylesheet" type="text/css" href="css/profile.css">
     </head>
     <body>
-        <!-- Navbar (sit on top) -->
-        <div class="w3-top">
-            <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
-                <!-- Right-sided navbar links -->
-                <div class="w3-right w3-hide-small">
-                    <a href="home2.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                    <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
-
-                    <!--side menu -->
-                    <nav class="side-menu">
-                        <ul>
-                            <li><a href="ViewInfoEmpAndBossServlet">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
-                            <li><a href="selectInfoCustomer_emp.jsp">CUSTOMER INFO.<span><i class="fa fa-id-card-o" style="font-size:30px"></i></span></a></li>
-                            <li><a href="selectInfoCustomer_emp2.jsp">PAYMENT RECORD<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">FILL OUT THE COST<span><i class="fa fa-edit" style="font-size:30px"></i></span></a></li>
-                        </ul>
-                    </nav>
-
-
-                </div>
-            </div>
-        </div>
+        
         <div>
             <br><br>
             <center>
                 <h1> PROFILE</h1>
             </center><br>
             <%-- Using Scriptlet--%>
-        <% model.Account account = (model.Account) request.getAttribute("account_info");%>
+        <% model.Account account = (model.Account) session.getAttribute("account_info");%>
                 <div class="sign">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" placeholder= "<%= account.getFullname()%>"/> <br>
                   

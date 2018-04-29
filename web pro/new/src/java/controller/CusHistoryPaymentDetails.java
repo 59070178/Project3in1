@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,8 +48,19 @@ public class CusHistoryPaymentDetails extends HttpServlet {
 
             request.setAttribute("view_account_id", view_account_id);
 
-            RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_boss.jsp");
-            dp.forward(request, response);
+            HttpSession session = request.getSession();
+            String account_type = (String) session.getAttribute("account_type");
+            
+            if (account_type.equals("employees")) {
+//                        out.print(rs.getString("account_type"));
+
+                RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_emp.jsp");
+                dp.forward(request, response);
+            } else { //else if account_type is boss
+                RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_emp.jsp");
+                dp.forward(request, response);
+            }
+
 
         }
     }

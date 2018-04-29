@@ -24,11 +24,11 @@
         <!-- Navbar (sit on top) -->
         <div class="w3-top">
             <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
+                <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                 <!-- Right-sided navbar links -->
                 <div class="w3-right w3-hide-small">
-                    <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                    <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
+                    <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
+                    <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
 
                     <!--side menu -->
                     <nav class="side-menu">
@@ -63,12 +63,24 @@
     <br><center><table border="1">
             <thead>
                 <tr>
-                    <th target="cus_id">CUSTOMER ID.</th>
+                    <th>CUSTOMER ID.</th>
                     <th>AMOUNT</th>
                     <th>STATUS</th>
                 </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD:web pro/new/web/viewPaymentRecord_boss.html
+                <tr>
+                    <td>4</td>
+                    <td>3000</td>
+                    <td>Complete</td>
+                </tr>
+            </tbody>
+            </table></center>
+
+        <!-- BUTTON PART -->
+        <br>
+=======
                 <%                   while (rs.next()) {
                         out.print("<tr>");
                         out.print("<td>");
@@ -101,4 +113,5 @@
             
             <a href="selectInfoCustomer_boss2.jsp"> <input type="submit" target="back" value="BACK"></a></center>
 </body>
+>>>>>>> master:web pro/new/web/viewPaymentRecord_boss.jsp
 </html>

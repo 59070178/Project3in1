@@ -36,8 +36,10 @@
                 <!-- Right-sided navbar links -->
                 <div class="w3-right w3-hide-small">
                     <a href="home.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                    <a href="" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  BOOKING</a>
-                    <a href="" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
+                    <a href="booking.jsp" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  BOOKING</a>
+
+                    <a href="chk_agm_rent" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
+
                     <a href="sentProfile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> PROFILE</a>
                 </div>
             </div>
