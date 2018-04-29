@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@include  file="cus_header.html" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 <html>
@@ -20,23 +19,45 @@
         <link rel="stylesheet" type="text/css" href="css/booking.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                var limit = 1;
-
-                $('input.single-checkbox').on('change', function (evt) {
-                    if ($(this).siblings(':checked').length >= limit) {
-                        this.checked = false;
-                    }
-                });
-            });
+          $(document).ready(function() {
+  var limit = 2;
+  
+  $('input.single-checkbox').on('change', function(evt) {
+    if ($(this).siblings(':checked').length >= limit) {
+      this.checked = false;
+    }
+  });
+});
         </script>
     </head>
     <body>
+        <!--         Navbar (sit on top) -->
+        <div class="w3-top">
+            <div class="w3-bar w3-white w3-card" id="myNavbar">
+                <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
+                <!--Right-sided navbar links--> 
+                <div class="w3-right w3-hide-small">
+                    <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
+                    <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  Logout</a>
 
+                    <!--side menu--> 
+                    <nav class="side-menu">
+                        <ul>
+                            <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
         <div>
             <br><br>
             <center><h1><b>BOOKING</b></h1></center><br>
-            <form action="ProcessSelectionArea" method="POST">
+            <form action="registerServlet" method="POST">
                 <div class="booking">
                     <center><h2><b>1st Floor</b></h2></center>
                     <img src="pic/floor1.jpg" alt="1f" height="800" width="600" class="center"><br>
@@ -58,15 +79,15 @@
 
 
                     <h3><b>Electronics Zone</b></h3>
-                    <sql:query var="myArea" dataSource="test" >
+                   <sql:query var="myArea" dataSource="test" >
                         SELECT * FROM area 
                         where area_type = 'electronics';
                     </sql:query> 
 
                     <c:forEach var="each_area" items="${myArea.rows}">
-
-
-                    <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
+                       
+                                
+                                <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
                     <br><br><br>
@@ -81,9 +102,9 @@
                     </sql:query> 
 
                     <c:forEach var="each_area" items="${myArea.rows}">
-
-
-                        <input  class="single-checkbox" type="checkbox" name="area_id"  value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
+                       
+                                
+                                <input  class="single-checkbox" type="checkbox" name="area_id"  value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
 
@@ -94,15 +115,14 @@
                     </sql:query> 
 
                     <c:forEach var="each_area" items="${myArea.rows}">
-
-
-                        <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
+                       
+                                
+                                <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
                     <br>
                     <br>
                     <center><input type="submit" value="SUBMIT" /></center>
-                    
                 </div>
             </form>
         </div>

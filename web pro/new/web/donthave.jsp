@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include  file="cus_header.html" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
@@ -19,18 +18,47 @@
         <link rel="stylesheet" type="text/css" href="css/viewPay.css">
     </head>
     <body>
-       
+        <div class="header">
+            <!-- Navbar (sit on top) -->
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-card" id="myNavbar">
+                    <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
+                    <!-- Right-sided navbar links -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
+                        <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
+                    </div>
+                </div>
+            </div>
             <!-- select type of payment -->
-            <br><br><br><br>
-    <center><h1>PAYMENT</h1></center>
-           
 
- 
-        </div><br><br><br>
+            <h1 class="topic">PAYMENT</h1>
+            <div class="btn-group">
+                <form action="select.jsp" method="POST">
+                    <button class="select_bn bn1">Monthly Expense</button>
+                </form>
+                <form action="viewBookCost" method="POST">
+                    <button class="select_bn bn2">Reservation Fee</button>
+                </form>
+                <form action="viewRentCost" method="POST">
+                    <button class="select_bn bn3">Prepaid Rent</button>
 
-        <h1>           <center>You Don't  Have About This information</center></h1>
+                </form>
+            </div>
+        </div><br><br><br><br><br><br><br>
 
-  
+        <h1>           <center> Don't  Have</center></h1>
+
+            <!--side menu -->
+            <nav class="side-menu">
+                <ul>
+                            <li><a href="profile_cus.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
+                            <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
+                            <li><a href="confirmPayment.html">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
+                            <li><a href="select.jsp">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
+                        </ul>
+            </nav>
 
 
 

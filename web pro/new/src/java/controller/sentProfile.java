@@ -16,11 +16,12 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author asus
+ * @author Suttida Sat
  */
 @WebServlet(name = "sentProfile", urlPatterns = {"/sentProfile"})
 public class sentProfile extends HttpServlet {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,25 +35,26 @@ public class sentProfile extends HttpServlet {
 =======
 
 >>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
+=======
+  
+>>>>>>> parent of 6b1e5be... Merge branch 'master' of https://github.com/59070178/Project3in1
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
             HttpSession session = request.getSession(true);
             String type = (String) session.getAttribute("account_type");
-
-            if (type.equals("customer")) {
-                response.sendRedirect("profile_cus.jsp");
-            }
-            if (type.equals("boss")) {
-                response.sendRedirect("profile_boss.jsp");
-            }
-            if (type.equals("employee")) {
-                response.sendRedirect("profile_emp.jsp");
-            }
+            
+            if(type.equals("customer"))
+                response.sendRedirect("VeiwInfoCusServlet");
+             if(type.equals("boss"))
+                response.sendRedirect("ViewInfoEmpAndBossServlet");
+             if(type.equals("employee"))
+                 response.sendRedirect("ViewInfoEmpAndBossServlet");
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
