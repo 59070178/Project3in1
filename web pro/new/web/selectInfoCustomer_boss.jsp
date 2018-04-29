@@ -6,11 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<<<<<<< HEAD
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
-=======
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
->>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
 <%@include  file="boss_header.html" %>
 <!DOCTYPE html>
 <html>
@@ -21,42 +17,15 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/profile.css">
-<<<<<<< HEAD
+
 
     <body>
-
-=======
-
-    <body>
->>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
 
         &nbsp;<br><br><br><h1><center>CUSTOMER INFORMATION.</center></h1><br> 
 
         <!-- table part -->
         <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
-<<<<<<< HEAD
-                select * from customer join account using(account_id) join indenture using (account_id);
-            </sql:query> 
-             <form action="CusListDetailsServlet" method="POST">   
-        <br><center><table border="1">
-            <thead>
-                <tr>
-                    <th>Select</th>
-                    <th>NAME.</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <c:forEach var="each_customer" items="${myCustomer.rows}">
-                <tr>
-                    <td><input type="radio"  name="account_id" value="${each_customer.account_id}"/></td>
-                    <td> ${each_customer.firstname} ${each_customer.lastname} </td>
-                </tr>
-                </c:forEach>
-            </tbody>
-            </table></center>
-=======
             select * from customer 
             join account using(account_id) 
             join indenture using (account_id) 
@@ -88,7 +57,6 @@
                         </c:forEach>
                     </tbody>
                 </table></center>
->>>>>>> master
 
             <!-- BUTTON PART -->
             <br>
