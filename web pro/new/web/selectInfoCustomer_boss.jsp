@@ -1,12 +1,16 @@
 <%-- 
     Document   : selectInfoCustomer_boss
-    Created on : Apr 27, 2018, 2:36:32 PM
-    Author     : Suttida Sat
+    Created on : Apr 27, 2018, 7:00:45 PM
+    Author     : asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<<<<<<< HEAD
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
+=======
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+>>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
 <%@include  file="boss_header.html" %>
 <!DOCTYPE html>
 <html>
@@ -17,12 +21,18 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/profile.css">
+<<<<<<< HEAD
 
     <body>
 
+=======
+
+    <body>
+>>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
 
         &nbsp;<br><br><br><h1><center>CUSTOMER INFORMATION.</center></h1><br> 
 
+        <!-- table part -->
         <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
 <<<<<<< HEAD
