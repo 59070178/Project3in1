@@ -25,8 +25,6 @@ import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Announce;
 import model.Contract;
-import model.DateExample;
-import model.Payment;
 import model.Place;
 
 /**
@@ -65,43 +63,43 @@ public class ProcessSelectionAreaRent extends HttpServlet {
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
 
-            Place place = new Place();
-            place.setConn(conn);
-            place.setPlaceID(area_id);
-            place.setPlace_name(rs.getString("area_name"));
-            place.setType(rs.getString("area_type"));
-            place.setPrice(rs.getFloat("price"));
-            place.setStatus(rs.getString("status"));
-            session.setAttribute("rentPlace", place);
+//            Place place = new Place();
+//            place.setConn(conn);
+//            place.setPlaceID(area_id);
+//            place.setPlace_name(rs.getString("area_name"));
+//            place.setType(rs.getString("area_type"));
+//            place.setPrice(rs.getFloat("price"));
+//            place.setStatus(rs.getString("status"));
+//            session.setAttribute("rentPlace", place);
 
-            DateExample dt = new DateExample();
-            dt.bookDate();
-
-            Date start_date = Date.valueOf(dt.getDue_date());
-            Date end_date = Date.valueOf(dt.getNext_date());
-
-            Account account = (Account) session.getAttribute("account_info");
-
-            Contract contract = new Contract();
-            contract.setStartDate(start_date);
-            contract.setEndDate(end_date);
-            contract.setAccount_id(account.getAccount_id());
-            session.setAttribute("rentContract", contract);
-
-            Payment payment = new Payment();
-            payment.setConn(conn);
-            payment.setPriceRent(rs.getFloat("price"));
-            payment.setType_contract_id(2);
-            session.setAttribute("rentPayment", payment);
-            
-             //find announce
-            Announce announce = new Announce();
-            announce.setConn(conn);
-            announce.setInformation("Rent");
-            session.setAttribute("rentAnnounce_details", announce);
-
-            RequestDispatcher pg = request.getRequestDispatcher("agreement_rent.jsp");
-            pg.forward(request, response);
+//            DateExample dt = new DateExample();
+//            dt.bookDate();
+//
+//            Date start_date = Date.valueOf(dt.getDue_date());
+//            Date end_date = Date.valueOf(dt.getNext_date());
+//
+//            Account account = (Account) session.getAttribute("account_info");
+//
+//            Contract contract = new Contract();
+//            contract.setStartDate(start_date);
+//            contract.setEndDate(end_date);
+//            contract.setAccount_id(account.getAccount_id());
+//            session.setAttribute("rentContract", contract);
+//
+//            Payment payment = new Payment();
+//            payment.setConn(conn);
+//            payment.setPriceRent(rs.getFloat("price"));
+//            payment.setType_contract_id(2);
+//            session.setAttribute("rentPayment", payment);
+//            
+//             //find announce
+//            Announce announce = new Announce();
+//            announce.setConn(conn);
+//            announce.setInformation("Rent");
+//            session.setAttribute("rentAnnounce_details", announce);
+//
+//            RequestDispatcher pg = request.getRequestDispatcher("agreement_rent.jsp");
+//            pg.forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(ProcessSelectionAreaRent.class.getName()).log(Level.SEVERE, null, ex);

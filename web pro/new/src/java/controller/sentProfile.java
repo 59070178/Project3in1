@@ -21,29 +21,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "sentProfile", urlPatterns = {"/sentProfile"})
 public class sentProfile extends HttpServlet {
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> master
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
-=======
-  
->>>>>>> parent of 6b1e5be... Merge branch 'master' of https://github.com/59070178/Project3in1
->>>>>>> master
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

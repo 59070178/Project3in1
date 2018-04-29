@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Agreement;
-import model.forDate;
+//import model.forDate;
 
 /**
  *
@@ -44,25 +44,25 @@ public class view_agm_book extends HttpServlet {
             int id_user = (int) session.getAttribute("id_user");
             
             //chk date
-            forDate chk = new forDate();
-            chk.setDay();
-            chk.setMonth();
-            chk.setStr_monthForComp();
-            chk.setYear();
-            chk.setStr_dayForComp();
-            chk.setStr_date();
-            
-            String now = chk.getStr_date();
+//            forDate chk = new forDate();
+//            chk.setDay();
+//            chk.setMonth();
+//            chk.setStr_monthForComp();
+//            chk.setYear();
+//            chk.setStr_dayForComp();
+//            chk.setStr_date();
+//            
+//            String now = chk.getStr_date();
             ////Account
             
-            Account acc = new Account();
-            acc.setConn(conn);
-            
-            acc.setFirstname(id_user);
-            acc.setLastname(id_user);
-            acc.setFullname();
+//            Account acc = new Account();
+//            acc.setConn(conn);
+//            
+//            acc.setFirstname(id_user);
+//            acc.setLastname(id_user);
+//            acc.setFullname();
 
-            session.setAttribute("fullname", acc.getFullname());
+//            session.setAttribute("fullname", acc.getFullname());
             
             
             ///indenture
@@ -86,13 +86,13 @@ public class view_agm_book extends HttpServlet {
             agm.setTotal_book(i_id);
             request.setAttribute("Agreement", agm);
 
-            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
-                response.sendRedirect("notHavePayment.jsp");
-            }
-            else{
-                RequestDispatcher dp = request.getRequestDispatcher("view_agm_book.jsp");
-                dp.forward(request, response);
-            }
+//            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
+//                response.sendRedirect("notHavePayment.jsp");
+//            }
+//            else{
+//                RequestDispatcher dp = request.getRequestDispatcher("view_agm_book.jsp");
+//                dp.forward(request, response);
+//            }
             
             
             }
