@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "sentProfile", urlPatterns = {"/sentProfile"})
 public class sentProfile extends HttpServlet {
 
+<<<<<<< HEAD
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,6 +31,9 @@ public class sentProfile extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+=======
+
+>>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
