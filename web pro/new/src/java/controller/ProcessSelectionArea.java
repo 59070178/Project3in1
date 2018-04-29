@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Announce;
 import model.Cart;
+import model.Contract;
 import model.DateExample;
 import model.Payment;
 import model.Place;
@@ -57,12 +59,40 @@ public class ProcessSelectionArea extends HttpServlet {
             HttpSession session = request.getSession();
             String S_area_id = request.getParameter("area_id");
             int area_id = Integer.parseInt(S_area_id);
-            
+         
 
-            Cart cart = new Cart();
-            cart.setConn(conn);
-            cart.addItem(area_id);
-            session.setAttribute("cartDetails", cart);
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM area where area_id = " + area_id;
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+
+            Place place = new Place();
+            place.setPlaceID(area_id);
+            place.setPlace_name(rs.getString("area_name"));
+            place.setType(rs.getString("area_type"));
+            place.setPrice(rs.getFloat("price"));
+            place.setStatus(rs.getString("status"));
+            session.setAttribute("place", place);
+            
+            DateExample dt = new DateExample();
+            dt.bookDate();
+
+            Date start_date = Date.valueOf(dt.getDue_date());
+            Date end_date = Date.valueOf(dt.getNext_date());
+  
+            Account acc = new Account();
+            
+            
+            Contract contract = new Contract();
+            contract.setStartDate(start_date);
+            contract.setEndDate(end_date);
+            contract.setAccount_id(acc.getAccount_id());
+            session.setAttribute("contract", contract);
+            
+            Payment payment = new Payment(conn);
+            payment.setPriceBook(rs.getFloat("price"));
+            payment.setType_contract_id(1);
+            session.setAttribute("payment", payment);
 
             //find announce
             Announce announce = new Announce();
@@ -70,12 +100,10 @@ public class ProcessSelectionArea extends HttpServlet {
             announce.setInformation("Book");
             session.setAttribute("announce_details", announce);
 
-
-  
             RequestDispatcher pg = request.getRequestDispatcher("agreement_book.jsp");
             pg.forward(request, response);
 
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             Logger.getLogger(ProcessSelectionArea.class.getName()).log(Level.SEVERE, null, ex);
         }
 

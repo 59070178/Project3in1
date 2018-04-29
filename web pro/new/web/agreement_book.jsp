@@ -29,9 +29,11 @@
 
             <%-- Using Scriptlet--%>
             <% model.Account account = (model.Account) session.getAttribute("account_info");%>
-            <% model.Cart cart = (model.Cart) session.getAttribute("cartDetails");%>
+            <% model.Place place = (model.Place) session.getAttribute("place");%>
+            <% model.Contract contract = (model.Contract) session.getAttribute("contract");%>
+            <% model.Payment payment = (model.Payment) session.getAttribute("payment");%>
             <% model.Announce announce = (model.Announce) session.getAttribute("announce_details");%>
-            
+
             <form action="BookingConfirmServlet" method="POST">
                 <div class="sign">
                     <br>
@@ -40,16 +42,16 @@
 
 
                         Category <input type="text" name="category" value="" readonly="readonly" disabled="disabled" 
-                                        placeholder="<%=cart.getArea_type()%>"/><br>
+                                        placeholder="<%=place.getType()%>"/><br>
 
-                                        Place number <input type="text" name="number" value="" readonly="readonly" disabled="disabled" 
-                                                            placeholder="<%=cart.getArea_name()%>"/><br>
+                        Place number <input type="text" name="number" value="" readonly="readonly" disabled="disabled" 
+                                            placeholder="<%=place.getPlace_name()%>"/><br>
 
-                                        Cost per Place <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=cart.getArea_book_price()%>"/>/><br>
-                        Total amount to pay 30% <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=cart.getTotal_book_amount()%>"/><br>
+                        Cost per Place <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=place.getPrice()%>"/>/><br>
+                        Total amount to pay 30% <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=payment.getPriceBook()%>"/><br>
 
-                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= cart.getBook_due_date()%>"/><br>
-                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= cart.getBook_end_date()%>"/></center>
+                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getStartDate()%>"/><br>
+                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getStartDate()%>"/></center>
 
 
                     <br><center><textarea rows="30" cols="100" type="text" target = "oldterm" name="oldterm" value="" readonly="readonly" /><%= announce.getInformation()%>

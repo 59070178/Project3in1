@@ -26,13 +26,7 @@ public class IndenArea {
 
     public void addIndenArea() throws SQLException {
 
-        Place plc = new Place();
-        Contract contract = new Contract();
-        
-        setArea_id(plc.getPlaceID());
-        setContrct_id(contract.getContractID());
-        setPrice(plc.getPrice());
-        Statement stmt = getConn().createStatement();
+        Statement stmt = conn.createStatement();
         String sql_inden_area = "INSERT INTO inden_area (area_id, i_id, price) VALUES( " + area_id + ", " + contrct_id + ","+price+ ")";
         stmt.executeUpdate(sql_inden_area);
 
@@ -62,13 +56,11 @@ public class IndenArea {
         this.price = price;
     }
 
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn) {
+    public IndenArea(Connection conn) {
         this.conn = conn;
     }
+
+
 
    
 

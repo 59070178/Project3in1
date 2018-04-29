@@ -15,7 +15,7 @@ import java.sql.Statement;
  *
  * @author asus
  */
-public class Payment extends Cart{
+public class Payment {
 
     public Payment() {
 
@@ -143,6 +143,7 @@ public class Payment extends Cart{
     }
 
     public void setPriceBook(float priceBook) {
+        priceBook = priceBook *30/100;
         this.priceBook = priceBook;
     }
 
@@ -181,12 +182,8 @@ public class Payment extends Cart{
     
 
     public void addPayment() throws SQLException {
-        
-        Cart cart = new Cart();
-        setPriceBook(cart.getTotal_book_amount());
-        setType_contract_id(cart.getType_contract_id());
-        
-        Statement stmt = getConn().createStatement();
+       
+        Statement stmt = conn.createStatement();
         String sql_book_payment = "INSERT INTO payment (price_book, price_rent, type_contract_id) VALUES( " + priceBook + ", 0," +type_contract_id+")";
         stmt.executeUpdate(sql_book_payment);
 
@@ -200,13 +197,12 @@ public class Payment extends Cart{
 
     }
 
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn) {
+    public Payment(Connection conn) {
         this.conn = conn;
     }
+
+
+
 
 
 

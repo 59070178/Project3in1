@@ -78,32 +78,19 @@ public class Contract {
     public Contract(Connection conn) {
         this.conn = conn;
     }
-
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
    
     
     public void addContract() throws SQLException{
-        Account acc = new Account();
-        setAccount_id(acc.getAccount_id());
-        Cart cart = new Cart();
-        Payment payment = new Payment();
-        setPayment_id(payment.getPaymentID());
-        setStartDate(Date.valueOf(cart.getBook_due_date()));
-        setEndDate(Date.valueOf(cart.getBook_end_date()));
-        
-        Statement stmt = getConn().createStatement();
+
+       
+        Statement stmt = conn.createStatement();
         String sql_book_contract = "INSERT INTO indenture (end_date, start_date, account_id, payment_id) "
                 + "VALUES( '" + endDate + "','" + startDate+"', " +account_id +","+ payment_id+ ")";
         stmt.executeUpdate(sql_book_contract);
         
          String sql_find_i_id = "SELECT  max(i_id) FROM indenture";
         ResultSet rs = stmt.executeQuery(sql_find_i_id);
+        rs.next();
         setContractID(rs.getInt("max(i_id)"));
         
         

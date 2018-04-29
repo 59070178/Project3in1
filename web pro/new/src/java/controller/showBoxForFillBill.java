@@ -63,8 +63,7 @@ public class showBoxForFillBill extends HttpServlet {
             ///เอาเงินที่กรอกแล้วไปแสดงด้วย ถ้ายังไม่มีก้อไม่ต้องแสดง
             
             //เอาเลขสัญญาลูกค้ามาก่อน
-            Contract cont = new Contract();
-            cont.setConn(conn);
+            Contract cont = new Contract(conn);
             int i_id = cont.getContractID(account_id);
             
             

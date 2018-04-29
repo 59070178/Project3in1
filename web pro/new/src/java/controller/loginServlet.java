@@ -61,8 +61,7 @@ public class loginServlet extends HttpServlet {
             account.setAccount_type(id_user);
             String account_type = account.getAccount_type();
 
-            Contract contract = new Contract();
-            contract.setConn(conn);
+            Contract contract = new Contract(conn);
 
             int i_id = contract.getContractID(id_user);
             session.setAttribute("i_id", i_id);

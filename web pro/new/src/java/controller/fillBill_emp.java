@@ -54,8 +54,7 @@ public class fillBill_emp extends HttpServlet {
             String month = date.getStr_monthForbill();
              
              //เอาเลขสัญญาลูกค้ามาก่อน
-            Contract cont = new Contract();
-            cont.setConn(conn);
+            Contract cont = new Contract(conn);
             int i_id = cont.getContractID(account_id);
             
             

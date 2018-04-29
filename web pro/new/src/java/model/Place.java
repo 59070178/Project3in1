@@ -50,13 +50,11 @@ public class Place {
     public Place() {
     }
 
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn) {
+    public Place(Connection conn) {
         this.conn = conn;
     }
+
+
 
     public int getPlaceID() {
         return placeID;
@@ -132,11 +130,8 @@ public class Place {
     }
 
     public void updateStatusPlace() throws SQLException {
-        Cart cart = new Cart();
-        setPlaceID(cart.getArea_id());
-        setStatus(cart.getStatus());
-        
-        Statement stmt = getConn().createStatement();
+
+        Statement stmt = conn.createStatement();
         String sql = "SELECT * FROM area WHERE area_id = " + placeID;
         ResultSet rs1 = stmt.executeQuery(sql);
         rs1.next();
@@ -148,7 +143,7 @@ public class Place {
         }
 
 
-        String sql_book_payment = "UPDATE area SET status= " + cur_status + "WHERE area_id = " + placeID;
+        String sql_book_payment = "UPDATE area SET status= '" + cur_status + "' WHERE area_id = " + placeID;
         stmt.executeUpdate(sql_book_payment);
     }
 
