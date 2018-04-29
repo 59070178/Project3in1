@@ -19,15 +19,15 @@
         <link rel="stylesheet" type="text/css" href="css/booking.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript">
-          $(document).ready(function() {
-  var limit = 2;
-  
-  $('input.single-checkbox').on('change', function(evt) {
-    if ($(this).siblings(':checked').length >= limit) {
-      this.checked = false;
-    }
-  });
-});
+            $(document).ready(function () {
+                var limit = 1;
+
+                $('input.single-checkbox').on('change', function (evt) {
+                    if ($(this).siblings(':checked').length >= limit) {
+                        this.checked = false;
+                    }
+                });
+            });
         </script>
     </head>
     <body>
@@ -79,15 +79,15 @@
 
 
                     <h3><b>Electronics Zone</b></h3>
-                   <sql:query var="myArea" dataSource="test" >
+                    <sql:query var="myArea" dataSource="test" >
                         SELECT * FROM area 
                         where area_type = 'electronics';
                     </sql:query> 
 
                     <c:forEach var="each_area" items="${myArea.rows}">
-                       
-                                
-                                <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
+
+
+                        <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
                     <br><br><br>
@@ -102,9 +102,9 @@
                     </sql:query> 
 
                     <c:forEach var="each_area" items="${myArea.rows}">
-                       
-                                
-                                <input  class="single-checkbox" type="checkbox" name="area_id"  value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
+
+
+                        <input  class="single-checkbox" type="checkbox" name="area_id"  value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
 
@@ -115,9 +115,9 @@
                     </sql:query> 
 
                     <c:forEach var="each_area" items="${myArea.rows}">
-                       
-                                
-                                <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
+
+
+                        <input  class="single-checkbox" type="checkbox"  name="area_id" value="${each_area.area_id}" ${each_area.status}/>${each_area.area_name}
                     </c:forEach> 
 
                     <br>

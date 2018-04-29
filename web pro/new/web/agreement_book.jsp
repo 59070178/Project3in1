@@ -17,22 +17,22 @@
         <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/agree.css">
+
     </head>
     <body>
 
         <div>
             <br>
             <center><h1> BOOKING AGREEMENT </h1></center><br>
-           
-            
+
+
 
             <%-- Using Scriptlet--%>
             <% model.Account account = (model.Account) session.getAttribute("account_info");%>
-            <% model.DateExample dt = (model.DateExample) request.getAttribute("dt");%>
-            <%-- Using userBean--%>
-            <jsp:useBean class="model.AreaCart" scope="session" id="areaCart" /> 
-
-            <form action="registerServlet" method="POST">
+            <% model.Cart cart = (model.Cart) session.getAttribute("cartDetails");%>
+            <% model.Announce announce = (model.Announce) session.getAttribute("announce_details");%>
+            
+            <form action="BookingConfirmServlet" method="POST">
                 <div class="sign">
                     <br>
 
@@ -40,21 +40,27 @@
 
 
                         Category <input type="text" name="category" value="" readonly="readonly" disabled="disabled" 
-                                        placeholder="<c:forEach var="place" items="${areaCart.places}">${place.type}     </c:forEach>"/><br>
+                                        placeholder="<%=cart.getArea_type()%>"/><br>
 
-                        Place number <input type="text" name="number" value="" readonly="readonly" disabled="disabled" 
-                                            placeholder="<c:forEach var="place" items="${areaCart.places}">${place.place_name}     </c:forEach>"/><br>
-                        
-                        Cost <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<c:forEach var="place" items="${areaCart.places}">${place.price}     </c:forEach>"/>/><br>
+                                        Place number <input type="text" name="number" value="" readonly="readonly" disabled="disabled" 
+                                                            placeholder="<%=cart.getArea_name()%>"/><br>
+
+                                        Cost per Place <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=cart.getArea_book_price()%>"/>/><br>
+                        Total amount to pay 30% <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=cart.getTotal_book_amount()%>"/><br>
+
+                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= cart.getBook_due_date()%>"/><br>
+                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= cart.getBook_end_date()%>"/></center>
 
 
-                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= dt.getDue_date()%>"/><br>
-                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= dt.getNext_date()%>"/></center>
-                    <center><textarea name="announce" rows="5" cols="60" readonly="readonly">
-                        </textarea></center>
+                    <br><center><textarea rows="30" cols="100" type="text" target = "oldterm" name="oldterm" value="" readonly="readonly" /><%= announce.getInformation()%>
+                        </textarea>
+                    </center>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Agree <input type="checkbox" name="agree" value="ON" />
+
+
+                    Agree <input type="checkbox" name="agree" required="required" />
+
                     <br><center><input type="submit" value="Confirm" /></center>
                 </div>
             </form>
