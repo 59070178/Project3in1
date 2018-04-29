@@ -171,7 +171,6 @@ public class Account {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
-    
+
     
 }

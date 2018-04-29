@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Agreement;
-import model.DateExample;
 import model.forDate;
 
 /**
@@ -82,9 +81,6 @@ public class view_agm_rent extends HttpServlet {
             agm.setConn(conn);
             agm.setPayment_id_Rent(i_id);
 
-                         ///get date now
- 
-            
             agm.setPayment_id_Rent(i_id);
             agm.setPlace_number(i_id);
             agm.setPlace_type(i_id);
