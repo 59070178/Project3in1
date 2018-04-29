@@ -84,7 +84,7 @@ public class view_agm_book extends HttpServlet {
              agm.setStatus_payment();
             agm.setCost(i_id);
             agm.setTotal_book(i_id);
-            request.setAttribute("Agreement", agm);
+            session.setAttribute("Agreement", agm);
 
             if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
                 response.sendRedirect("notHavePayment.jsp");

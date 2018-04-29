@@ -4,6 +4,7 @@
     Author     : Suttida Sat
 --%>
 
+<%@page import="model.Agreement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
@@ -22,10 +23,10 @@
     <body>
         <%-- Using Scriptlet--%>
 
-        <% model.Agreement agm = (model.Agreement) request.getAttribute("Agreement");%>
+        <% model.Agreement agm = (model.Agreement) session.getAttribute("Agreement");%>
         <br>
     <center><h1> BOOKING AGREEMENT </h1></center><br>
-    <form action="view_agm_book.jsp" method="POST">
+
         <div class="sign">
             <br>
             <center>
@@ -36,13 +37,13 @@
                 Total of book cost<input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getTotal_book()%>"/><br>
                 Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getStart_date()%>"/><br>
                 Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getEnd_date()%>"/><br>
-                Status Payment <input type="text" name="statusPay" value="<%= agm.isStatus_payment()%>" readonly="readonly" disabled="disabled" placeholder="<%= agm.isStatus_payment()%>"/></center>
+                Status Payment <input type="text" name="statusPay" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.isStatus_payment()%>"/></center>
 
 
         </div>
 
 
-
+    <form action="view_agm_book.jsp" method="POST">
        <center> <input type="submit" value="RENT" name="btnRent"/></center>
     </form>
     
@@ -51,26 +52,19 @@
             String check = request.getParameter("btnRent");
 
             if (check != null) {
-                String statusPay = request.getParameter("statusPay");
-                if(statusPay.equals("Uncomplete")){
+                Agreement agmt = (Agreement) session.getAttribute("Agreement");
+                if((agmt.isStatus_payment()).equals("Uncomplete")){
                  out.print("Sorry, you haven't paid yet.");
                     
                 }else{
-                    RequestDispatcher dp = request.getRequestDispatcher("ProcessRentAfterBook.java");
+                    RequestDispatcher dp = request.getRequestDispatcher("ProcessRentAfterBook");
                     dp.forward(request, response);
                 }
-                
-                
-              
+ 
             }
         %>
     
     
-    
-    
-    
-    
-</body>
 
 </body>
 </html>
