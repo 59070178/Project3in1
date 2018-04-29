@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Account;
-import model.Cart;
 import model.Contract;
-import model.DateExample;
 import model.IndenArea;
 import model.Payment;
 import model.Place;
@@ -41,15 +38,6 @@ public class BookingConfirmServlet extends HttpServlet {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,13 +45,16 @@ public class BookingConfirmServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            model.Payment payment = (model.Payment) session.getAttribute("payment");
-            payment.addPayment();
+            Payment payment =  (Payment) session.getAttribute("payment");
+            payment.setConn(conn);
+           payment.addPayment();
 //        
-            model.Place place = (model.Place) session.getAttribute("place");
+           Place place =  (Place) session.getAttribute("place");
+           place.setConn(conn);
             place.updateStatusPlace();
             
-            model.Contract contract = (model.Contract) session.getAttribute("contract");
+            Contract contract =  (Contract) session.getAttribute("contract");
+            contract.setConn(conn);
             contract.setPayment_id(payment.getPaymentID());
             contract.addContract();
 

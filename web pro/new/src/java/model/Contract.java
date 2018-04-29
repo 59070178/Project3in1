@@ -92,10 +92,7 @@ public class Contract {
         ResultSet rs = stmt.executeQuery(sql_find_i_id);
         rs.next();
         setContractID(rs.getInt("max(i_id)"));
-        
-        
-        
-        
+
         
     }
 
@@ -113,6 +110,14 @@ public class Contract {
 
     public void setPayment_id(int payment_id) {
         this.payment_id = payment_id;
+    }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
     }
 
 

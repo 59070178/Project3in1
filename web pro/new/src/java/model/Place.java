@@ -147,4 +147,12 @@ public class Place {
         stmt.executeUpdate(sql_book_payment);
     }
 
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
+
 }
