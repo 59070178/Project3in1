@@ -46,13 +46,7 @@ public class Rent {
             }
     }
 
-    public int getContract_type() {
-        return contract_type;
-    }
 
-    public void setContract_type(int contract_type) {
-        this.contract_type = contract_type;
-    }
 
     public int getPayment_id() {
         return payment_id;
@@ -66,6 +60,14 @@ public class Rent {
             while(rs.next()){
                 this.payment_id =rs.getInt("payment_id");
             }
+    }
+
+    public int getContract_type() {
+        return contract_type;
+    }
+
+    public void setContract_type(int contract_type) {
+        this.contract_type = contract_type;
     }
     
     

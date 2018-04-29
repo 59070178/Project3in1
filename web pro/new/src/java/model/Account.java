@@ -106,13 +106,7 @@ public class Account {
     public void setFullname() {
         this.fullname = firstname + "    " + lastname;
     }
-    public String getPhone() {
-        return phone;
-    }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getGender() {
         return gender;
@@ -168,6 +162,14 @@ public class Account {
             while(rs.next()){
                 this.account_type = rs.getString("account_type");
             }
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
     
     

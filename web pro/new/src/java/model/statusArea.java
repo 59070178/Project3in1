@@ -43,13 +43,7 @@ public class statusArea {
     }
 
 
-    public Connection getConn() {
-        return conn;
-    }
 
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
     
         public void setStatus_area(String now) throws SQLException {
         
@@ -58,6 +52,14 @@ public class statusArea {
 "                            SELECT area_id FROM  inden_area JOIN indenture USING (i_id)\n" +
 "                            WHERE end_date > '"+now+"');" ;
             stmt.executeUpdate(sql_id_area);
+    }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
     }
     
 }

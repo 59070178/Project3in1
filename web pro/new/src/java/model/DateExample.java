@@ -9,6 +9,7 @@ package model;
  *
  * @author asus
  */
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,6 +21,11 @@ public class DateExample {
 
     private String due_date;
     private String next_date;
+    private String now;
+    private String end_date;
+    private Date renew_e_date;
+    private Date now_date;
+    private Connection conn;
 
     public DateExample() {
        
@@ -61,5 +67,48 @@ public class DateExample {
     public String getNext_date() {
         return next_date;
     }
+
+
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
+
+    public Date getRenew_e_date() {
+        return renew_e_date;
+    }
+
+    public void setRenew_e_date(Date e_date) {
+        
+        this.renew_e_date = renew_e_date;
+    }
+
+
+    public boolean chkFor_renew(Date e_date) {
+        
+        Date currentDate = new Date();
+        String nowstr = dateFormat.format(currentDate);
+
+        // convert date to calendar
+        Calendar n = Calendar.getInstance();
+        n.setTime(currentDate);
+
+        end_date = dateFormat.format(e_date);
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(e_date);
+
+        c.add(Calendar.DATE, -30);
+        boolean chk = false;
+        if(n.getTime().after(e_date) && n.getTime().before(c.getTime())){
+              chk = true;
+        }
+        return chk;
+    }
+        
 
 }

@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,6 +29,7 @@ public class Agreement {
     private String cost;
     private float total_book;
     private float total_rent;
+    private Date e_date;
     public Agreement() {
     }
 
@@ -57,6 +59,21 @@ public class Agreement {
             }
         
     }
+
+    public Date getE_date() {
+        return e_date;
+    }
+
+    public void setE_date(int i_id) throws SQLException {
+        Statement stmt = conn.createStatement();
+            String sql_endDate = "SELECT end_date   FROM indenture WHERE i_id = '"+i_id+"'";
+            ResultSet rs = stmt.executeQuery(sql_endDate);
+            while(rs.next()){
+                this.e_date = rs.getDate("end_date");
+            }
+    }
+    
+    
 
     public String isStatus_payment() {
         return status_payment;
@@ -206,6 +223,14 @@ public class Agreement {
             while(rs.next()){
                 this.total_rent += rs.getFloat("price")*3;
             }
+    }
+
+    public String getStatus_payment() {
+        return status_payment;
+    }
+
+    public void setStatus_payment(String status_payment) {
+        this.status_payment = status_payment;
     }
     
     

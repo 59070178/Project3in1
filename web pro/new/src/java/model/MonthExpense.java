@@ -121,6 +121,14 @@ public class MonthExpense {
         this.month = month;
     }
 
+    public boolean isCkeckMonth() {
+        return CkeckMonth;
+    }
+
+    public void setCkeckMonth(boolean CkeckMonth) {
+        this.CkeckMonth = CkeckMonth;
+    }
+
 
    
 

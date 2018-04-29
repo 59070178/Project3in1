@@ -16,7 +16,7 @@ public class forDate {
     
     int year;
     int month;
-    String Str_month;
+    private String Str_month;
     String month_chk;
     int day;
     String str_date;
@@ -110,6 +110,14 @@ public class forDate {
 
     public void setStr_day(String str_day) {
         this.str_day = str_day;
+    }
+
+    public String getStr_month() {
+        return Str_month;
+    }
+
+    public void setStr_month(String Str_month) {
+        this.Str_month = Str_month;
     }
 
     

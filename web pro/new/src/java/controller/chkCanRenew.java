@@ -19,96 +19,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Account;
 import model.Agreement;
 import model.DateExample;
-import model.forDate;
 
 /**
  *
  * @author Suttida Sat
  */
-@WebServlet(name = "view_agm_rent", urlPatterns = {"/view_agm_rent"})
-public class view_agm_rent extends HttpServlet {
+@WebServlet(name = "chkCanRenew", urlPatterns = {"/chkCanRenew"})
+public class chkCanRenew extends HttpServlet {
 
     private Connection conn;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
-            HttpSession session = request.getSession(true);
-            int id_user = (int) session.getAttribute("id_user");
-            
-            //chk date
-             forDate chk = new forDate();
-            chk.setDay();
-            chk.setMonth();
-            chk.setStr_monthForComp();
-            chk.setYear();
-            chk.setStr_dayForComp();
-            chk.setDay();
-            chk.setStr_date();
-
-            
-            String now = chk.getStr_date();
-            ////Account
-            
-            Account acc = new Account();
-            acc.setConn(conn);
-            
-            acc.setFirstname(id_user);
-            acc.setLastname(id_user);
-            acc.setFullname();
-
-            session.setAttribute("fullname", acc.getFullname());
-            
-            
-            ///indenture
-            
-            int i_id = (int) session.getAttribute("i_id");
-            
-            if(i_id == 0){
-                response.sendRedirect("notHavePayment.jsp");
-            }else{
-                
-                Agreement agm = new Agreement();
+             HttpSession session = request.getSession(true);
+             int i_id = (int) session.getAttribute("i_id");
+             
+            Agreement agm = new Agreement();
             agm.setConn(conn);
             agm.setPayment_id_Rent(i_id);
+            agm.setE_date(i_id);
+            Date e = agm.getE_date();
+            ///get date now
+            DateExample dat = new DateExample();
+            boolean chk = dat.chkFor_renew(e);
 
-                         ///get date now
- 
-            
-            agm.setPayment_id_Rent(i_id);
-            agm.setPlace_number(i_id);
-            agm.setPlace_type(i_id);
-            agm.setStart_date(i_id);
-             agm.setEnd_date(i_id);
-             agm.setStatus_payment_rent();
-            agm.setCost(i_id);
-            agm.setTotal_rent(i_id);
-            request.setAttribute("Agreement", agm);
-            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_Rent() == 0)  {
-                response.sendRedirect("notHavePayment.jsp");
-            }
-            else{
-                RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent.jsp");
+            if(chk){
+                    RequestDispatcher dp = request.getRequestDispatcher("renew_cont");
                 dp.forward(request, response);
+            }else{
+                 out.println("<center>" + "Sorry is not time to renew" + "</center>");
+                RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent");
+                dp.include(request, response);
             }
-            
-            
-            }
-            
+
         } catch (SQLException ex) {
-            Logger.getLogger(view_agm_book.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(chkCanRenew.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

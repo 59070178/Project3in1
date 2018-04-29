@@ -60,6 +60,14 @@ public class IndenArea {
         this.conn = conn;
     }
 
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
+
 
 
    

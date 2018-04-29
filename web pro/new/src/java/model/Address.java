@@ -100,13 +100,6 @@ public class Address {
         this.conn = conn;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
     public Connection getConn() {
         return conn;
@@ -121,6 +114,22 @@ public class Address {
             txt = " ";
         }
         return txt;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress_info() {
+        return address_info;
+    }
+
+    public void setAddress_info(String address_info) {
+        this.address_info = address_info;
     }
     
 }

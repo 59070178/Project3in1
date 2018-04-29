@@ -51,7 +51,7 @@ public class Announce {
     }
     
    
-    Connection conn;
+    private Connection conn;
 
     public Announce() {
     }
@@ -108,5 +108,7 @@ public class Announce {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
+
+ 
 
 }

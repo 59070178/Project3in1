@@ -24,13 +24,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Connection getConn() {
-        return conn;
-    }
 
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
 
     public float getPrice() {
         return price;
@@ -66,6 +60,14 @@ public class Booking {
             while(rs.next()){
                 this.payment_id =rs.getInt("payment_id");
             }
+    }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
     }
     
     

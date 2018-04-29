@@ -104,14 +104,7 @@ public class AddBill {
         this.month = month;
     }
 
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-      
+ 
     public void addTotalMonth(String month,int i_id) throws SQLException {
         Statement stmt = conn.createStatement();
         String sql_area = "INSERT INTO monthly_expense (total , month , i_id ) VALUES('"+total+"' ,'"+month+"',+'"+i_id+"')";
@@ -141,5 +134,13 @@ public class AddBill {
         
         String sql_fire = "UPDATE detail SET price = '"+fire+"' WHERE type_id = 3 AND invoice_id = '"+invoice_id+"'";
         stmt.executeUpdate(sql_fire);
+    }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
     }
 }

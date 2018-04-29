@@ -4,6 +4,9 @@
     Author     : Suttida Sat
 --%>
 
+<%@page import="java.sql.Date"%>
+<%@page import="model.DateExample"%>
+<%@page import="model.Agreement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
@@ -42,5 +45,9 @@
                 </div>
 
         </div>
+            <form action="chkCanRenew" method="POST">
+       <center> <input type="submit" value="Renew a contract" name="btnRenew"/></center>
+    </form>
+        
     </body>
 </html>

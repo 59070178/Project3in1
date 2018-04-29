@@ -17,7 +17,7 @@ public class Login  implements java.io.Serializable{
     private String account_type ;
     private int id;
 
-    Connection conn;
+    private Connection conn;
     public Login() {
     }
 
@@ -105,6 +105,8 @@ public class Login  implements java.io.Serializable{
     public void setConn(Connection conn) {
         this.conn = conn;
     }
+
+
       
       
 
