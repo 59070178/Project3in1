@@ -1,3 +1,14 @@
+<%-- 
+    Document   : agreement_rent
+    Created on : Apr 29, 2018, 3:43:07 PM
+    Author     : asus
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include  file="cus_header.html" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+<!DOCTYPE html>
 <html>
     <head>
         <title>AGREEMENT PAGE</title>
@@ -9,30 +20,6 @@
         <link rel="stylesheet" type="text/css" href="css/agree.css">
     </head>
     <body>
-        <!-- Navbar (sit on top) -->
-        <div class="w3-top">
-            <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
-                <!-- Right-sided navbar links -->
-                <div class="w3-right w3-hide-small">
-                    <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
-                    <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  Logout</a>
-
-                    <!--side menu -->
-                    <nav class="side-menu">
-                        <ul>
-                            <li><a href="#">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
-                            <li><a href="#">EXPENSE<span><i class="fa fa-calendar" style="font-size:30px"></i></span></a></li>
-                        </ul>
-                    </nav>
-
-
-                </div>
-            </div>
-        </div>
         <div>
             <br>
             <center><h1> RENTAL AGREEMENT </h1></center><br>
@@ -42,9 +29,9 @@
                     <center>First Name <input type="text" name="fname" value="" readonly="readonly" disabled="disabled" /><br>
                     Last Name <input type="text" name="lname" value="" readonly="readonly" disabled="disabled" /><br>
                     Category <input type="text" name="category" value="" readonly="readonly" disabled="disabled" /><br>
-                    Amount <input type="text" name="amount" value="" readonly="readonly" disabled="disabled" /><br>
                     Number <input type="text" name="number" value="" readonly="readonly" disabled="disabled" /><br>
-                    Cost <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" /><br>
+                    Total amount to pay Advance 3 months <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=payment.getPriceBook()%>"/><br>
+                    Cost per Place <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" /><br>
                     Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" /><br>
                     Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" /></center>
                     <center><textarea name="announce" rows="5" cols="60" readonly="readonly">
