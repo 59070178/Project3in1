@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +24,8 @@ import model.statusArea;
  *
  * @author Suttida Sat
  */
-@WebServlet(name = "aew", urlPatterns = {"/aew"})
-public class aew extends HttpServlet {
+@WebServlet(name = "updateStatusArea", urlPatterns = {"/updateStatusArea"})
+public class updateStatusArea extends HttpServlet {
 
     private Connection conn;
 
@@ -35,9 +36,8 @@ public class aew extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-           
-             ///get date now
+            
+            ///get date now
             forDate chk = new forDate();
             chk.setDay();
             chk.setMonth();
@@ -53,19 +53,16 @@ public class aew extends HttpServlet {
             
             statusArea upd = new statusArea();
             upd.setConn(conn);
-            upd.setId_area(now);
-            
-            for(int i = 0 ; i < upd.getId_area().size() ; i++){
-                out.println(upd.getId_area().get(i));
-            }
+            upd.setStatus_area(now);
             
             
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(aew.class.getName()).log(Level.SEVERE, null, ex);
+            RequestDispatcher dp = request.getRequestDispatcher("home.html");
+                dp.forward(request, response);
+        
+    }   catch (SQLException ex) {
+            Logger.getLogger(updateStatusArea.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
