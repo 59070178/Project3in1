@@ -66,16 +66,25 @@ public class Agreement {
          Statement stmt = conn.createStatement();
             String sql_slip = "SELECT slip  FROM payment WHERE payment_id = '"+payment_id_book+"'";
             ResultSet rs = stmt.executeQuery(sql_slip);
-           while(rs.next()){
-            if(rs.getString("slip") == null){
-                 this.status_payment = "Uncomplete";
+
+            if(rs.next()){
+                  this.status_payment = "Complete";
             }
-                    else{
-                this.status_payment = "Complete";
+            else{
+                this.status_payment = "Uncomplete";
             }
 
-            }
+//           while(rs.next()){
+//            if(rs.getString("slip") == null){
+//                 this.status_payment = "Uncomplete";
+//            }
+//                    else{
+//                this.status_payment = "Complete";
+//            }
+//
+//            }
             
+
       
     }
 

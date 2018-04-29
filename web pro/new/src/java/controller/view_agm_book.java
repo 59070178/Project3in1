@@ -44,7 +44,7 @@ public class view_agm_book extends HttpServlet {
             int id_user = (int) session.getAttribute("id_user");
             
             //chk date
-              forDate chk = new forDate();
+            forDate chk = new forDate();
             chk.setDay();
             chk.setMonth();
             chk.setStr_monthForComp();
@@ -84,7 +84,7 @@ public class view_agm_book extends HttpServlet {
              agm.setStatus_payment();
             agm.setCost(i_id);
             agm.setTotal_book(i_id);
-            request.setAttribute("Agreement", agm);
+            session.setAttribute("Agreement", agm);
 
             if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
                 response.sendRedirect("notHavePayment.jsp");
