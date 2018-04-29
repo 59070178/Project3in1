@@ -52,14 +52,11 @@ public class chk_agm_rent extends HttpServlet {
             HttpSession session = request.getSession(true);
             
              int i_id = (int) session.getAttribute("i_id");
-             
-             
-            
+
             if(i_id == 0){
                 response.sendRedirect("rent.jsp");
             }
-            
-            
+
             else{
                  Agreement agm = new Agreement();
                 agm.setConn(conn);

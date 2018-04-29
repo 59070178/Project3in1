@@ -75,18 +75,6 @@ public class Agreement {
                 this.status_payment = "Complete";
             }
             }
-            
-
-//           while(rs.next()){
-//            if(rs.getString("slip") == null){
-//                 this.status_payment = "Uncomplete";
-//            }
-//                    else{
-//                this.status_payment = "Complete";
-//            }
-//
-//            }
-            
 
       
     }

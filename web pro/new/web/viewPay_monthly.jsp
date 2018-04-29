@@ -23,7 +23,7 @@
     <body>
             <!-- select type of payment -->
             
-    <center>  <h1>MONTHLY EXPANSE</h1></center>
+    <center>  <h1>MONTHLY EXPENSE</h1></center><br>
 
         <!-- table of customer info. -->
          <sql:query var="myMonth" dataSource="test" >
@@ -33,7 +33,7 @@
             <!-- Select month for view -->
         <form action="viewMonth" method="POST">
             
-           <center>  Select Month : <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
+           <center><h2 style="float:left;">  Select Month : </h2><select name="month"> <c:forEach var="month" items="${myMonth.rows}">
                       <option value="${month.month}" >  ${month.month}   </option></center>
                 </c:forEach> </select>
                <br> <input type="submit" value="Select" />
