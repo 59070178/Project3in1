@@ -77,15 +77,13 @@ public class loginServlet extends HttpServlet {
             session.setAttribute("account_type", account_type);
 //             session.setAttribute("fname", fname);
 //             session.setAttribute("lname", lname);
-<<<<<<< HEAD
+
 
             if (chk) {
 
-=======
             if (chk) {
                 
  
->>>>>>> dcea9a6357ed0b4ea67563bff586e96d5c20d241
                 if (account_type.equals("customer")) {
                     Statement stmt = conn.createStatement();
                     String sql1 = "SELECT * From account WHERE account_id = " + id_user;
@@ -143,7 +141,8 @@ public class loginServlet extends HttpServlet {
 
             }
 
-        } catch (SQLException ex) {
+        } 
+    }   catch (SQLException ex) {
             Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
