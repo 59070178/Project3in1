@@ -32,12 +32,15 @@
         <!-- Navbar (sit on top) -->
         <div class="w3-top">
             <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
+                <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                 <!-- Right-sided navbar links -->
                 <div class="w3-right w3-hide-small">
                     <a href="home.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
+<<<<<<< HEAD
 
                     <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
+=======
+>>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
                     <a href="booking.jsp" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  BOOKING</a>
 
                     <a href="chk_agm_rent" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>

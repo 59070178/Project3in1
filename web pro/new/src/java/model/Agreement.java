@@ -68,6 +68,7 @@ public class Agreement {
             ResultSet rs = stmt.executeQuery(sql_slip);
             if(rs.next()){
                   this.status_payment = "Complete";
+<<<<<<< HEAD
             }
             else{
                 this.status_payment = "Uncomplete";
@@ -78,10 +79,12 @@ public class Agreement {
             }
                     else{
                 this.status_payment = "Complete";
+=======
+>>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
             }
-
+            else{
+                this.status_payment = "Uncomplete";
             }
-            
       
     }
 

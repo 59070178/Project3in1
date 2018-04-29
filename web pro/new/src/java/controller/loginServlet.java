@@ -78,12 +78,14 @@ public class loginServlet extends HttpServlet {
 //             session.setAttribute("fname", fname);
 //             session.setAttribute("lname", lname);
 
+<<<<<<< HEAD
 
             if (chk) {
 
+=======
+>>>>>>> parent of c108abf... แก้สถานะจ่ายตัง
             if (chk) {
-                
- 
+
                 if (account_type.equals("customer")) {
                     Statement stmt = conn.createStatement();
                     String sql1 = "SELECT * From account WHERE account_id = " + id_user;
