@@ -25,8 +25,8 @@ import model.forDate;
  *
  * @author Suttida Sat
  */
-@WebServlet(name = "chk_agm_rent", urlPatterns = {"/chk_agm_rent"})
-public class chk_agm_rent extends HttpServlet {
+@WebServlet(name = "chk_agm_book", urlPatterns = {"/chk_agm_book"})
+public class chk_agm_book extends HttpServlet {
 
    private Connection conn;
 
@@ -37,8 +37,9 @@ public class chk_agm_rent extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-           forDate chk = new forDate();
+            /* TODO output your page here. You may use following sample code. */
+                        
+            forDate chk = new forDate();
             chk.setDay();
             chk.setMonth();
             chk.setStr_monthForComp();
@@ -54,7 +55,7 @@ public class chk_agm_rent extends HttpServlet {
              int i_id = (int) session.getAttribute("i_id");
 
             if(i_id == 0){
-                response.sendRedirect("rent.jsp");
+                response.sendRedirect("booking.jsp");
             }
                 else{
             
@@ -75,7 +76,7 @@ public class chk_agm_rent extends HttpServlet {
 
                 
                 if (chk_rent.getEnd_date().compareTo(now) < 0 || chk_rent.getPayment_id_Rent() == 0) {
-                    response.sendRedirect("rent.jsp");
+                    response.sendRedirect("booking.jsp");
                 } else {
                     response.sendRedirect("view_agm_rent");
                 }
@@ -85,10 +86,12 @@ public class chk_agm_rent extends HttpServlet {
             }
             }
 
+
             
         } catch (SQLException ex) {
            Logger.getLogger(chk_agm_rent.class.getName()).log(Level.SEVERE, null, ex);
        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

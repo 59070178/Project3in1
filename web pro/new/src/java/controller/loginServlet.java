@@ -130,7 +130,18 @@ public class loginServlet extends HttpServlet {
                 }
 
                 request.setAttribute("account_type", account_type);
-                response.sendRedirect("home2.jsp");
+                if(account_type.equals("customer")){
+                                   response.sendRedirect("home2.jsp");
+                }
+ 
+                if(account_type.equals("boss")){
+                                        response.sendRedirect("profile_boss.jsp");
+                }
+
+                if(account_type.equals("employee")){
+                                     response.sendRedirect("profile_emp.jsp");
+                }
+   
 
             } else {
 
