@@ -34,7 +34,7 @@
             <% model.Payment payment = (model.Payment) session.getAttribute("payment");%>
             <% model.Announce announce = (model.Announce) session.getAttribute("announce_details");%>
 
-            <form action="BookingConfirmServlet" method="POST">
+            <form action="BookingRentConfirmServlet" method="POST">
                 <div class="sign">
                     <br>
 
@@ -50,7 +50,7 @@
                         Cost per Place <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=place.getPrice()%>"/>/><br>
                         Total amount to pay 30% <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=payment.getPriceBook()%>"/><br>
 
-                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getStartDate()%>"/><br>
+                        Book Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getStartDate()%>"/><br>
                         Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getStartDate()%>"/></center>
 
 
