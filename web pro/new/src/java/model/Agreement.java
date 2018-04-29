@@ -68,12 +68,21 @@ public class Agreement {
             ResultSet rs = stmt.executeQuery(sql_slip);
             if(rs.next()){
                   this.status_payment = "Complete";
-
             }
             else{
                 this.status_payment = "Uncomplete";
             }
+           while(rs.next()){
+            if(rs.getString("slip") == null){
+                 this.status_payment = "Uncomplete";
+            }
+                    else{
+                this.status_payment = "Complete";
+            }
 
+            }
+            
+      
     }
 
     public String getStatus_payment_rent() {

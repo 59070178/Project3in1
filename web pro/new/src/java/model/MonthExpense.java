@@ -22,6 +22,7 @@ public class MonthExpense {
    private float total;
    private  int invoice_id;
    private String month;
+   private boolean CkeckMonth;
 
     private Connection conn;
     public MonthExpense() {
@@ -50,6 +51,7 @@ public class MonthExpense {
             String sql_fire = "SELECT price  FROM detail WHERE invoice_id   ='"+invoice+"'" + "AND type_id = 3";
             ResultSet rs = stmt.executeQuery(sql_fire);
             while(rs.next()){
+                
                 this.fire = rs.getFloat("price");
             }
     }
@@ -84,7 +86,16 @@ public class MonthExpense {
             
     }
 
-
+    public void setInvoice_id(int i_id) throws SQLException {
+        
+        Statement stmt = conn.createStatement();
+            String sql = "SELECT invoice_id  FROM monthly_expense WHERE i_id  ='"+i_id+"'"+"AND month ='"+month+"'" ;
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                this.invoice_id = rs.getInt("invoice_id");
+            }
+            
+    }
 
     public float getTotal() {
         return price_area+water+fire;
@@ -109,7 +120,9 @@ public class MonthExpense {
     public void setMonth(String month) {
         this.month = month;
     }
-    
+
+
+   
 
     
 }

@@ -26,16 +26,16 @@ and open the template in the editor.
             <!-- Navbar (sit on top) -->
         <div class="w3-top">
             <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
+                <a href="home2.jsp" class="w3-bar-item w3-button w3-wide"><img src="pic/logo.png" width="35" height="30"/> </a>
                 <!-- Right-sided navbar links -->
                 <div class="w3-right w3-hide-small">
-                    <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  HOME</a>
-                    <a href="#profile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  LOGOUT</a>
+                    <a href="home2.jsp" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
+                    <a href="logout" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i>  Logout</a>
 
                     <!--side menu -->
                     <nav class="side-menu">
                         <ul>
-                            <li><a href="profile_cus.jsp">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
+                            <li><a href="VeiwInfoCusServlet">PROFILE<span><i class="fa fa-user-circle" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">BOOKING<span><i class="fa fa-tag" style="font-size:30px"></i></span></a></li>
                             <li><a href="#">RENT<span><i class="fa fa-handshake-o" style="font-size:30px"></i></span></a></li>
                             <li><a href="confirmPayment.html">PAYMENT<span><i class="fa fa-credit-card" style="font-size:30px"></i></span></a></li>
@@ -48,20 +48,20 @@ and open the template in the editor.
             </div>
         </div>
             <div class="row">
-            <form action="PaymentServlet" method="POST">
+            <form action="Payment" method="POST">
                 <b>Category</b>
                         <select name="typePayment">
-                            <option>Book</option>
-                            <option>Prepay (Rent)</option>
-                            <option>Monthly expense</option>
+                            <option value="book">Book</option>
+                            <option value="rent">Prepay (Rent)</option>
+                            <option value="monthExp">Monthly expense</option>
                         </select>
                     <br><br>
 
                     <b>Bank</b>
                         <select name="bank">
-                            <option>BBL</option>
-                            <option>KBANK</option>
-                            <option>SCB</option>
+                            <option value="BBL">BBL</option>
+                            <option value="KBANK">KBANK</option>
+                            <option value="SCB">SCB</option>
                         </select>
                     <br><br>
 
@@ -79,7 +79,7 @@ and open the template in the editor.
 
                         <b>Bill</b>
                         <br>
-                        <input type="file" name="trans_image" accept="image/gif, image/jpeg, image/png">
+                        <input type="file" name="trans_image" accept="image/*">
                         <br><br>
                         <center><input type="submit" value="Upload" /></center>
             </form>

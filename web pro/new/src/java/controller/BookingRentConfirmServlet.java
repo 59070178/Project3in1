@@ -7,42 +7,66 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Contract;
+import model.IndenArea;
+import model.Payment;
+import model.Place;
 
 /**
  *
  * @author asus
  */
-@WebServlet(name = "ProcessRentAfterBook", urlPatterns = {"/ProcessRentAfterBook"})
-public class ProcessRentAfterBook extends HttpServlet {
+@WebServlet(name = "BookingRentConfirmServlet", urlPatterns = {"/BookingRentConfirmServlet"})
+public class BookingRentConfirmServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private Connection conn;
+
+    public void init() {
+        conn = (Connection) getServletContext().getAttribute("connection");
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProcessRentAfterBook</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ProcessRentAfterBook at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+            HttpSession session = request.getSession();
+
+            Payment payment = (Payment) session.getAttribute("rentPayment");
+            payment.setConn(conn);
+            payment.addPayment();
+//        
+            Place place = (Place) session.getAttribute("rentPlace");
+            place.setConn(conn);
+            place.updateStatusPlace();
+
+            Contract contract = (Contract) session.getAttribute("rentContract");
+            contract.setConn(conn);
+            contract.setPayment_id(payment.getPaymentID());
+            contract.addContract();
+
+            IndenArea indenArea = new IndenArea(conn);
+            indenArea.setArea_id(place.getPlaceID());
+            indenArea.setPrice(place.getPrice());
+            indenArea.setContrct_id(contract.getContractID());
+            indenArea.addIndenArea();
+//            
+            out.print("success!!!! add database!");
+        } catch (SQLException ex) {
+            Logger.getLogger(BookingRentConfirmServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

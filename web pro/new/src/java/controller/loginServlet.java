@@ -1,7 +1,5 @@
 package controller;
 
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -18,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Address;
 import model.Contract;
 import model.Login;
 
@@ -28,142 +27,125 @@ import model.Login;
 @WebServlet(urlPatterns = {"/loginServlet"})
 public class loginServlet extends HttpServlet {
 
-   private Connection conn;
-    
-    public void init(){
+    private Connection conn;
+
+    public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /// encode character can read thai 
-//            request.setCharacterEncoding("UTF-8");
-//
-//            HttpSession session = request.getSession(true);
+            request.setCharacterEncoding("UTF-8");
+
+            HttpSession session = request.getSession(true);
+
+            String username = request.getParameter("name");
+            String psw = request.getParameter("pass");
+            int id_user = 0;
+
+//           out.println(username + " " + psw);
+            Login user = new Login();
+            user.setConn(conn);
+            boolean chk = user.checkLogin(username, psw);
+
+            ///get firstname lastname
+            Account account = new Account();
+            account.setConn(conn);
+
+            account.setAccount_id(username, psw);
+            id_user = account.getAccount_id();
+
+            account.setAccount_type(id_user);
+            String account_type = account.getAccount_type();
+
+            Contract contract = new Contract(conn);
+
+            int i_id = contract.getContractID(id_user);
+            session.setAttribute("i_id", i_id);
+
+//            account.setFirstname(id_user);
+//            String fname = account.getFirstname();
 //            
-//            String username = request.getParameter("name");
-//            String psw = request.getParameter("pass");
-//            int id_user = 0; 
-//
-////           out.println(username + " " + psw);
-//             Login user = new Login();
-//             user.setConn(conn);
-//            boolean chk = user.checkLogin(username, psw);
+//            account.setLastname(id_user);
+//            String lname = account.getLastname();
 //            
-//            ///get firstname lastname
-//            Account account = new Account();
-//            account.setConn(conn);
-//            
-//            account.setAccount_id(username, psw);
-//            id_user = account.getAccount_id();
-//            
-//            account.setAccount_type(id_user);
-//            String account_type = account.getAccount_type();
-//            
-//            Contract contract = new Contract();
-//          contract.setConn(conn);
-//
-//          int i_id = contract.getContractID(id_user);
-//          session.setAttribute("i_id", i_id);
-//
-////            account.setFirstname(id_user);
-////            String fname = account.getFirstname();
-////            
-////            account.setLastname(id_user);
-////            String lname = account.getLastname();
-////            
-//            session.setAttribute("id_user", id_user);
-//            session.setAttribute("username", username);
-//            session.setAttribute("account_type", account_type);
+            session.setAttribute("id_user", id_user);
+            session.setAttribute("username", username);
+            session.setAttribute("account_type", account_type);
 //             session.setAttribute("fname", fname);
 //             session.setAttribute("lname", lname);
 
-//            if (chk) {
-//
-//                if (account_type.equals("customer")) {
-//                    Statement stmt = conn.createStatement();
-//                    String sql1 = "SELECT * From account WHERE account_id = " + id_user;
-//                    ResultSet rs1 = stmt.executeQuery(sql1);
-//                    rs1.next();
-//
-//                    account.setAccount_id(id_user);
-//                    account.setUsername(rs1.getString("username"));
-//                    account.setFullname(rs1.getString("firstname"), rs1.getString("lastname"));
-//                    account.setPhone(rs1.getString("phone"));
-//
-//                    String sql2 = "SELECT * From customer WHERE account_id = " + id_user;
-//                    ResultSet rs2 = stmt.executeQuery(sql2);
-//                    rs2.next();
-//
-//                    account.setGender(rs2.getString("gender"));
-//                    session.setAttribute("account_info", account);
 
-//                    Address address = new Address();
-//                    address.setBan(rs2.getString("ban"));
-//                    address.setDistrict(rs2.getString("district"));
-//                    address.setArea(rs2.getString("area"));
-//                    address.setCounty(rs2.getString("county"));
-//                    address.setCode(rs2.getString("code"));
+            if (chk) {
 
-//                    if (rs2.getString("soi") == null) {
-//                        address.setSoi(" ");
-//                    } else {
-//                        address.setSoi(rs2.getString("soi"));
-//                    }
-//
-//                    session.setAttribute("address_info", address);
-//                } else {
-//                    Statement stmt = conn.createStatement();
-//                    String sql1 = "SELECT * From account WHERE account_id = " + id_user;
-//                    ResultSet rs1 = stmt.executeQuery(sql1);
-//                    rs1.next();
-//
-//                    account.setAccount_id(id_user);
-//                    account.setUsername(rs1.getString("username"));
-//                    account.setFullname(rs1.getString("firstname"), rs1.getString("lastname"));
-//                    account.setPhone(rs1.getString("phone"));
-//                    account.setAccount_type(rs1.getString("account_type"));
-//                    session.setAttribute("account_info", account);
-//
-//                }
-//
-//                request.setAttribute("account_type", account_type);
-//                response.sendRedirect("home2.jsp");
-//
-//            } else {
-//
-//                RequestDispatcher rs = request.getRequestDispatcher("loginFail.html");
-//                rs.include(request, response);
-//=======
-//            
-//            if(chk)
-//        {
-//            request.setAttribute("account_type", account_type);
-//            response.sendRedirect("home2.jsp");
-//            
-//        }else{
-      
-//           RequestDispatcher rs = request.getRequestDispatcher("loginFail.html");
-//           rs.include(request, response);
-//>>>>>>> parent of 6b1e5be... Merge branch 'master' of https://github.com/59070178/Project3in1
-//
-//            }
-//<<<<<<< HEAD
-//
-//        } 
-//    }   catch (SQLException ex) {
-//            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//=======
-//                
-//           
-//        
-//    }  catch (SQLException ex) {  
-//           Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
-//       }  
-//>>>>>>> master
-//    }
+            if (chk) {
+                
+ 
+                if (account_type.equals("customer")) {
+                    Statement stmt = conn.createStatement();
+                    String sql1 = "SELECT * From account WHERE account_id = " + id_user;
+                    ResultSet rs1 = stmt.executeQuery(sql1);
+                    rs1.next();
+
+                    account.setAccount_id(id_user);
+                    account.setUsername(rs1.getString("username"));
+                    account.setFullname(rs1.getString("firstname"), rs1.getString("lastname"));
+                    account.setPhone(rs1.getString("phone"));
+
+                    String sql2 = "SELECT * From customer WHERE account_id = " + id_user;
+                    ResultSet rs2 = stmt.executeQuery(sql2);
+                    rs2.next();
+
+                    account.setGender(rs2.getString("gender"));
+                    session.setAttribute("account_info", account);
+
+                    Address address = new Address();
+                    address.setBan(rs2.getString("ban"));
+                    address.setDistrict(rs2.getString("district"));
+                    address.setArea(rs2.getString("area"));
+                    address.setCounty(rs2.getString("county"));
+                    address.setCode(rs2.getString("code"));
+
+                    if (rs2.getString("soi") == null) {
+                        address.setSoi(" ");
+                    } else {
+                        address.setSoi(rs2.getString("soi"));
+                    }
+
+                    session.setAttribute("address_info", address);
+                } else {
+                    Statement stmt = conn.createStatement();
+                    String sql1 = "SELECT * From account WHERE account_id = " + id_user;
+                    ResultSet rs1 = stmt.executeQuery(sql1);
+                    rs1.next();
+
+                    account.setAccount_id(id_user);
+                    account.setUsername(rs1.getString("username"));
+                    account.setFullname(rs1.getString("firstname"), rs1.getString("lastname"));
+                    account.setPhone(rs1.getString("phone"));
+                    account.setAccount_type(rs1.getString("account_type"));
+                    session.setAttribute("account_info", account);
+
+                }
+
+                request.setAttribute("account_type", account_type);
+                response.sendRedirect("home2.jsp");
+
+            } else {
+
+                RequestDispatcher rs = request.getRequestDispatcher("loginFail.html");
+                rs.include(request, response);
+
+            }
+
+        } 
+    }   catch (SQLException ex) {
+            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -178,7 +160,7 @@ public class loginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
     }
 
     /**
@@ -206,5 +188,5 @@ public class loginServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-//
-//}
+
+}

@@ -73,7 +73,7 @@
                         int announce_con_id = (int) session.getAttribute("annouce_con_id");
 
                         Statement stmt = conn.createStatement();
-                        String sql = String.format("SELECT * FROM announce WHERE con_id  = " + announce_con_id);
+                        String sql = "SELECT * FROM announce WHERE con_id  = " + announce_con_id;
                         ResultSet rs = stmt.executeQuery(sql);
                         rs.next();
                         String text = rs.getString("content");

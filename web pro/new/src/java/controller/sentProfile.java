@@ -16,28 +16,31 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Suttida Sat
+ * @author asus
  */
 @WebServlet(name = "sentProfile", urlPatterns = {"/sentProfile"})
 public class sentProfile extends HttpServlet {
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+
             HttpSession session = request.getSession(true);
             String type = (String) session.getAttribute("account_type");
-            
-            if(type.equals("customer"))
-                response.sendRedirect("VeiwInfoCusServlet");
-             if(type.equals("boss"))
-                response.sendRedirect("ViewInfoEmpAndBossServlet");
-             if(type.equals("employee"))
-                 response.sendRedirect("ViewInfoEmpAndBossServlet");
+
+            if (type.equals("customer")) {
+                response.sendRedirect("profile_cus.jsp");
+            }
+            if (type.equals("boss")) {
+                response.sendRedirect("profile_boss.jsp");
+            }
+            if (type.equals("employee")) {
+                response.sendRedirect("profile_emp.jsp");
+            }
         }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
