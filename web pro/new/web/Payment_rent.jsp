@@ -11,7 +11,7 @@ and open the template in the editor.
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/pay.css">
+    <link rel="stylesheet" type="text/css" href="css/pay_rent.css">
         <title>Profile User</title>
     </head>
     <body style="background-color: #ffffff;">
@@ -48,27 +48,16 @@ and open the template in the editor.
             </div>
         </div>
             <center>
-            <div class="page">
-                <center>
-                <input type="button" value="Monthly Expense" />
-                <input type="button" value="Book/Rent" />
-                </center>
-                Select month :<select name="">
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-                <input type="submit" value="select" />
-            </div>
+                <div class="dropdown bn3" style="float:left;">
+                    <button class="dropbtn">Booking/Rental Expense</button>
+                    <div class="dropdown-content">
+                        <a href="Payment_book.jsp">Booking Expense</a>
+                        <a href="Payment_rent.jsp">Rental Expense</a>
+                    </div>
+                </div>
+                <form action="Payment_monthly.jsp" method="POST">
+                    <button class="select_bn" >Monthly Expense</button>
+                </form>
             </center>
             <div class="row">
             <form action="PaymentServlet" method="POST">

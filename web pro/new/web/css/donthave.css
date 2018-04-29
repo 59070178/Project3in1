@@ -1,14 +1,10 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: 'Prompt', sans-serif;}
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
-    padding-top: 55px;
-}
-
 body, html {
     height: 100%;
     line-height: 2;
     font-size: 1em;
     background-color: white;
+    padding-bottom: 85%;
 }
 .side-menu {
     width:16em;
@@ -22,7 +18,7 @@ body, html {
     position:absolute;
     top:100px; 
     bottom:0;
-    left: -11em;
+    left: -10.5em;
 }
 .side-menu ul {
     list-style: none;
@@ -94,34 +90,17 @@ body, html {
     color: #fff!important;
     background-color: rgba(214, 145, 122, 0.92) !important
 }
-.sign{
-    border-radius: 50px;
-    background-color: #eedfc5;
-    padding: 50px;
-    width: 50%;
-    margin-left: 26%;
-}
-input[type=text],[type=password], select {
-    width: 50%;
-    padding: 8px 30px;
-    margin: 12px 0;
-    display: inline-block;
-    border: 1px solid #dd8b13;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-family: 'Prompt', sans-serif;
-    position: relative;
-    left: 3%;
-    background-color: #f1f1f1;
+
+body {
+    font-family: "Prompt", sans-serif;
+    float: left;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
 }
 
-.topic{
-    text-align: center;
-    font-size: 80px;
-    font-weight: bold;
-    font-family: 'Prompt', sans-serif;
-}
-input[target=address]{
-    width: 60%;
-    padding: 50px 30px;
+h1{
+    font-family: "Prompt", sans-serif;
+font-size: 70px;
 }
