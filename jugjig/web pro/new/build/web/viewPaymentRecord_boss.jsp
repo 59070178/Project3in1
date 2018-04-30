@@ -64,23 +64,12 @@
             <thead>
                 <tr>
                     <th>CUSTOMER ID.</th>
+                    <th>Type Payment</th>
                     <th>AMOUNT</th>
                     <th>STATUS</th>
                 </tr>
             </thead>
             <tbody>
-<<<<<<< HEAD:web pro/new/web/viewPaymentRecord_boss.html
-                <tr>
-                    <td>4</td>
-                    <td>3000</td>
-                    <td>Complete</td>
-                </tr>
-            </tbody>
-            </table></center>
-
-        <!-- BUTTON PART -->
-        <br>
-=======
                 <%                   while (rs.next()) {
                         out.print("<tr>");
                         out.print("<td>");
@@ -113,5 +102,4 @@
             
             <a href="selectInfoCustomer_boss2.jsp"> <input type="submit" target="back" value="BACK"></a></center>
 </body>
->>>>>>> master:web pro/new/web/viewPaymentRecord_boss.jsp
 </html>

@@ -57,7 +57,7 @@ public class CusHistoryPaymentDetails extends HttpServlet {
                 RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_emp.jsp");
                 dp.forward(request, response);
             } else { //else if account_type is boss
-                RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_emp.jsp");
+                RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_boss.jsp");
                 dp.forward(request, response);
             }
 
