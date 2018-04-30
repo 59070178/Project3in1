@@ -4,6 +4,7 @@
     Author     : Suttida Sat
 --%>
 
+<%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Date"%>
 <%@page import="model.DateExample"%>
 <%@page import="model.Agreement"%>
@@ -23,31 +24,58 @@
         <link rel="stylesheet" type="text/css" href="css/agree.css">
     </head>
     <body>
- <%-- Using Scriptlet--%>
-            <% model.Account acc = (model.Account) request.getAttribute("fullname");%>
-            <% model.Agreement agm = (model.Agreement) request.getAttribute("Agreement");%>
-            <br>
-            <center><h1> RENT AGREEMENT </h1></center><br>
+        <%-- Using Scriptlet--%>
+        <% model.Account acc = (model.Account) request.getAttribute("fullname");%>
+        <% model.Agreement agm = (model.Agreement) session.getAttribute("Agreement");%>
+        <br>
+    <center><h1> RENT AGREEMENT </h1></center><br>
 
-                <div class="sign">
-                    <br>
-                    <center>
-                        Name <input type="text" name="lname" value="" readonly="readonly" disabled="disabled" placeholder="<%out.println(session.getAttribute("fullname"));%>"/><br>
-                        Place number <input type="text" name="category" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getPlace_number()%>"/><br>
-                        Category <input type="text" name="amount" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getPlace_type()%>"/><br>
-                        Cost <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getCost()%>"/><br>
-                        Total of rent cost<input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getTotal_rent()%>"/><br>
-                        Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getStart_date()%>"/><br>
-                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getEnd_date()%>"/><br>
-                        Status Payment <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getStatus_payment_rent()%>"/></center>
+    <div class="sign">
+        <br>
+        <center>
+            Name <input type="text" name="lname" value="" readonly="readonly" disabled="disabled" placeholder="<%out.println(session.getAttribute("fullname"));%>"/><br>
+            Place number <input type="text" name="category" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getPlace_number()%>"/><br>
+            Category <input type="text" name="amount" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getPlace_type()%>"/><br>
+            Cost <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getCost()%>"/><br>
+            Total of rent cost<input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getTotal_rent()%>"/><br>
+            Rent Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getStart_date()%>"/><br>
+            Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getEnd_date()%>"/><br>
+            Status Payment <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= agm.getStatus_payment_rent()%>"/></center>
 
-           
-                </div>
 
-        </div>
-            <form action="chkCanRenew" method="POST">
-       <center> <input type="submit" value="Renew a contract" name="btnRenew"/></center>
-    </form>
-        
-    </body>
+    </div>
+
+</div>
+<form action="view_agm_rent.jsp" method="POST">
+    <center> <input type="submit" value="Renew a contract" name="btnRenew"/></center>
+</form>
+
+<%
+    String check = request.getParameter("btnRenew");
+
+    if (check != null) {
+        Connection conn;
+        conn = (Connection) getServletContext().getAttribute("connection");
+
+        int i_id = (int) session.getAttribute("i_id");
+
+        Agreement agmt = new Agreement();
+        agmt.setConn(conn);
+        agmt.setPayment_id_Rent(i_id);
+        agmt.setE_date(i_id);
+        Date e = agmt.getE_date();
+        ///get date now
+        DateExample dat = new DateExample();
+        boolean chk = dat.chkFor_renew(e);
+
+        if (chk) {
+            RequestDispatcher dp = request.getRequestDispatcher("renew_cont");
+            dp.forward(request, response);
+        } else {
+            out.println("<center>" + "Sorry is not time to renew" + "</center>");
+        }
+    }
+%>
+
+</body>
 </html>
