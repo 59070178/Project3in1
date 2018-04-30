@@ -50,7 +50,7 @@ public class statusArea {
                     Statement stmt = conn.createStatement();
             String sql_id_area = "UPDATE area SET status  = 'enable' WHERE area_id NOT IN (\n" +
 "                            SELECT area_id FROM  inden_area JOIN indenture USING (i_id)\n" +
-"                            WHERE end_date > '"+now+"');" ;
+"                            WHERE start_date  < '"+now+"');" ;
             stmt.executeUpdate(sql_id_area);
     }
 

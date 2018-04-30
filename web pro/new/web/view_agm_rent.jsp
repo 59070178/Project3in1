@@ -49,7 +49,7 @@
 <form action="view_agm_rent.jsp" method="POST">
     <center> <input type="submit" value="Renew a contract" name="btnRenew"/></center>
 </form>
-
+<%-- 
 <%
     String check = request.getParameter("btnRenew");
 
@@ -57,7 +57,7 @@
         Connection conn;
         conn = (Connection) getServletContext().getAttribute("connection");
 
-        int i_id = (int) session.getAttribute("i_id");
+        int i_id = (int) request.getSession().getAttribute("i_id");
 
         Agreement agmt = new Agreement();
         agmt.setConn(conn);
@@ -76,6 +76,7 @@
         }
     }
 %>
+--%>
 
 </body>
 </html>

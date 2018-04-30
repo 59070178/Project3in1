@@ -81,11 +81,11 @@ public class Agreement {
 
     public void setStatus_payment() throws SQLException {
          Statement stmt = conn.createStatement();
-            String sql_slip = "SELECT slip  FROM payment WHERE payment_id = '"+payment_id_book+"'";
+            String sql_slip = "SELECT bank  FROM payment WHERE payment_id = '"+payment_id_book+"'";
             ResultSet rs = stmt.executeQuery(sql_slip);
 
             while(rs.next()){
-                if(rs.getString("slip") == null){
+                if(rs.getString("bank") == null){
                   this.status_payment = "Uncomplete";
             }
             else{
@@ -93,7 +93,6 @@ public class Agreement {
             }
             }
 
-      
     }
 
     public String getStatus_payment_rent() {
@@ -102,16 +101,18 @@ public class Agreement {
 
     public void setStatus_payment_rent( ) throws SQLException {
          Statement stmt = conn.createStatement();
-            String sql_slip = "SELECT slip  FROM payment WHERE payment_id = '"+payment_id_Rent+"'";
+            String sql_slip = "SELECT bank  FROM payment WHERE payment_id = '"+payment_id_Rent+"'";
             ResultSet rs = stmt.executeQuery(sql_slip);
-            if(rs.next()){
-                  this.status_payment_rent = "Complete";
+            while(rs.next()){
+                if(rs.getString("bank") == null){
+                  this.status_payment_rent = "Uncomplete";
             }
             else{
-                this.status_payment_rent = "Uncomplete";
+                this.status_payment_rent = "Complete";
             }
+            }
+            this.status_payment_rent = "Uncomplete";
     }
-    
 
     public String getCost() {
         return cost;
