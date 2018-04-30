@@ -20,146 +20,159 @@
         <link rel="stylesheet" type="text/css" href="css/dashboard.css">
     <body>
 
-        
-        
-<br><br><br>
-<form action="ViewDashBoardServlet" method="POST">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="area" name="btn" /> <input type="submit" value="Annual Dashboard" name="btn"/>
-</form>
+
+
+        <br><br><br>
+        <form action="ViewDashBoardServlet" method="POST">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="area" name="btn" /> <input type="submit" value="Annual Dashboard" name="btn"/>
+        </form>
         <br><br><br><br><br><br>
+<!--    Graph Pictures1 Summarize Shop Type-->
+<br>
 
-
-        <!--    Graph Pictures1 rent/book real price -->
-
-        <sql:query var="myMoney" dataSource="test" >
-            select month(tranfer_date_time) 'month',  sum(price_book) 'book_price' , sum(price_rent) 'rent_price',sum(price_book)+ sum(price_rent) 'total'
-            from payment
-            join indenture
-            using (payment_id)
+<center> Summarize Of Current Shop Type <br>
+        <sql:query var="myArea" dataSource="test" >
+            select area_type , count(area_id) 'Number'
+            from area
             join inden_area
+            using (area_id )
+            join indenture
             using (i_id)
-            where tranfer_date_time like '<% String year1 = request.getParameter("year");%>%'
-            group by  month(tranfer_date_time);
-        </sql:query> 
+            join payment
+            using (payment_id )
+            where type_contract_id = 2
+            and status = 'disabled'
+            and slip is not null
+            group by area_type;
 
+        </sql:query> 
 
         <table  border="1" align="center"> 
             <thead>
                 <tr>
-                    <th>Month</th>
-                    <th>Book price per Month</th>
-                    <th>Rent price per Month</th>
-                    <th>Total per Month</th>
+                    <th>Area_type</th>
+                    <th>Number</th>
                 </tr>
             </thead>
 
             <tbody>
-                <c:forEach var="each_month" items="${myMoney.rows}">
+                <c:forEach var="each_area" items="${myArea.rows}">
                     <tr>
 
-                        <td>${each_month.month}</td>
+                        <td>${each_area.area_type}</td>
 
                         <td> 
-                            ${each_month.book_price} 
-                        </td>
-
-                        <td>${each_month.rent_price}</td>
-
-                        <td> 
-                            ${each_month.total} 
+                            ${each_area.Number} 
                         </td>
 
                     </tr> 
                 </c:forEach> 
 
-                <sql:query var="myMoney" dataSource="test" >
-                    select  sum(price_book) 'book_price' , sum(price_rent) 'rent_price',sum(price_book)+ sum(price_rent) 'total'
-                    from payment
-                    join indenture
-                    using (payment_id)
-                    join monthly_expense
-                    using (i_id )
-                    join inden_area
-                    using (i_id)
-                    where tranfer_date_time like '<% String year2 = request.getParameter("year");%>%'
-                </sql:query>
+                <sql:query var="myArea" dataSource="test" >
+                    select count(area_id) 'Number'
+                    from area
+                    where status = 'enable';
 
-                <c:forEach var="each_month" items="${myMoney.rows}">
-                    <tr>
-
-                        <td>TOTAL</td>
-
-                        <td> 
-                            ${each_month.book_price} 
-                        </td>
-
-                        <td>${each_month.rent_price}</td>
-
-                        <td> 
-                            ${each_month.total} 
-                        </td>
-
-                    </tr> 
-                </c:forEach> 
-            </tbody>
-        </table>
-
-            
-            
-           <br><br><br>
-        <!--    Graph Pictures1 rent/book monthly expense -->
-
-        <sql:query var="myMoney" dataSource="test" >
-            SELECT month(date_time_pay) 'month', sum(total) 'total' FROM monthly_expense
-            where slip is not null
-            and date_time_pay like '<% String year3 = request.getParameter("year");%>%'
-            group by month(date_time_pay)
-        </sql:query> 
-
-
-        <table  border="1" align="center"> 
-            <thead>
-                <tr>
-                    <th>Month</th>
-                    <th>Total per Month</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <c:forEach var="each_month" items="${myMoney.rows}">
-                    <tr>
-
-                        <td>${each_month.month}</td>
-
-                        <td> 
-                            ${each_month.total} 
-                        </td>
-
-                    </tr> 
-                </c:forEach> 
-
-                <sql:query var="myMoney" dataSource="test" >
-                    SELECT sum(total) 'total' FROM monthly_expense
-                    where slip is not null
-                    and date_time_pay like '<% String year4 = request.getParameter("year");%>%'
 
                 </sql:query> 
 
-                <c:forEach var="each_month" items="${myMoney.rows}">
+                <c:forEach var="each_area" items="${myArea.rows}">
                     <tr>
 
-                        <td>TOTAL</td>
+                        <td>Empty</td>
 
                         <td> 
-                            ${each_month.total} 
+                            ${each_area.Number} 
                         </td>
 
                     </tr> 
                 </c:forEach> 
             </tbody>
         </table>
+             <br><br><br><br>
+<p>Rental Statistics</p>
 
 
+      <!--    Graph Pictures2 Rental Statistics-->
+        <sql:query var="myArea" dataSource="test" >
+            select area_type , count(area_id) 'Number'
+            from area
+            join inden_area
+            using (area_id )
+            join indenture
+            using (i_id)
+            join payment
+            using (payment_id )
+            where type_contract_id = 2
+            group by area_type;
 
-</body>
+        </sql:query> 
+
+        <table  border="1" align="center"> 
+            <thead>
+                <tr>
+                    <th>Area_type</th>
+                    <th>Number</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <c:forEach var="each_area" items="${myArea.rows}">
+                    <tr>
+
+                        <td>${each_area.area_type}</td>
+
+                        <td> 
+                            ${each_area.Number} 
+                        </td>
+
+                    </tr> 
+                </c:forEach> 
+
+            </tbody>
+        </table>
+ <br><br><br><br>
+<p>Booking Statistics</p>
+     <!--    Graph Pictures2 Booking Statistics-->
+        <sql:query var="myArea" dataSource="test" >
+            select area_type , count(area_id) 'Number'
+            from area
+            join inden_area
+            using (area_id )
+            join indenture
+            using (i_id)
+            join payment
+            using (payment_id )
+            where type_contract_id = 1
+            group by area_type;
+
+        </sql:query> 
+
+        <table  border="1" align="center"> 
+            <thead>
+                <tr>
+                    <th>Area_type</th>
+                    <th>Number</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <c:forEach var="each_area" items="${myArea.rows}">
+                    <tr>
+
+                        <td>${each_area.area_type}</td>
+
+                        <td> 
+                            ${each_area.Number} 
+                        </td>
+
+                    </tr> 
+                </c:forEach> 
+
+            </tbody>
+        </table>
+
+</center>    
+
+    </body>
 </html>

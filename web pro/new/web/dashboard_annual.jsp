@@ -10,12 +10,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>  
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+<%@include  file="boss_header.html" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/dashboard.css">
     </head>
     <body>
 
@@ -32,8 +36,6 @@
             from payment
             join indenture
             using (payment_id)
-            join monthly_expense
-            using (i_id )
             join inden_area
             using (i_id)
             where tranfer_date_time like '<% String year1 = request.getParameter("year");%>%'
