@@ -40,6 +40,16 @@ public class Contract {
         }
         return contractID;
     }
+        public int getContractID(int id_user, String date) throws SQLException {
+        Statement stmt = conn.createStatement();
+        String sql = "SELECT max(m_i_id) 'i_id' FROM (select i_id 'm_i_id'   from indenture WHERE account_id ='" + id_user + "'" + " AND start_date <= '"+date+"')m_i_id" ;
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()) {
+            contractID = rs.getInt("i_id");
+        }
+        return contractID;
+    }
 
     //add by jugjig
     public int getContractID() {

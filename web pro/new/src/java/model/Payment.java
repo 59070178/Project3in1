@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -111,8 +112,10 @@ public class Payment {
 
     }
 
-    public void addPayMonthExp() {
-
+    public void upEnddate(int i_id , String end_date) throws SQLException {
+            Statement stmt = conn.createStatement();
+        String upEndDate = "UPDATE indenture  SET end_date   '"+ end_date+"' WHERE i_id   = '" + i_id + "'";
+        stmt.executeUpdate(upEndDate);
     }
 
     // end aew
