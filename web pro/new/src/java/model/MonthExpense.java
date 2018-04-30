@@ -22,6 +22,8 @@ public class MonthExpense {
    private float total;
    private  int invoice_id;
    private String month;
+   private String date_time ;
+   private String bank ;
    private boolean CkeckMonth;
 
     private Connection conn;
@@ -128,8 +130,28 @@ public class MonthExpense {
     public void setCkeckMonth(boolean CkeckMonth) {
         this.CkeckMonth = CkeckMonth;
     }
+  public void AddPayMonth() throws SQLException {
+      Statement stmt = conn.createStatement();
+            String sql = "UPDATE monthly_expense  SET slip = '" + "pic.jpg" + "'  , bank = '"+bank+"'  ,date_time_pay = '"
+                    +date_time+"' WHERE invoice_id = '"+invoice_id+"'" ;
+           stmt.executeUpdate(sql);
+    }
 
+    public String getDate_time() {
+        return date_time;
+    }
 
+    public void setDate_time(String date_time) {
+        this.date_time = date_time;
+    }
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
    
 
     

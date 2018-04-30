@@ -5,7 +5,12 @@
  */
 package model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -94,14 +99,14 @@ public class Payment {
 
     public void addPayRent() throws SQLException {
         Statement stmt = conn.createStatement();
-        String upslip_rent = "UPDATE payment  SET slip = '" + picInput + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_Rent + "'";
+        String upslip_rent = "UPDATE payment  SET slip = '" + "pic.jpg" + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_Rent + "'";
         stmt.executeUpdate(upslip_rent);
 
     }
 
     public void addPayBook() throws SQLException {
         Statement stmt = conn.createStatement();
-        String upslip_book = "UPDATE payment  SET slip = '" + picInput + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_book + "'";
+        String upslip_book = "UPDATE payment  SET slip = '" +  "pic.jpg"  + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_book + "'";
         stmt.executeUpdate(upslip_book);
 
     }
@@ -208,7 +213,14 @@ public class Payment {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
-
+   public void setFilePart(InputStream img) throws FileNotFoundException, IOException {
+       File Part = new File("C:\\Users\\user\\Documents\\git\\web pro\\img");
+       FileOutputStream  ops = new FileOutputStream(Part);
+       
+       byte[] buffer = new byte[1024];
+       while(img.read(buffer) > 0)
+           ops.write(buffer);
+    }
 
 
 }

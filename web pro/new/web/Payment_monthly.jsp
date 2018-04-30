@@ -39,12 +39,12 @@ and open the template in the editor.
                         <a href="Payment_rent.jsp">Rental Expense</a>
                     </div>
                 </div>
-                <form action="Payment_monthly.jsp" method="POST">
+                <form action="payMonth" method="POST">
                     <button class="select_bn" >Monthly Expense</button>
-                </form>
+
             </center>
                    <sql:query var="myMonth" dataSource="test" >
-            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"  and slip is null
+            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>"  and bank is null
         </sql:query> 
 
             <!-- Select month for view -->
@@ -52,7 +52,7 @@ and open the template in the editor.
         </div>
     </center>
     <div class="row">
-        <form action="PaymentServlet" method="POST">
+
             <b>Select Month</b>
 <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
                       <option value="${month.month}" >  ${month.month}   </option></center>

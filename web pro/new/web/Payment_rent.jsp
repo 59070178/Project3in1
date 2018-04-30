@@ -36,13 +36,13 @@ and open the template in the editor.
                 </form>
             </center>
             <div class="row">
-            <form action="PaymentServlet" method="POST">
+            <form action="Payrent" method="POST">
 
                     <b>Bank</b>
                         <select name="bank">
-                            <option>BBL</option>
-                            <option>KBANK</option>
-                            <option>SCB</option>
+                            <option value="BBL">BBL</option>
+                            <option value="KBANK">KBANK</option>
+                            <option value="SCB">SCB</option>
                         </select>
                     <br><br>
 

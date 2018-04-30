@@ -40,7 +40,7 @@ and open the template in the editor.
                 </form>
             </center>
             <div class="row">
-            <form action="PaymentServlet" method="POST">
+            <form action="Paybook" method="POST">
                 
 
                     <b>Bank</b>
