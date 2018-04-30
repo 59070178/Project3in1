@@ -48,7 +48,7 @@ public class updateStatusArea extends HttpServlet {
             
             String now = chk.getStr_date();
             
-            out.print(now);
+//            out.print(now);
             ////statusArea
             
             statusArea upd = new statusArea();
@@ -56,8 +56,8 @@ public class updateStatusArea extends HttpServlet {
             upd.setStatus_area(now);
             
             
-//            RequestDispatcher dp = request.getRequestDispatcher("home.html");
-//                dp.forward(request, response);
+            RequestDispatcher dp = request.getRequestDispatcher("home.html");
+                dp.forward(request, response);
         
     }   catch (SQLException ex) {
             Logger.getLogger(updateStatusArea.class.getName()).log(Level.SEVERE, null, ex);
