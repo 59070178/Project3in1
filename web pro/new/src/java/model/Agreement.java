@@ -93,7 +93,6 @@ public class Agreement {
             }
             }
 
-       this.status_payment = "Uncomplete";
     }
 
     public String getStatus_payment_rent() {

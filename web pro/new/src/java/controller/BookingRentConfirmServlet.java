@@ -24,6 +24,7 @@ import model.Contract;
 import model.IndenArea;
 import model.Payment;
 import model.Place;
+import model.forDate;
 
 /**
  *
@@ -88,6 +89,20 @@ public class BookingRentConfirmServlet extends HttpServlet {
                 indenArea.addIndenArea();
             }
 
+            forDate dat = new forDate();
+            dat.setDay();
+            dat.setMonth();
+            dat.setStr_monthForComp();
+            dat.setYear();
+            dat.setStr_dayForComp();
+            dat.setStr_date();
+
+            String now = dat.getStr_date();
+            int id_user = (int) session.getAttribute("id_user");
+            Contract contract = new Contract(conn);
+
+            int i_id = contract.getContractID(id_user, now);
+            session.setAttribute("i_id", i_id);
 //            
             response.sendRedirect("successPayment.jsp");
         } catch (SQLException ex) {

@@ -33,7 +33,7 @@ public class DateExample {
 
     public void bookDate() {
         Date currentDate = new Date();
-        due_date = dateFormat.format(currentDate);
+        //due_date = dateFormat.format(currentDate);
 
         // convert date to calendar
         Calendar c = Calendar.getInstance();
@@ -42,13 +42,18 @@ public class DateExample {
         // manipulate date
 //        c.add(Calendar.YEAR, 1);
 //        c.add(Calendar.MONTH, 1);
-        c.add(Calendar.DATE, 3); //same with c.add(Calendar.DAY_OF_MONTH, 1);
+        c.add(Calendar.YEAR, -543);
+                due_date = dateFormat.format(c.getTime());
+        c.add(Calendar.DATE, 3);
+        //same with c.add(Calendar.DAY_OF_MONTH, 1);
+
 //        c.add(Calendar.HOUR, 1);
 //        c.add(Calendar.MINUTE, 1);
 //        c.add(Calendar.SECOND, 1);
 
         // convert calendar to date
         Date currentDatePlusOne = c.getTime();
+
 
 //        System.out.println(dateFormat.format(currentDatePlusOne));
         next_date = dateFormat.format(currentDatePlusOne);
