@@ -89,7 +89,7 @@ public class view_agm_rent extends HttpServlet {
              agm.setStatus_payment_rent();
             agm.setCost(i_id);
             agm.setTotal_rent(i_id);
-            request.setAttribute("Agreement", agm);
+            session.setAttribute("Agreement", agm);
             if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_Rent() == 0)  {
                 response.sendRedirect("donthave.jsp");
             }

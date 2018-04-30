@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import model.Account;
+import model.DateExample;
 import model.Payment;
 
 /**
@@ -61,6 +66,26 @@ public class Payrent extends HttpServlet {
 //            out.println(date+" "+time);
             pay.setPayment_id_Rent(i_id);
             pay.addPayRent();
+            Account account = (Account) session.getAttribute("account_info");
+             int account_id = account.getAccount_id();
+            Statement stmt = conn.createStatement();
+            String sql1 = "select max(i_id)\n" +
+"                    from indenture\n" +
+"                    join payment\n" +
+"using(payment_id)\n" +
+"                   where account_id = " +account_id+"\n" +
+"                    and type_contract_id = 2";
+            ResultSet rs1 = stmt.executeQuery(sql1);
+            rs1.next();
+            
+            DateExample dt = new DateExample();
+            dt.rentPayDate();
+            Date start_date = java.sql.Date.valueOf(dt.getDue_date());
+            Date end_date = java.sql.Date.valueOf( dt.getNext_date());
+            String sql2 = "UPDATE indenture \n" +
+"SET start_date = '"+start_date+"' , end_date = '"+ end_date+"'\n" +
+"WHERE i_id = " + rs1.getInt("max(i_id)");
+            stmt.executeUpdate(sql2);
             
             response.sendRedirect("successPayment.jsp");
             
