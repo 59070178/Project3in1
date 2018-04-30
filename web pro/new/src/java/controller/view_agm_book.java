@@ -68,7 +68,7 @@ public class view_agm_book extends HttpServlet {
             ///indenture
             
             int i_id = (int) session.getAttribute("i_id");
-            out.print(i_id);
+//            out.print(i_id);
             
             if(i_id == 0){
                 response.sendRedirect("donthave.jsp");
@@ -87,13 +87,13 @@ public class view_agm_book extends HttpServlet {
             agm.setTotal_book(i_id);
             session.setAttribute("Agreement", agm);
 
-//            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
-//                response.sendRedirect("donthave.jsp");
-//            }
-//            else{
-//                RequestDispatcher dp = request.getRequestDispatcher("view_agm_book.jsp");
-//                dp.forward(request, response);
-//            }
+            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
+                response.sendRedirect("donthave.jsp");
+            }
+            else{
+                RequestDispatcher dp = request.getRequestDispatcher("view_agm_book.jsp");
+                dp.forward(request, response);
+            }
             
             
             }

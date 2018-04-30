@@ -89,7 +89,7 @@ public class BookingRentConfirmServlet extends HttpServlet {
             }
 
 //            
-            response.sendRedirect("successRegister.html");
+            response.sendRedirect("successPayment.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(BookingRentConfirmServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

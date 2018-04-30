@@ -42,7 +42,10 @@ public class Contract {
     }
         public int getContractID(int id_user, String date) throws SQLException {
         Statement stmt = conn.createStatement();
-        String sql = "SELECT max(m_i_id) 'i_id' FROM (select i_id 'm_i_id'   from indenture WHERE account_id ='" + id_user + "'" + " AND start_date <= '"+date+"')m_i_id" ;
+        String sql = "SELECT max(m_i_id) 'i_id' FROM \n" +
+"(select i_id 'm_i_id'   from indenture \n" +
+"join payment using (payment_id)\n" +
+"WHERE account_id = '"+id_user+"' AND start_date <= '"+date+"' AND end_date > '"+date+"'" +")m_i_id" ;
         ResultSet rs = stmt.executeQuery(sql);
 
         while (rs.next()) {
