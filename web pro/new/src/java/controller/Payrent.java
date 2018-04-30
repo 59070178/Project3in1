@@ -11,13 +11,13 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-=======
+
 import java.sql.Statement;
->>>>>>> master
+
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,11 +28,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-<<<<<<< HEAD
+
 import model.Agreement;
-=======
+
 import model.Account;
->>>>>>> master
 import model.DateExample;
 import model.Payment;
 
@@ -113,12 +112,12 @@ public class Payrent extends HttpServlet {
         Calendar n = Calendar.getInstance();
         n.setTime(currentDate);
 
-        String end_date = dateFormat.format(agm.getE_date());
+        String e_date = dateFormat.format(agm.getE_date());
         Calendar c = Calendar.getInstance();
         c.setTime(agm.getE_date());
 
         c.add(Calendar.YEAR, 1);
-        pay.upEnddate(i_id, end_date);
+        pay.upEnddate(i_id, e_date);
             
             response.sendRedirect("successPayment.jsp");
             
