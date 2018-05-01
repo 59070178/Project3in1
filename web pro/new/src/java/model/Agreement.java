@@ -111,7 +111,7 @@ public class Agreement {
                 this.status_payment_rent = "Complete";
             }
             }
-            this.status_payment_rent = "Uncomplete";
+
     }
 
     public String getCost() {

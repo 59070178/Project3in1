@@ -31,7 +31,7 @@
 using (account_id)
 join payment
 using (payment_id)
-where type_contract_id = 2 and slip is not null ;
+where type_contract_id = 2 and slip is not null and end_date > "<%= session.getAttribute("date_now") %>";
         </sql:query> 
         <form action="showBoxForFillBill" method="POST">   
             <br><center><table border="1">

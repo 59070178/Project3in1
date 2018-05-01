@@ -98,26 +98,26 @@ public class Payrent extends HttpServlet {
             stmt.executeUpdate(sql2);
             
             
-            Agreement agm = new Agreement();
-            agm.setConn(conn);
-
-            agm.setEnd_date(i_id);
-            agm.setE_date(i_id);
-            
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date currentDate = new Date();
-        String nowstr = dateFormat.format(currentDate);
-
-        // convert date to calendar
-        Calendar n = Calendar.getInstance();
-        n.setTime(currentDate);
-
-        String e_date = dateFormat.format(agm.getE_date());
-        Calendar c = Calendar.getInstance();
-        c.setTime(agm.getE_date());
-
-        c.add(Calendar.YEAR, 1);
-        pay.upEnddate(i_id, e_date);
+//            Agreement agm = new Agreement();
+//            agm.setConn(conn);
+//
+//            agm.setEnd_date(i_id);
+//            agm.setE_date(i_id);
+//            
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            Date currentDate = new Date();
+//        String nowstr = dateFormat.format(currentDate);
+//
+//        // convert date to calendar
+//        Calendar n = Calendar.getInstance();
+//        n.setTime(currentDate);
+//
+//        String e_date = dateFormat.format(agm.getE_date());
+//        Calendar c = Calendar.getInstance();
+//        c.setTime(agm.getE_date());
+//
+//        c.add(Calendar.YEAR, 1);
+//        pay.upEnddate(i_id, e_date);
             
             response.sendRedirect("successPayment.jsp");
             

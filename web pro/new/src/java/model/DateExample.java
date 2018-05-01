@@ -139,13 +139,18 @@ public class DateExample {
     }
     
     public void rentPayDate() {
-        Date currentDate = new Date();
-        due_date = dateFormat.format(currentDate);
+               Date currentDate = new Date();
+        //due_date = dateFormat.format(currentDate);
 
         // convert date to calendar
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
 
+        // manipulate date
+//        c.add(Calendar.YEAR, 1);
+//        c.add(Calendar.MONTH, 1);
+        c.add(Calendar.YEAR, -543);
+                due_date = dateFormat.format(c.getTime());
         // manipulate date
         c.add(Calendar.YEAR, 1);
 //        c.add(Calendar.MONTH, 1);

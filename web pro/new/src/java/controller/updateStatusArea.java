@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.forDate;
 import model.statusArea;
 
@@ -38,6 +39,7 @@ public class updateStatusArea extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             ///get date now
+            HttpSession session = request.getSession(true);
             forDate chk = new forDate();
             chk.setDay();
             chk.setMonth();
@@ -47,6 +49,8 @@ public class updateStatusArea extends HttpServlet {
             chk.setStr_date();
             
             String now = chk.getStr_date();
+            
+           session.setAttribute("date_now", now);
             
 //            out.print(now);
             ////statusArea
