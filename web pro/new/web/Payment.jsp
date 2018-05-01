@@ -41,5 +41,6 @@ and open the template in the editor.
             </form>
         </center>
     </div>
+    <center><img src="pic/bank.jpeg" width="500" height="873" alt="bank"/></center>
 </body>
 </html>
