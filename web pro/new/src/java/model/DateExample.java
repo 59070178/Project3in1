@@ -143,7 +143,24 @@ public class DateExample {
         }
         return chk;
     }
-    
+        public Date DateCanRenew(Date e_date) {
+        
+        Date currentDate = new Date();
+        String nowstr = dateFormat.format(currentDate);
+
+        // convert date to calendar
+        Calendar n = Calendar.getInstance();
+        n.setTime(currentDate);
+
+        end_date = dateFormat.format(e_date);
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(e_date);
+
+        c.add(Calendar.DATE, -30);
+
+        return c.getTime();
+    }
     public void rentPayDate() {
                Date currentDate = new Date();
         //due_date = dateFormat.format(currentDate);

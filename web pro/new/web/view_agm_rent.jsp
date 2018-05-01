@@ -46,24 +46,20 @@
     </div>
 
 </div>
-<form action="view_agm_rent.jsp" method="POST">
+<form action="chkCanRenew" method="POST">
     <center> <input type="submit" value="Renew a contract" name="btnRenew"/></center>
 </form>
+
+
 <%-- 
 <%
     String check = request.getParameter("btnRenew");
 
     if (check != null) {
-        Connection conn;
-        conn = (Connection) getServletContext().getAttribute("connection");
 
-        int i_id = (int) request.getSession().getAttribute("i_id");
+        int i_id =  (int) session.getAttribute("i_id") ;
 
-        Agreement agmt = new Agreement();
-        agmt.setConn(conn);
-        agmt.setPayment_id_Rent(i_id);
-        agmt.setE_date(i_id);
-        Date e = agmt.getE_date();
+        Date e =  (Date) session.getAttribute("e") ;
         ///get date now
         DateExample dat = new DateExample();
         boolean chk = dat.chkFor_renew(e);

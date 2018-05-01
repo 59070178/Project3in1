@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -76,6 +77,8 @@ public class loginServlet extends HttpServlet {
             Contract contract = new Contract(conn);
 
             int i_id = contract.getContractID(id_user,now);
+            Date e = contract.getEndDate();
+            session.setAttribute("e", e);
             session.setAttribute("i_id", i_id);
 
 //            account.setFirstname(id_user);
