@@ -17,6 +17,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,15 +37,15 @@ public class Payment {
     private String bank;
 
     private InputStream picInput;
-    private Blob pic;
+    private String pic;
     // end aew
 
-    public void setPicInput(InputStream picInput) {
-        this.picInput = picInput;
+    public String getPic() {
+        return pic;
     }
 
-    public void setPic(Blob pic) {
-        this.pic = pic;
+    public void setPic() {
+        this.pic ="/slip" +  paymentID+ ".jpg";
     }
 
     private Connection conn;
@@ -65,13 +67,35 @@ public class Payment {
         this.date_time = date_time;
     }
 
-//    public InputStream getPicInput() {
-//        return picInput;
-//    }
-//
-//    public void setPicInput(InputStream picInput) {
-//        this.picInput = picInput;
-//    }
+    public InputStream getPicInput() {
+        return picInput;
+    }
+
+    public void setPicInput(InputStream picInput) {
+        FileOutputStream ops = null;
+        try {
+            File path = new File("D:/GitHup/Project3in1/web pro/new/slip" +  paymentID+ ".jpg");//ย้าย path here
+            ops = new FileOutputStream(path);
+            byte[] buffer = new byte[1024];
+            while (picInput.read(buffer) > 0) {
+                ops.write(buffer);
+            }   ops.close();
+            
+            this.picInput = picInput;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ops.close();
+                
+                
+            } catch (IOException ex) {
+                Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
     public int getPayment_id_book() throws SQLException {
 
@@ -117,14 +141,14 @@ public class Payment {
 
     public void addPayBook() throws SQLException {
         Statement stmt = conn.createStatement();
-        String upslip_book = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_book + "'";
+        String upslip_book = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + paymentID + "'";
         stmt.executeUpdate(upslip_book);
 
     }
 
-    public void upEnddate(int i_id , String end_date) throws SQLException {
-            Statement stmt = conn.createStatement();
-        String upEndDate = "UPDATE indenture  SET end_date   '"+ end_date+"' WHERE i_id   = '" + i_id + "'";
+    public void upEnddate(int i_id, String end_date) throws SQLException {
+        Statement stmt = conn.createStatement();
+        String upEndDate = "UPDATE indenture  SET end_date   '" + end_date + "' WHERE i_id   = '" + i_id + "'";
         stmt.executeUpdate(upEndDate);
     }
 
@@ -146,6 +170,15 @@ public class Payment {
         this.paymentID = paymentID;
     }
 
+    public void setPaymentIDForPic(int i_id) throws SQLException{
+        Statement stmt = conn.createStatement();
+        String sql_paymentid = "SELECT payment_id   FROM indenture join payment using(payment_id) WHERE i_id = '" + i_id + "'";
+        ResultSet rs = stmt.executeQuery(sql_paymentid);
+        while (rs.next()) {
+            this.paymentID = rs.getInt("payment_id");
+        }
+    }
+    
     public float getPriceBook() {
         return priceBook;
     }
@@ -216,7 +249,6 @@ public class Payment {
             setPaymentID(rs.getInt("payment_id"));
         }
 
-
     }
 
     public Connection getConn() {
@@ -226,14 +258,9 @@ public class Payment {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
-   public void setFilePart(InputStream img) throws FileNotFoundException, IOException {
-       File Part = new File("C:\\Users\\user\\Documents\\git\\web pro\\img");
-       FileOutputStream  ops = new FileOutputStream(Part);
-       
-       byte[] buffer = new byte[1024];
-       while(img.read(buffer) > 0)
-           ops.write(buffer);
-    }
 
+    public void setFilePart(InputStream img) throws FileNotFoundException, IOException {
+
+    }
 
 }

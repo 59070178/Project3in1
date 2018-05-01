@@ -40,7 +40,7 @@ public class Paybook extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-                        HttpSession session = request.getSession(true);
+            HttpSession session = request.getSession(true);
             int i_id = (int) session.getAttribute("i_id");
             
             String bank = request.getParameter("bank");
@@ -55,14 +55,17 @@ public class Paybook extends HttpServlet {
             Payment pay = new Payment();
             pay.setConn(conn);
 //            pay.setFilePart(inp);
+            pay.setPaymentIDForPic(i_id);
             
-//            pay.setPicInput(inp);
-            pay.setPic( (Blob) inp);
+            pay.setPicInput(inp);
+            
+//            pay.setPic( (Blob) inp);
             pay.setBank(bank);
             pay.setDate_time(date+" "+time);
 //            out.println(pay.getDate_time());
 //            out.println(date+" "+time);
-            pay.setPayment_id_book(i_id);
+//            pay.setPayment_id_book(i_id);
+            pay.setPic();
             pay.addPayBook();
             
             response.sendRedirect("successPayment.jsp");
