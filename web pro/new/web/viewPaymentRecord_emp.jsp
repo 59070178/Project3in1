@@ -40,7 +40,7 @@
     <br><center><table border="1">
             <thead>
                 <tr>
-                    <th target="cus_id">CUSTOMER ID.</th>
+                    <th target="cus_id">Month</th>
                     <th>AMOUNT</th>
                     <th>STATUS</th>
                 </tr>

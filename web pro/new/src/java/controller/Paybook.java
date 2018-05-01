@@ -6,7 +6,9 @@
 package controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import model.Payment;
 
 /**
@@ -43,15 +46,18 @@ public class Paybook extends HttpServlet {
             String bank = request.getParameter("bank");
             String date = request.getParameter("trans_date");
             String time = request.getParameter("trans_time");
-//            Part filepart = request.getPart("trans_image");
+            Part filepart = request.getPart("trans_image");
+//            String pic_s = request.getParameter("trans_image");
             
-//            InputStream inp = filepart.getInputStream();
+            
+            InputStream inp = filepart.getInputStream();
             
             Payment pay = new Payment();
             pay.setConn(conn);
 //            pay.setFilePart(inp);
             
 //            pay.setPicInput(inp);
+            pay.setPic( (Blob) inp);
             pay.setBank(bank);
             pay.setDate_time(date+" "+time);
 //            out.println(pay.getDate_time());

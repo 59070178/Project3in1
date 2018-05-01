@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -34,7 +35,16 @@ public class Payment {
     private String bank;
 
     private InputStream picInput;
+    private Blob pic;
     // end aew
+
+    public void setPicInput(InputStream picInput) {
+        this.picInput = picInput;
+    }
+
+    public void setPic(Blob pic) {
+        this.pic = pic;
+    }
 
     private Connection conn;
 
@@ -55,13 +65,13 @@ public class Payment {
         this.date_time = date_time;
     }
 
-    public InputStream getPicInput() {
-        return picInput;
-    }
-
-    public void setPicInput(InputStream picInput) {
-        this.picInput = picInput;
-    }
+//    public InputStream getPicInput() {
+//        return picInput;
+//    }
+//
+//    public void setPicInput(InputStream picInput) {
+//        this.picInput = picInput;
+//    }
 
     public int getPayment_id_book() throws SQLException {
 
@@ -100,14 +110,14 @@ public class Payment {
 
     public void addPayRent() throws SQLException {
         Statement stmt = conn.createStatement();
-        String upslip_rent = "UPDATE payment  SET slip = '" + "pic.jpg" + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_Rent + "'";
+        String upslip_rent = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_Rent + "'";
         stmt.executeUpdate(upslip_rent);
 
     }
 
     public void addPayBook() throws SQLException {
         Statement stmt = conn.createStatement();
-        String upslip_book = "UPDATE payment  SET slip = '" +  "pic.jpg"  + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_book + "'";
+        String upslip_book = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_book + "'";
         stmt.executeUpdate(upslip_book);
 
     }

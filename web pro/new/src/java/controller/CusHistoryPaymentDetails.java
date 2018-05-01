@@ -51,13 +51,13 @@ public class CusHistoryPaymentDetails extends HttpServlet {
             HttpSession session = request.getSession();
             String account_type = (String) session.getAttribute("account_type");
             
-            if (account_type.equals("employees")) {
+            if (account_type.equals("employee")) {
 //                        out.print(rs.getString("account_type"));
 
                 RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_emp.jsp");
                 dp.forward(request, response);
             } else { //else if account_type is boss
-                RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_emp.jsp");
+                RequestDispatcher dp = request.getRequestDispatcher("viewPaymentRecord_boss.jsp");
                 dp.forward(request, response);
             }
 

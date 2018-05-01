@@ -4,7 +4,7 @@ body, html {
     line-height: 2;
     font-size: 1em;
     background-color: white;
-    padding-bottom: 92%;
+    padding-bottom: 50%;
 }
 .side-menu {
     width:16em;
@@ -101,7 +101,6 @@ body, html {
 
 input[target=newterm] {
     width: 70%;
-    padding-bottom: 50%; 
     position: relative;
     left: 1.5%;
     font-size: 24px;

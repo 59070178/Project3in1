@@ -25,7 +25,7 @@
 
         <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
-            select * from customer join account using(account_id) join indenture using (account_id);
+           select * from customer join account using(account_id) join indenture using (account_id) group by account_id order by i_id;;
         </sql:query> 
         <form action="CusHistoryPaymentDetails" method="POST">   
             <br><center><table border="1">
