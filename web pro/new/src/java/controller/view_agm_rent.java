@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Agreement;
+import model.Contract;
 import model.forDate;
 
 /**
@@ -45,18 +46,7 @@ public class view_agm_rent extends HttpServlet {
             HttpSession session = request.getSession(true);
             int id_user = (int) session.getAttribute("id_user");
             
-            //chk date
-             forDate chk = new forDate();
-            chk.setDay();
-            chk.setMonth();
-            chk.setStr_monthForComp();
-            chk.setYear();
-            chk.setStr_dayForComp();
-            chk.setDay();
-            chk.setStr_date();
 
-            
-            String now = chk.getStr_date();
             ////Account
             
             Account acc = new Account();
@@ -72,7 +62,8 @@ public class view_agm_rent extends HttpServlet {
             ///indenture
             
             int i_id = (int) session.getAttribute("i_id");
-            
+//            out.println(i_id);
+//            
             if(i_id == 0){
                 response.sendRedirect("donthave.jsp");
             }else{
@@ -90,15 +81,21 @@ public class view_agm_rent extends HttpServlet {
             agm.setCost(i_id);
             agm.setTotal_rent(i_id);
             session.setAttribute("Agreement", agm);
-            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_Rent() == 0)  {
-                response.sendRedirect("donthave.jsp");
-            }
-            else{
-                RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent.jsp");
+            
+            /// เช่าหรือจอง
+            Contract cont = new Contract();
+            cont.setConn(conn);
+            cont.setChkBookOrRent(i_id);
+            int chkCont = cont.getChkBookOrRent();
+            if(chkCont == 1){
+                                RequestDispatcher dp = request.getRequestDispatcher("donthave.jsp");
                 dp.forward(request, response);
             }
-            
-            
+             if(chkCont == 2){
+                                RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent.jsp");
+                dp.forward(request, response);
+                            }
+
             }
             
         } catch (SQLException ex) {

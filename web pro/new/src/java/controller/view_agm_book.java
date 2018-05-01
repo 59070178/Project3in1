@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Agreement;
+import model.Contract;
 import model.forDate;
 
 /**
@@ -86,14 +87,19 @@ public class view_agm_book extends HttpServlet {
             agm.setCost(i_id);
             agm.setTotal_book(i_id);
             session.setAttribute("Agreement", agm);
-
-            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  {
-                response.sendRedirect("donthave.jsp");
-            }
-            else{
-                RequestDispatcher dp = request.getRequestDispatcher("view_agm_book.jsp");
+           /// เช่าหรือจอง
+            Contract cont = new Contract();
+            cont.setConn(conn);
+            cont.setChkBookOrRent(i_id);
+            int chkCont = cont.getChkBookOrRent();
+            if(chkCont == 1){
+                                RequestDispatcher dp = request.getRequestDispatcher("view_agm_book.jsp");
                 dp.forward(request, response);
             }
+             if(chkCont == 2){
+                                RequestDispatcher dp = request.getRequestDispatcher("donthave.jsp");
+                dp.forward(request, response);
+                            }
             
             
             }

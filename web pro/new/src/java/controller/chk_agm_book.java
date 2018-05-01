@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Agreement;
+import model.Contract;
 import model.forDate;
 
 /**
@@ -57,40 +58,29 @@ public class chk_agm_book extends HttpServlet {
             if(i_id == 0){
                 response.sendRedirect("booking.jsp");
             }
-                else{
+               else{
             
-            Agreement agm = new Agreement();
-            agm.setConn(conn);
-            
-            agm.setPayment_id_book(i_id);
-             agm.setEnd_date(i_id);
-
-
-            if(agm.getEnd_date().compareTo(now) < 0 || agm.getPayment_id_book() == 0)  { ///  if ไม่มีสัญญาจอง
-                      Agreement chk_rent = new Agreement();  /// เช็คต่อว่ามีเช่ารึป่าว
-                chk_rent.setConn(conn);
-                chk_rent.setPayment_id_Rent(i_id);
-
-                chk_rent.setPayment_id_Rent(i_id);
-                chk_rent.setEnd_date(i_id);
-
-                
-                if (chk_rent.getEnd_date().compareTo(now) < 0 || chk_rent.getPayment_id_Rent() == 0) {
-                    response.sendRedirect("booking.jsp");
-                } else {
-                    response.sendRedirect("view_agm_rent");
-                }
-                }
-            else{ /// มีสัญญาจอง
-                response.sendRedirect("view_agm_book");
+            Contract cont = new Contract();
+            cont.setConn(conn);
+            cont.setChkBookOrRent(i_id);
+            int chkCont = cont.getChkBookOrRent();
+            if(chkCont == 1){
+                                RequestDispatcher dp = request.getRequestDispatcher("view_agm_book");
+                dp.forward(request, response);
             }
+             if(chkCont == 2){
+                                RequestDispatcher dp = request.getRequestDispatcher("view_agm_rent");
+                dp.forward(request, response);
+                            }
+
+
             }
 
 
             
-        } catch (SQLException ex) {
-           Logger.getLogger(chk_agm_rent.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        } catch (SQLException ex) { 
+           Logger.getLogger(chk_agm_book.class.getName()).log(Level.SEVERE, null, ex);
+       } 
         
     }
 

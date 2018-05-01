@@ -40,7 +40,7 @@
 
                     <a href="chk_agm_book" class="w3-bar-item w3-button"><i class="fa fa-tag"></i>  BOOKING</a>
 
-                    <a href="chk_agm_rent" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
+                    <a href="chk_agm_book" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i>  RENTAL</a>
 
                     <a href="sentProfile" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i> PROFILE</a>
                 </div>

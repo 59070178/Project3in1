@@ -23,6 +23,7 @@ public class Contract {
     private String type;
     private int account_id;
     private int payment_id;
+    private int chkBookOrRent;
     
 
     private Connection conn;
@@ -45,7 +46,7 @@ public class Contract {
         String sql = "SELECT max(m_i_id) 'i_id' FROM \n" +
 "(select i_id 'm_i_id'   from indenture \n" +
 "join payment using (payment_id)\n" +
-"WHERE account_id = '"+id_user+"' AND start_date <= '"+date+"' AND end_date > '"+date+"'" +")m_i_id" ;
+"WHERE account_id = '"+id_user+"' AND start_date < '"+date+"' AND end_date > '"+date+"'" +")m_i_id" ;
         ResultSet rs = stmt.executeQuery(sql);
 
         while (rs.next()) {
@@ -132,6 +133,26 @@ public class Contract {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
+
+    public int getChkBookOrRent() {
+        return chkBookOrRent;
+    }
+
+    public void setChkBookOrRent(int i_id) throws SQLException {
+                Statement stmt = conn.createStatement();
+        String sql_chk = "select type_contract_id \n" +
+"from indenture\n" +
+"join payment\n" +
+"using (payment_id )\n" +
+"where i_id = '"+i_id+"'";
+        ResultSet rs = stmt.executeQuery(sql_chk);
+
+        while (rs.next()) {
+             this.chkBookOrRent  = rs.getInt("type_contract_id");
+        }
+        
+    }
+
 
 
 
