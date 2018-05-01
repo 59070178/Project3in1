@@ -57,7 +57,6 @@ and open the template in the editor.
 <select name="month"> <c:forEach var="month" items="${myMonth.rows}">
                       <option value="${month.month}" >  ${month.month}   </option></center>
                 </c:forEach> </select>
-               <br> <input type="submit" value="Select" />
             <br><br>
 
             <b>Bank</b>

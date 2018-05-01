@@ -34,6 +34,7 @@ public class Payment {
     private int payment_id_Rent;
     private String bank;
     private int paymentIDForpic;
+    
 
 //    private InputStream picInput;
     private String pic;
@@ -45,13 +46,20 @@ public class Payment {
 
     public void setPaymentIDForpic(int i_id) throws SQLException {
                 Statement stmt = conn.createStatement();
-        String sql_payment = "SELECT payment_id   FROM indenture join payment using(payment_id) WHERE i_id = '" + i_id + "' AND type_contract_id = 1";
+        String sql_payment = "SELECT payment_id   FROM indenture join payment using(payment_id) WHERE i_id = '" + i_id + "'";
         ResultSet rs = stmt.executeQuery(sql_payment);
         while (rs.next()) {
             this.paymentIDForpic = rs.getInt("payment_id");
         }
     }
-    
+       public void setPaymentIDForpic(int i_id , String month) throws SQLException {
+                Statement stmt = conn.createStatement();
+        String sql_payment = "SELECT invoice_id  FROM monthly_expense  WHERE i_id = '" + i_id + "' AND month = '"+month+"'";
+        ResultSet rs = stmt.executeQuery(sql_payment);
+        while (rs.next()) {
+            this.paymentIDForpic = rs.getInt("invoice_id");
+        }
+    }
     
 
     public String getPic() {
@@ -128,7 +136,7 @@ public class Payment {
 
     public void addPayRent() throws SQLException {
         Statement stmt = conn.createStatement();
-        String upslip_rent = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_Rent + "'";
+        String upslip_rent = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + paymentIDForpic + "'";
         stmt.executeUpdate(upslip_rent);
 
     }

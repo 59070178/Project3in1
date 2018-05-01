@@ -59,24 +59,24 @@ public class Payrent extends HttpServlet {
             String bank = request.getParameter("bank");
             String date = request.getParameter("trans_date");
             String time = request.getParameter("trans_time");
-            float amount = Float.parseFloat(request.getParameter("amount"));
+//            Part filepart = request.getPart("trans_image");
+            String pic_s = request.getParameter("trans_image");
 //            Part filepart = request.getPart("trans_image");
             
 //            InputStream inp = filepart.getInputStream();
 
 
+            
             Payment pay = new Payment();
             pay.setConn(conn);
-//            pay.setFilePart(inp);
-            
-//            pay.setPicInput(inp);
+
             pay.setBank(bank);
-            pay.setDate_time(date+" "+time);
-//            out.println(pay.getDate_time());
-//            out.println(date+" "+time);
+            pay.setDate_time(date + " " + time);
             pay.setPaymentIDForpic(i_id);
             pay.setPic();
+
             pay.addPayRent();
+            
             Account account = (Account) session.getAttribute("account_info");
              int account_id = account.getAccount_id();
             Statement stmt = conn.createStatement();

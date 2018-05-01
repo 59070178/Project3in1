@@ -52,6 +52,8 @@ public class payMonth extends HttpServlet {
 //            out.print(pay.getInvoice_id());
             pay.setDate_time(date + " " +time);
             pay.setBank(bank);
+            
+            pay.setName_pic();
             pay.AddPayMonth();
             
                        response.sendRedirect("successPayment.jsp");

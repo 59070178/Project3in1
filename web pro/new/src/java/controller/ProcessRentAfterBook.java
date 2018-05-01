@@ -28,6 +28,7 @@ import model.Contract;
 import model.DateExample;
 import model.Payment;
 import model.Place;
+import model.forDate;
 
 /**
  *
@@ -109,6 +110,21 @@ public class ProcessRentAfterBook extends HttpServlet {
             session.setAttribute("rentAnnounce_details", announce);
             
             session.setAttribute("type_contract_name", "Rent");
+
+            ///// Get i_id now
+            int id_user = (int) session.getAttribute("id_user");
+            forDate dat = new forDate();
+            dat.setDay();
+            dat.setMonth();
+            dat.setStr_monthForComp();
+            dat.setYear();
+            dat.setStr_dayForComp();
+            dat.setStr_date();
+
+            String now = dat.getStr_date();
+            contract.setConn(conn);
+            int i_id = contract.getContractID(id_user, now);
+            session.setAttribute("i_id", i_id);
 //            
             RequestDispatcher pg = request.getRequestDispatcher("agreement_rent.jsp");
             pg.forward(request, response);

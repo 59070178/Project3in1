@@ -25,6 +25,7 @@ public class MonthExpense {
    private String date_time ;
    private String bank ;
    private boolean CkeckMonth;
+   private String name_pic;
 
     private Connection conn;
     public MonthExpense() {
@@ -132,7 +133,7 @@ public class MonthExpense {
     }
   public void AddPayMonth() throws SQLException {
       Statement stmt = conn.createStatement();
-            String sql = "UPDATE monthly_expense  SET slip = '" + "pic.jpg" + "'  , bank = '"+bank+"'  ,date_time_pay = '"
+            String sql = "UPDATE monthly_expense  SET slip = '"+ name_pic+ "', bank = '"+bank+"'  ,date_time_pay = '"
                     +date_time+"' WHERE invoice_id = '"+invoice_id+"'" ;
            stmt.executeUpdate(sql);
     }
@@ -151,6 +152,14 @@ public class MonthExpense {
 
     public void setBank(String bank) {
         this.bank = bank;
+    }
+
+    public String getName_pic() {
+        return name_pic;
+    }
+
+    public void setName_pic( ) {
+        this.name_pic = "C:/Users/user/Documents/git/web pro/new/slip" + invoice_id+" .jpg";
     }
    
 
