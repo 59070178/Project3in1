@@ -42,7 +42,7 @@
         <br><form action="AddAnnounceServlet" method="POST">
 
 
-            <br><br><br><center>
+            <center>
                 <textarea name="txt" rows="10" cols="100">
                     <%
                         out.print(text);
@@ -55,7 +55,7 @@
                 session.setAttribute("edit_con_type", edit_con_type);
             %>
 
-            <input name="btn" type="submit"  value="CANCEL" style="float:left;"> <input name="btn" type="submit" value="SAVE"/>
+            <br><input name="btn" target="back" type="submit"  value="CANCEL" style="float:left;"> <input name="btn" target="submit" type="submit" value="SAVE"/>
         </form>
     </body>
 </html>
