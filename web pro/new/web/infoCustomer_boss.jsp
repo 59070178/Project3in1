@@ -67,7 +67,7 @@
                 </tr>
                 <tr>
                     <th>Area ID.</th>
-                    <td><%= place.getPlaceID()%></td>
+                    <td><%= place.getPlace_name()%></td>
                 </tr>
                 <tr>
                     <th>Zone</th>
