@@ -97,14 +97,4 @@ body, html {
     color: #fff!important;
     background-color: rgba(214, 145, 122, 0.92) !important
 }
-.annual{
-    position: absolute;
-    top : 285px;
-    left : 415px;
-}
-.zone{
-    position: absolute;
-    top : 650px;
-    left : 415px;
-}
 

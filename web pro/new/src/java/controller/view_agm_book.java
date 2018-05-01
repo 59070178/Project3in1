@@ -68,6 +68,7 @@ public class view_agm_book extends HttpServlet {
             ///indenture
             
             int i_id = (int) session.getAttribute("i_id");
+//            out.print(i_id);
             
             if(i_id == 0){
                 response.sendRedirect("donthave.jsp");

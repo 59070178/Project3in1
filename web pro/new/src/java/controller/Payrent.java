@@ -11,7 +11,13 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import java.sql.Statement;
+
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +28,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import model.Agreement;
+
 import model.Account;
 import model.DateExample;
 import model.Payment;
@@ -54,7 +63,8 @@ public class Payrent extends HttpServlet {
 //            Part filepart = request.getPart("trans_image");
             
 //            InputStream inp = filepart.getInputStream();
-            
+
+
             Payment pay = new Payment();
             pay.setConn(conn);
 //            pay.setFilePart(inp);
@@ -86,6 +96,28 @@ public class Payrent extends HttpServlet {
 "SET start_date = '"+start_date+"' , end_date = '"+ end_date+"'\n" +
 "WHERE i_id = " + rs1.getInt("max(i_id)");
             stmt.executeUpdate(sql2);
+            
+            
+            Agreement agm = new Agreement();
+            agm.setConn(conn);
+
+            agm.setEnd_date(i_id);
+            agm.setE_date(i_id);
+            
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date currentDate = new Date();
+        String nowstr = dateFormat.format(currentDate);
+
+        // convert date to calendar
+        Calendar n = Calendar.getInstance();
+        n.setTime(currentDate);
+
+        String e_date = dateFormat.format(agm.getE_date());
+        Calendar c = Calendar.getInstance();
+        c.setTime(agm.getE_date());
+
+        c.add(Calendar.YEAR, 1);
+        pay.upEnddate(i_id, e_date);
             
             response.sendRedirect("successPayment.jsp");
             

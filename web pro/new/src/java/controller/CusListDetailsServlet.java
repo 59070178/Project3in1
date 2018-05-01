@@ -81,7 +81,12 @@ public class CusListDetailsServlet extends HttpServlet {
             //end sql 1
 
             //stat sql2 find indenture
-            String sql2 = "SELECT * From customer join indenture using (account_id)  where account_id =" + view_account_id;
+            String sql2 = "SELECT * From customer join indenture using (account_id)  where i_id = \n" +
+"(\n" +
+"select max(i_id)\n" +
+"from indenture\n" +
+"where account_id = "  + view_account_id +"\n" +
+")";
             ResultSet rs2 = stmt.executeQuery(sql2);
             rs2.next();
 

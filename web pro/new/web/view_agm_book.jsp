@@ -54,7 +54,7 @@
             if (check != null) {
                 Agreement agmt = (Agreement) session.getAttribute("Agreement");
                 if((agmt.isStatus_payment()).equals("Uncomplete")){
-                 out.print("Sorry, you haven't paid yet.");
+                 out.print("<center>" + "Sorry, you haven't paid yet." + "</center>");
                     
                 }else{
                     response.sendRedirect("ProcessRentAfterBook");

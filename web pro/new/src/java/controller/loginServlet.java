@@ -19,6 +19,7 @@ import model.Account;
 import model.Address;
 import model.Contract;
 import model.Login;
+import model.forDate;
 
 /**
  *
@@ -61,9 +62,20 @@ public class loginServlet extends HttpServlet {
             account.setAccount_type(id_user);
             String account_type = account.getAccount_type();
 
+            
+                        forDate dat = new forDate();
+            dat.setDay();
+            dat.setMonth();
+            dat.setStr_monthForComp();
+            dat.setYear();
+            dat.setStr_dayForComp();
+            dat.setStr_date();
+            
+            String now = dat.getStr_date();
+            
             Contract contract = new Contract(conn);
 
-            int i_id = contract.getContractID(id_user);
+            int i_id = contract.getContractID(id_user,now);
             session.setAttribute("i_id", i_id);
 
 //            account.setFirstname(id_user);

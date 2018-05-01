@@ -9,7 +9,6 @@
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <html>
@@ -63,24 +62,13 @@
     <br><center><table border="1">
             <thead>
                 <tr>
-                    <th>CUSTOMER ID.</th>
+                    <th>Month</th>
                     <th>AMOUNT</th>
                     <th>STATUS</th>
                 </tr>
             </thead>
             <tbody>
-<<<<<<< HEAD:web pro/new/web/viewPaymentRecord_boss.html
-                <tr>
-                    <td>4</td>
-                    <td>3000</td>
-                    <td>Complete</td>
-                </tr>
-            </tbody>
-            </table></center>
 
-        <!-- BUTTON PART -->
-        <br>
-=======
                 <%                   while (rs.next()) {
                         out.print("<tr>");
                         out.print("<td>");
@@ -111,7 +99,7 @@
       <!-- back button -->
         <br><center>
             
-            <a href="selectInfoCustomer_boss2.jsp"> <input type="submit" target="back" value="BACK"></a></center>
+            <a href="bossSelectCusPayment.jsp"> <input type="submit" target="back" value="BACK"></a></center>
 </body>
->>>>>>> master:web pro/new/web/viewPaymentRecord_boss.jsp
+
 </html>

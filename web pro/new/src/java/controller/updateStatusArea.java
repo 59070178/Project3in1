@@ -48,7 +48,7 @@ public class updateStatusArea extends HttpServlet {
             
             String now = chk.getStr_date();
             
-            
+//            out.print(now);
             ////statusArea
             
             statusArea upd = new statusArea();
