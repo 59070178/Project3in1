@@ -23,7 +23,7 @@
 
         &nbsp;<br><br><br><h1><center>CUSTOMER INFORMATION.</center></h1><br> 
 
-        <!-- table part -->
+    
         <!-- table part -->
         <sql:query var="myCustomer" dataSource="test" >
             select * from customer 
