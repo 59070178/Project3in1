@@ -125,3 +125,13 @@ input[target=address]{
     width: 60%;
     padding: 50px 30px;
 }
+textarea {
+    overflow: auto;
+    position: relative;
+    left: 25%;
+}
+textarea {
+    overflow: auto;
+    position: relative;
+    left: 25%;
+}

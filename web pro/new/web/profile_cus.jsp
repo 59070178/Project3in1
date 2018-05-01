@@ -33,7 +33,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName <input type="text" name="username" value="" readonly="readonly" disabled="disabled" placeholder="<%= account.getUsername()%>"/><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gender <input type="text" name="tell" value="" readonly="readonly" disabled="disabled" placeholder="<%= account.getGender()%>"/><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Number <input type="text" name="tell" value="" readonly="readonly" disabled="disabled" placeholder="<%= account.getPhone()%>"/><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address <textarea rows="5" cols="40"  type="text" target="address" name="address" value="" readonly="readonly" disabled="disabled" placeholder="<%= address.address_info() %>"/></textarea><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address <br><textarea rows="5" cols="40"  type="text" target="address" name="address" value="" readonly="readonly" disabled="disabled" placeholder="<%= address.address_info() %>"/></textarea><br>
                     
                 </div>
           
