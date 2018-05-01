@@ -74,7 +74,8 @@ public class Payrent extends HttpServlet {
             pay.setDate_time(date+" "+time);
 //            out.println(pay.getDate_time());
 //            out.println(date+" "+time);
-            pay.setPayment_id_Rent(i_id);
+            pay.setPaymentIDForpic(i_id);
+            pay.setPic();
             pay.addPayRent();
             Account account = (Account) session.getAttribute("account_info");
              int account_id = account.getAccount_id();

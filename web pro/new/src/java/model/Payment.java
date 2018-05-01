@@ -33,18 +33,36 @@ public class Payment {
     private int payment_id_book;
     private int payment_id_Rent;
     private String bank;
+    private int paymentIDForpic;
 
-    private InputStream picInput;
-    private Blob pic;
+//    private InputStream picInput;
+    private String pic;
     // end aew
 
-    public void setPicInput(InputStream picInput) {
-        this.picInput = picInput;
+    public int getPaymentIDForpic() {
+        return paymentIDForpic;
     }
 
-    public void setPic(Blob pic) {
-        this.pic = pic;
+    public void setPaymentIDForpic(int i_id) throws SQLException {
+                Statement stmt = conn.createStatement();
+        String sql_payment = "SELECT payment_id   FROM indenture join payment using(payment_id) WHERE i_id = '" + i_id + "' AND type_contract_id = 1";
+        ResultSet rs = stmt.executeQuery(sql_payment);
+        while (rs.next()) {
+            this.paymentIDForpic = rs.getInt("payment_id");
+        }
     }
+    
+    
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic() {
+        this.pic = "C:/Users/user/Documents/git/web pro/new/slip" + paymentIDForpic+" .jpg";
+    }
+
+
 
     private Connection conn;
 
@@ -117,7 +135,7 @@ public class Payment {
 
     public void addPayBook() throws SQLException {
         Statement stmt = conn.createStatement();
-        String upslip_book = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + payment_id_book + "'";
+        String upslip_book = "UPDATE payment  SET slip = '" + pic + "' , bank = '" + bank + "' , tranfer_date_time = '" + date_time + "' WHERE payment_id  = '" + paymentIDForpic + "'";
         stmt.executeUpdate(upslip_book);
 
     }

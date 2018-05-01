@@ -46,23 +46,25 @@ public class Paybook extends HttpServlet {
             String bank = request.getParameter("bank");
             String date = request.getParameter("trans_date");
             String time = request.getParameter("trans_time");
-            Part filepart = request.getPart("trans_image");
-//            String pic_s = request.getParameter("trans_image");
+//            Part filepart = request.getPart("trans_image");
+            String pic_s = request.getParameter("trans_image");
             
             
-            InputStream inp = filepart.getInputStream();
+//            InputStream inp = filepart.getInputStream();
             
             Payment pay = new Payment();
             pay.setConn(conn);
 //            pay.setFilePart(inp);
             
 //            pay.setPicInput(inp);
-            pay.setPic( (Blob) inp);
             pay.setBank(bank);
             pay.setDate_time(date+" "+time);
+                        pay.setPaymentIDForpic(i_id);
+            pay.setPic();
+
 //            out.println(pay.getDate_time());
 //            out.println(date+" "+time);
-            pay.setPayment_id_book(i_id);
+
             pay.addPayBook();
             
             response.sendRedirect("successPayment.jsp");
