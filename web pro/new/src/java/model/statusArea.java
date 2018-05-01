@@ -33,7 +33,7 @@ public class statusArea {
             String sql_id_area = "update area set status  = 'enable'\n" +
 "where area_id not in (\n" +
 "                            SELECT area_id FROM  inden_area JOIN indenture USING (i_id)\n" +
-"                            where end_date > '2018-04-30'\n" +
+"                            where end_date > '"+now+"'" +
 "                               );" ;
             ResultSet rs = stmt.executeQuery(sql_id_area);
             List<Integer> id =  new ArrayList<>();
@@ -51,7 +51,7 @@ public class statusArea {
                     Statement stmt = conn.createStatement();
             String sql_id_area = "UPDATE area SET status  = 'enable' WHERE area_id NOT IN (\n" +
 "                            SELECT area_id FROM  inden_area JOIN indenture USING (i_id)\n" +
-"                            WHERE start_date  < '"+now+"');" ;
+"                            WHERE end_date > +'"+now+"');" ;
             stmt.executeUpdate(sql_id_area);
     }
 
