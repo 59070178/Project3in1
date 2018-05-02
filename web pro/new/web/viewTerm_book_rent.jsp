@@ -49,7 +49,7 @@ and open the template in the editor.
     </center>
 
     <!-- edit button -->
-    <br><form action="editTerm.jsp" method="POST">
+    <br><form action="EditAnnounceServlet" method="POST">
         <input type="submit" value="EDIT" /></form>
 </body>
 </html>

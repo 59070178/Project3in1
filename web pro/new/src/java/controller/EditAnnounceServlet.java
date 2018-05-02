@@ -1,9 +1,10 @@
+package controller;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,76 +14,61 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Announce;
 
 /**
  *
  * @author Suttida Sat
  */
-@WebServlet(name = "viewMonthServlet", urlPatterns = {"/viewMonthServlet"})
-public class viewMonthServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/EditAnnounceServlet"})
+public class EditAnnounceServlet extends HttpServlet {
 
-private Connection conn;
+    private Connection conn;
 
-public void init(){
-    conn = (Connection) getServletContext().getAttribute("connection");
-}
+    public void init() {
+        conn = (Connection) getServletContext().getAttribute("connection");
+    }
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-request.setCharacterEncoding("UTF-8");
-response.setContentType("text/html; charset=UTF-8");
-response.setCharacterEncoding("UTF-8");            
-            HttpSession session = request.getSession(true);
-            
-            float water = 0;
-            float fire = 0;
-            float total = 0;
-            float price_area = 0;
-            String month = "april";
 
-             int user_id = (int) session.getAttribute("id_user");
-             
-             Statement stmt = conn.createStatement();
-             String sql = "SELECT total , price , type_id from monthly_expense join detail using(invoice_id) join indenture using(i_id) WHERE account_id = '"+user_id+"'"+
-                     "AND slip is null";
-             ResultSet rs = stmt.executeQuery(sql);
-             
-             while(rs.next()){
-                 if(rs.getInt("type_id") == 2){
-                     water = rs.getFloat("price");
-                     session.setAttribute("water", water);
-                 }else{
-                     fire = rs.getFloat("price");
-                     session.setAttribute("fire", fire);
-                 }
-                 total = rs.getFloat("total");
-                 session.setAttribute("total", total);
-             }
-             price_area = total - (water+fire);
-             
-             session.setAttribute("price_area", price_area);
-             
-//             out.println(session.getAttribute("water"));
-//             out.println(session.getAttribute("fire"));
-//             out.println(session.getAttribute("price_area"));
-//             out.println(session.getAttribute("total"));
-             
-             RequestDispatcher dp = request.getRequestDispatcher("showMonth.jsp");
-             dp.forward(request, response);
-             
-             
+            HttpSession session = request.getSession(true);
+            int announce_con_id = (int) session.getAttribute("annouce_con_id");
+
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM announce WHERE con_id  = " + announce_con_id;
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            String text = rs.getString("content");
+            int edit_con_type = rs.getInt("type_contract_id");
+
+            Announce announce = (Announce) session.getAttribute("announce_details");
+            announce.setText(text);
+            announce.setEdit_con_type(edit_con_type);
+            session.setAttribute("announce_details_2", announce);
+
+            response.sendRedirect("editTerm.jsp");
+
         } catch (SQLException ex) {
-        Logger.getLogger(viewMonthServlet.class.getName()).log(Level.SEVERE, null, ex);
-    }
+            Logger.getLogger(EditAnnounceServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

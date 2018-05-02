@@ -52,13 +52,11 @@ public class AddAnnounceServlet extends HttpServlet {
             }
 
             HttpSession session = request.getSession();
-            int edit_con_type = (int) session.getAttribute("edit_con_type");
-
             String txt = request.getParameter("txt");
-
-            Announce announce = new Announce();
+            Announce announce  = (Announce) session.getAttribute("announce_details_2");
+            
             announce.setConn(conn);
-            announce.updateAnnounce(edit_con_type, txt);
+            announce.updateAnnounce(announce.getEdit_con_type(), txt);
             response.sendRedirect("successEditAnnounce.html");
         }
     }

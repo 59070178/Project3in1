@@ -20,6 +20,16 @@ public class Announce {
     
     private String announceType;
     private String information;
+    private String text;
+    private int edit_con_type;
+
+    public int getEdit_con_type() {
+        return edit_con_type;
+    }
+
+    public void setEdit_con_type(int edit_con_type) {
+        this.edit_con_type = edit_con_type;
+    }
     
     
     private String name_type;
@@ -108,6 +118,16 @@ public class Announce {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+
 
  
 

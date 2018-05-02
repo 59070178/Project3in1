@@ -51,7 +51,7 @@
                         Total amount to pay 30% <input type="text" name="cost" value="" readonly="readonly" disabled="disabled" placeholder="<%=payment.getPriceBook()%>"/><br>
 
                         Book Date <input type="text" name="rentdate" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getStartDate()%>"/><br>
-                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getStartDate()%>"/></center>
+                        Expired Date <input type="text" name="expd" value="" readonly="readonly" disabled="disabled" placeholder="<%= contract.getEndDate()%>"/></center>
 
 
                     <br><center><textarea rows="30" cols="100" type="text" target = "oldterm" name="oldterm" value="" readonly="readonly" /><%= announce.getInformation()%>
