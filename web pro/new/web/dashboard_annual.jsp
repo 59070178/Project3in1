@@ -41,8 +41,6 @@
             from payment
             join indenture
             using (payment_id)
-            join monthly_expense
-            using (i_id )
             join inden_area
             using (i_id)
             where tranfer_date_time like '<% String year1 = request.getParameter("year");%>%'
@@ -84,8 +82,6 @@
                     from payment
                     join indenture
                     using (payment_id)
-                    join monthly_expense
-                    using (i_id )
                     join inden_area
                     using (i_id)
                     where tranfer_date_time like '<% String year2 = request.getParameter("year");%>%'
@@ -111,59 +107,7 @@
             </tbody>
         </table>
 
-            
-            <br><br><br>
-        <!--    Graph Pictures1 rent/book monthly expense -->
-
-        <sql:query var="myMoney" dataSource="test" >
-            SELECT month(date_time_pay) 'month', sum(total) 'total' FROM monthly_expense
-            where slip is not null
-            and date_time_pay like '<% String year3 = request.getParameter("year");%>%'
-            group by month(date_time_pay)
-        </sql:query> 
-
-
-        <table  border="1" align="center"> 
-            <thead>
-                <tr>
-                    <th>Month</th>
-                    <th>Total per Month</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <c:forEach var="each_month" items="${myMoney.rows}">
-                    <tr>
-
-                        <td>${each_month.month}</td>
-
-                        <td> 
-                            ${each_month.total} 
-                        </td>
-
-                    </tr> 
-                </c:forEach> 
-
-                <sql:query var="myMoney" dataSource="test" >
-                    SELECT sum(total) 'total' FROM monthly_expense
-                    where slip is not null
-                    and date_time_pay like '<% String year4 = request.getParameter("year");%>%'
-
-                </sql:query> 
-
-                <c:forEach var="each_month" items="${myMoney.rows}">
-                    <tr>
-
-                        <td>TOTAL</td>
-
-                        <td> 
-                            ${each_month.total} 
-                        </td>
-
-                    </tr> 
-                </c:forEach> 
-            </tbody>
-        </table>
+   
 
     </body>
 </html>
