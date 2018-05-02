@@ -41,6 +41,7 @@ public void init(){
          int id_user =  (int) session.getAttribute("id_user");
          
          String select_month = request.getParameter("month");
+         session.setAttribute("cus_select_month", select_month);
 //         if(select_month == null){
 //             select_month = "FEB";
 //         }

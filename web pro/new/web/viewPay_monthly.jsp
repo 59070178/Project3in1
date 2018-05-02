@@ -71,7 +71,7 @@
     </table>
 </div>
 <!-- Month Name -->   
-<br><br><br><center><input type="text" target="month" name="month_name" value="JANUARY" /></center>
+<br><br><br><center><input type="text" target="month" name="month_name" value="<%= session.getAttribute("cus_select_month")%>" />  </center>
 
 <!-- table of payment -->
 
