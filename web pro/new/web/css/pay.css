@@ -221,3 +221,10 @@ h2 {
 .select_bn:hover {
     background-color: #eedfc5;
 }
+input[target=month]{
+    position: relative;
+    top: 20%;
+    background-color: #eedfc5;
+    color: #252525;
+    text-align: center;
+}

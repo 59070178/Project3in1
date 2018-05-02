@@ -18,90 +18,90 @@
         <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/viewPay_monthly.css">
-<link rel="stylesheet" type="text/css" href="css/pay.css">
+        <link rel="stylesheet" type="text/css" href="css/pay.css">
     </head>
     <body>
-            <!-- select type of payment -->
-            
+        <!-- select type of payment -->
+
     <center>  <h1>MONTHLY EXPENSE</h1></center><br>
 
-        <!-- table of customer info. -->
-         <sql:query var="myMonth" dataSource="test" >
-            select month from monthly_expense where i_id = "<%= session.getAttribute("i_id") %>" 
-        </sql:query> 
+    <!-- table of customer info. -->
+    <sql:query var="myMonth" dataSource="test" >
+        select month from monthly_expense where i_id = "<%= session.getAttribute("i_id")%>" 
+    </sql:query> 
 
-            <!-- Select month for view -->
-        <form action="viewMonth" method="POST">
-            
-           <center><h2 style="float:left;">  Select Month : </h2><select name="month"> <c:forEach var="month" items="${myMonth.rows}">
-                      <option value="${month.month}" >  ${month.month}   </option></center>
-                </c:forEach> </select>
-               <br> <input type="submit" value="Select" />
-        </form>
-                
-            
-         <sql:query var="myPlace" dataSource="test" >
-            select area_id ,area_type 
-            from area
-            join inden_area
-            using (area_id)
-            join indenture
-            using (i_id)
-            where i_id = "<%= session.getAttribute("i_id") %>"
-         </sql:query> <br><br>
-        <div class="content1 w3-container">
-            <table class="cusinfo">
-                <tr>
-                    <th> ID </th>
-                    <th> USERNAME </th>
-                    <th> AREA NO. </th>
-                    <th> ZONE </th>
+    <!-- Select month for view -->
+    <form action="viewMonth" method="POST">
 
-                </tr>
-                <c:forEach var="place" items="${myPlace.rows}">
-                <tr height="60px">
-                   
-                    
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
-                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
-                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_id}</td>
-                    <td>&nbsp&nbsp&nbsp&nbsp${place.area_type }</td>
-                </tr>
-                </c:forEach> 
-            </table>
-        </div>
+        <center><h2 style="float:left;">  Select Month : </h2><select name="month"> <c:forEach var="month" items="${myMonth.rows}">
+                    <option value="${month.month}" >  ${month.month}   </option></center>
+        </c:forEach> </select>
+    <br> <input type="submit" value="Select" />
+</form>
 
-            <!-- table of payment -->
-            
-            <div>
-            <table class="paytable">
-                <tr>
-                    <th> EXPENSES </th>
-                    <th> AMOUNT </th>
 
-                </tr>
-                <tr>
-                    <td>Water Supply</td>
-                    <td> <%out.println(session.getAttribute("water"));%> </td>
+<sql:query var="myPlace" dataSource="test" >
+    select area_id ,area_type 
+    from area
+    join inden_area
+    using (area_id)
+    join indenture
+    using (i_id)
+    where i_id = "<%= session.getAttribute("i_id")%>"
+</sql:query> <br><br>
+<div class="content1 w3-container">
+    <table class="cusinfo">
+        <tr>
+            <th> ID </th>
+            <th> USERNAME </th>
+            <th> AREA NO. </th>
+            <th> ZONE </th>
 
-                </tr>
-                <tr>
-                    <td>Electricity Charge</td>
-                    <td> <%out.println(session.getAttribute("fire"));%> </td>
+        </tr>
+        <c:forEach var="place" items="${myPlace.rows}">
+            <tr height="60px">
 
-                </tr>
-                <tr>
-                    <td>Rental Fee</td>
-                     <td> <%out.println(session.getAttribute("price_area"));%> </td>
 
-                </tr>
-                <tr class="total_c">
-                    <th>TOTAL</th>
-                    <td> <%out.println(session.getAttribute("total_month"));%> </td>
-                </tr>
-            </table>
-        </div>
+                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("id_user"));%></td>
+                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%out.println(session.getAttribute("username"));%></td>
+                <td>&nbsp&nbsp&nbsp&nbsp${place.area_id}</td>
+                <td>&nbsp&nbsp&nbsp&nbsp${place.area_type }</td>
+            </tr>
+        </c:forEach> 
+    </table>
+</div>
+<!-- Month Name -->   
+<br><br><br><center><input type="text" target="month" name="month_name" value="JANUARY" /></center>
 
-        
-    </body>
+<!-- table of payment -->
+
+<div>
+    <table class="paytable">
+        <tr>
+            <th> EXPENSES </th>
+            <th> AMOUNT </th>
+
+        </tr>
+        <tr>
+            <td>Water Supply</td>
+            <td> <%out.println(session.getAttribute("water"));%> </td>
+
+        </tr>
+        <tr>
+            <td>Electricity Charge</td>
+            <td> <%out.println(session.getAttribute("fire"));%> </td>
+
+        </tr>
+        <tr>
+            <td>Rental Fee</td>
+            <td> <%out.println(session.getAttribute("price_area"));%> </td>
+
+        </tr>
+        <tr class="total_c">
+            <th>TOTAL</th>
+            <td> <%out.println(session.getAttribute("total_month"));%> </td>
+        </tr>
+    </table>
+</div>
+</body>
 </html>
