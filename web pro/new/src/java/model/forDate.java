@@ -56,8 +56,7 @@ public class forDate {
         Calendar now = Calendar.getInstance();
         this.day = now.get(Calendar.DATE);
     }
-
-
+ 
 
      
 

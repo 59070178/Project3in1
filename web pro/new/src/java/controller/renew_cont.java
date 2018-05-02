@@ -73,10 +73,9 @@ public class renew_cont extends HttpServlet {
             session.setAttribute("rentPlace", place);
 
             DateExample dt = new DateExample();
-            dt.rentDate();
-
-            Date start_date = Date.valueOf(dt.getDue_date());
-            Date end_date = Date.valueOf(dt.getNext_date());
+            Date start_date = Date.valueOf(rs.getString("end_date"));
+            String end_date_s = dt.reNewRentdateContract(start_date);
+            Date end_date = Date.valueOf(end_date_s);
 
             Contract contract = new Contract();
             contract.setStartDate(start_date);

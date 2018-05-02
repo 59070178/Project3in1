@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Address;
 import model.Contract;
+import model.DateExample;
 import model.Login;
 import model.forDate;
 
@@ -67,12 +68,14 @@ public class loginServlet extends HttpServlet {
                         forDate dat = new forDate();
             dat.setDay();
             dat.setMonth();
-            dat.setStr_monthForComp();
-            dat.setYear();
-            dat.setStr_dayForComp();
-            dat.setStr_date();
+            int month_now = dat.getMonth();
+//            out.println(month_now);
+            session.setAttribute("month_now", month_now);
             
-            String now = dat.getStr_date();
+                   DateExample dat_now = new DateExample();
+ 
+            String now = dat_now.Now();
+            session.setAttribute("date_now", now);
             
             Contract contract = new Contract(conn);
 

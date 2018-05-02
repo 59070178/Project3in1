@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Agreement;
 import model.DateExample;
+import model.forDate;
 
 /**
  *
@@ -47,12 +48,24 @@ public class chkCanRenew extends HttpServlet {
         agmt.setConn(conn);
         agmt.setPayment_id_Rent(i_id);
         agmt.setE_date(i_id);
+        agmt.setEnd_date(i_id);
         Date e = agmt.getE_date();
+//        out.println(e);
         ///get date now
         DateExample dat = new DateExample();
-        boolean chk = dat.chkFor_renew(e);
+        String chk = dat.DateCanRenew(e);
+        
+            
+            
+            String now = dat.Now();
+            
+//        out.println( "CAN" + chk+"<br>");
+//         out.println("NOW" + now+"<br>");
+//          out.println("End_date"+agmt.getEnd_date()+"<br>");
+//          out.println(now.compareTo(agmt.getEnd_date())+"<br>");
+//          out.println(now.compareTo(chk)+"<br>");
 
-        if (chk) {
+        if (now.compareTo(agmt.getEnd_date()) < 0 && now.compareTo(chk) > 0 ) {
             RequestDispatcher dp = request.getRequestDispatcher("renew_cont");
             dp.forward(request, response);
         } else {

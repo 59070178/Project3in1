@@ -124,42 +124,49 @@ public class DateExample {
 
     public boolean chkFor_renew(Date e_date) {
         
-        Date currentDate = new Date();
-        String nowstr = dateFormat.format(currentDate);
 
-        // convert date to calendar
+        Date currentDate = new Date();
         Calendar n = Calendar.getInstance();
         n.setTime(currentDate);
+                n.add(Calendar.YEAR, -543);
+
 
         end_date = dateFormat.format(e_date);
 
         Calendar c = Calendar.getInstance();
         c.setTime(e_date);
 
-        c.add(Calendar.DATE, -30);
+        c.add(Calendar.DATE, -29);
         boolean chk = false;
-        if(n.getTime().after(e_date) && n.getTime().before(c.getTime())){
+        System.out.print(n.getTime() );
+        System.out.print(e_date );
+        System.out.print(c.getTime());
+        if(n.getTime().before(e_date) && n.getTime().after(c.getTime())){
               chk = true;
         }
         return chk;
     }
-        public Date DateCanRenew(Date e_date) {
-        
-        Date currentDate = new Date();
-        String nowstr = dateFormat.format(currentDate);
-
-        // convert date to calendar
+            public String Now( ) {
+              Date currentDate = new Date();
         Calendar n = Calendar.getInstance();
         n.setTime(currentDate);
+                n.add(Calendar.YEAR, -543);
+String now = dateFormat.format(n.getTime());
 
-        end_date = dateFormat.format(e_date);
+        return now;
+    }
+        public String DateCanRenew(Date e_date) {
+        
+
 
         Calendar c = Calendar.getInstance();
         c.setTime(e_date);
 
         c.add(Calendar.DATE, -30);
+        c.add(Calendar.YEAR, -543);
+        String chk = dateFormat.format(c.getTime());
 
-        return c.getTime();
+        return chk;
     }
     public void rentPayDate() {
                Date currentDate = new Date();
@@ -189,4 +196,20 @@ public class DateExample {
         next_date = dateFormat.format(currentDatePlusOne);
     }
 
+    public String reNewRentdateContract(Date start_date){
+        Calendar c = Calendar.getInstance();
+        c.setTime(start_date);
+
+        // manipulate date
+//        c.add(Calendar.YEAR, 1);
+//        c.add(Calendar.MONTH, 1);
+        c.add(Calendar.YEAR, -543);
+//        due_date = dateFormat.format(c.getTime());
+        // manipulate date
+        c.add(Calendar.YEAR, 1);
+        Date currentDatePlusOne = c.getTime();
+        String end_date = dateFormat.format(currentDatePlusOne);
+        return end_date;
+   
+    }
 }
