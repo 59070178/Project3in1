@@ -40,7 +40,7 @@
         <div>
             <br><br>
             <center>
-                <h1>FILL THE COST</h1>
+                <br><h1>FILL THE COST</h1>
             </center><br>
             <form action="fillBill_emp" method="POST">
                 <div class="sign">
